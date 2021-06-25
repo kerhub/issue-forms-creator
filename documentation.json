@@ -1,0 +1,2135 @@
+{
+    "pipes": [
+        {
+            "name": "MarkedPipe",
+            "id": "pipe-MarkedPipe-db7612bfc57910ddbca3248d00665240",
+            "file": "src/app/pipes/marked.pipe.ts",
+            "type": "pipe",
+            "description": "",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 8,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "ngname": "marked",
+            "sourceCode": "import { NgModule, Pipe, PipeTransform } from '@angular/core';\nimport * as marked from 'marked';\n\n@Pipe({\n  name: 'marked',\n})\nexport class MarkedPipe implements PipeTransform {\n  transform(value: any): any {\n    if (value && value.length > 0) {\n      return marked(value);\n    }\n    return value;\n  }\n}\n\n@NgModule({\n  declarations: [MarkedPipe],\n  exports: [MarkedPipe],\n})\nexport class MarkedModule {}\n"
+        }
+    ],
+    "interfaces": [
+        {
+            "name": "CheckboxElement",
+            "id": "interface-CheckboxElement-2d3003a497f69e482d0627f3ad4d05a3",
+            "file": "src/app/models/checkbox-element.ts",
+            "type": "interface",
+            "sourceCode": "export interface CheckboxElement {\n  label: string;\n  validations: {\n    required: boolean;\n  };\n}\n",
+            "properties": [
+                {
+                    "name": "label",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "validations",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "CheckboxesElement",
+            "id": "interface-CheckboxesElement-7723395d81824b827ec61095c3c5dae9",
+            "file": "src/app/models/checkboxes-element.ts",
+            "type": "interface",
+            "sourceCode": "import { CheckboxElement } from './checkbox-element';\n\nexport interface CheckboxesElement {\n  type: string;\n  id: string;\n  attributes: {\n    label: string;\n    description: string;\n    options: CheckboxElement[];\n  };\n}\n",
+            "properties": [
+                {
+                    "name": "attributes",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "type",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "DropdownElement",
+            "id": "interface-DropdownElement-a0e1d31f741e55e608e66aff0d63b411",
+            "file": "src/app/models/dropdown-element.ts",
+            "type": "interface",
+            "sourceCode": "export interface DropdownElement {\n  type: string;\n  id: string;\n  attributes: {\n    label: string;\n    description: string;\n    options: string[];\n    multiple: boolean;\n  };\n  validations: {\n    required: boolean;\n  };\n}\n",
+            "properties": [
+                {
+                    "name": "attributes",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "type",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "validations",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "InputElement",
+            "id": "interface-InputElement-37568de179d5e8408181ea50ae1137a8",
+            "file": "src/app/models/input-element.ts",
+            "type": "interface",
+            "sourceCode": "export interface InputElement {\n  type: string;\n  id: string;\n  attributes: {\n    label: string;\n    description: string;\n    placeholder: string;\n    value: string;\n  };\n  validations: {\n    required: boolean;\n  };\n}\n",
+            "properties": [
+                {
+                    "name": "attributes",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "type",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "validations",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "MarkdownElement",
+            "id": "interface-MarkdownElement-4dbd071a8b878b91ea38ff98cd8ea2b2",
+            "file": "src/app/models/markdown-element.ts",
+            "type": "interface",
+            "sourceCode": "export interface MarkdownElement {\n  type: string;\n  attributes: {\n    value: string;\n  };\n}\n",
+            "properties": [
+                {
+                    "name": "attributes",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "type",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "TextareaElement",
+            "id": "interface-TextareaElement-75eb40a32d869bd0b522580e0fbb45f8",
+            "file": "src/app/models/textarea-element.ts",
+            "type": "interface",
+            "sourceCode": "export interface TextareaElement {\n  type: string;\n  id: string;\n  attributes: {\n    label: string;\n    description: string;\n    placeholder: string;\n    value: string;\n    render: string;\n  };\n  validations: {\n    required: boolean;\n  };\n}\n",
+            "properties": [
+                {
+                    "name": "attributes",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "type",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "validations",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        }
+    ],
+    "injectables": [],
+    "classes": [
+        {
+            "name": "IssueFormGroup",
+            "id": "class-IssueFormGroup-2c7da32002672686c41e22aa0531425a",
+            "file": "src/app/forms/issue-form-group.ts",
+            "type": "class",
+            "sourceCode": "import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';\n\nexport class IssueFormGroup extends FormGroup {\n  constructor() {\n    super({\n      name: new FormControl(null, Validators.required),\n      description: new FormControl(null, Validators.required),\n      title: new FormControl(null, Validators.required),\n      body: new FormArray([]),\n    });\n  }\n\n  addLabels(): void {\n    this.addControl('labels', new FormControl());\n  }\n\n  addAssignees(): void {\n    this.addControl('assignees', new FormControl());\n  }\n\n  addMarkdown(): void {\n    (this.get('body') as FormArray).push(this.createMarkdown());\n  }\n\n  addTextarea(): void {\n    (this.get('body') as FormArray).push(this.createTextarea());\n  }\n\n  addInput(): void {\n    (this.get('body') as FormArray).push(this.createInput());\n  }\n\n  addDropdown(): void {\n    (this.get('body') as FormArray).push(this.createDropdown());\n  }\n\n  addCheckboxes(): void {\n    (this.get('body') as FormArray).push(this.createCheckboxes());\n  }\n\n  addCheckboxOption(index: number): void {\n    ((this.get('body') as FormArray).at(index).get('attributes')?.get('options') as FormArray).push(\n      this.createCheckbox(),\n    );\n  }\n\n  deleteControl(index: number): void {\n    (this.get('body') as FormArray).removeAt(index);\n  }\n\n  private createMarkdown(): FormGroup {\n    return new FormGroup({\n      type: new FormControl('markdown'),\n      attributes: new FormGroup({\n        value: new FormControl(null, Validators.required),\n      }),\n    });\n  }\n\n  private createTextarea(): FormGroup {\n    return new FormGroup({\n      type: new FormControl('textarea'),\n      id: new FormControl(null),\n      attributes: new FormGroup({\n        label: new FormControl(null, Validators.required),\n        description: new FormControl(''),\n        placeholder: new FormControl(''),\n        value: new FormControl(null),\n        render: new FormControl(null),\n      }),\n      validations: new FormGroup({\n        required: new FormControl(false),\n      }),\n    });\n  }\n\n  private createInput(): FormGroup {\n    return new FormGroup({\n      type: new FormControl('input'),\n      id: new FormControl(null),\n      attributes: new FormGroup({\n        label: new FormControl(null, Validators.required),\n        description: new FormControl(null),\n        placeholder: new FormControl(null),\n        value: new FormControl(null),\n      }),\n      validations: new FormGroup({\n        required: new FormControl(false),\n      }),\n    });\n  }\n\n  private createDropdown(): FormGroup {\n    return new FormGroup({\n      type: new FormControl('dropdown'),\n      id: new FormControl(null),\n      attributes: new FormGroup({\n        label: new FormControl(null, Validators.required),\n        description: new FormControl(''),\n        multiple: new FormControl(false),\n        options: new FormControl(null, Validators.required),\n      }),\n      validations: new FormGroup({\n        required: new FormControl(false),\n      }),\n    });\n  }\n\n  private createCheckboxes(): FormGroup {\n    return new FormGroup({\n      type: new FormControl('checkboxes'),\n      id: new FormControl(),\n      attributes: new FormGroup({\n        label: new FormControl(null),\n        description: new FormControl(),\n        options: new FormArray([this.createCheckbox()], Validators.required),\n      }),\n    });\n  }\n\n  private createCheckbox(): FormGroup {\n    return new FormGroup({\n      label: new FormControl(null, Validators.required),\n      validations: new FormGroup({\n        required: new FormControl(),\n      }),\n    });\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 3
+            },
+            "properties": [],
+            "methods": [
+                {
+                    "name": "addAssignees",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17
+                },
+                {
+                    "name": "addCheckboxes",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37
+                },
+                {
+                    "name": "addCheckboxOption",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "addDropdown",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 33
+                },
+                {
+                    "name": "addInput",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29
+                },
+                {
+                    "name": "addLabels",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13
+                },
+                {
+                    "name": "addMarkdown",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21
+                },
+                {
+                    "name": "addTextarea",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25
+                },
+                {
+                    "name": "createCheckbox",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "FormGroup",
+                    "typeParameters": [],
+                    "line": 121,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "createCheckboxes",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "FormGroup",
+                    "typeParameters": [],
+                    "line": 109,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "createDropdown",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "FormGroup",
+                    "typeParameters": [],
+                    "line": 93,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "createInput",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "FormGroup",
+                    "typeParameters": [],
+                    "line": 77,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "createMarkdown",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "FormGroup",
+                    "typeParameters": [],
+                    "line": 51,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "createTextarea",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "FormGroup",
+                    "typeParameters": [],
+                    "line": 60,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "deleteControl",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "extends": "FormGroup",
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [
+        {
+            "name": "IssueFormDirective",
+            "id": "directive-IssueFormDirective-270533a37e65067813f019e40689f0e1",
+            "file": "src/app/directives/issue-form.directive.ts",
+            "type": "directive",
+            "description": "",
+            "sourceCode": "import { Directive, EventEmitter, Input, Output } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\n\n@Directive({\n  selector: '[appIssueForm]',\n})\nexport class IssueFormDirective {\n  @Input()\n  formGroup!: FormGroup;\n\n  @Output()\n  delete: EventEmitter<void> = new EventEmitter<void>();\n}\n",
+            "selector": "[appIssueForm]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "formGroup",
+                    "line": 9,
+                    "type": "FormGroup"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "delete",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "line": 12,
+                    "type": "EventEmitter<void>"
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": []
+        }
+    ],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-1e4d379814e998ba784513d6a2cf232e",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": ""
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-642c6c4e474cd5a0ac760dfda26b2fc9",
+            "file": "src/stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-button",
+            "styleUrls": [
+                "./button.css"
+            ],
+            "styles": [],
+            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "description": "<p>What background color to use</p>\n",
+                    "line": 26,
+                    "type": "string"
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "description": "<p>Button contents</p>\n",
+                    "line": 40
+                },
+                {
+                    "name": "primary",
+                    "defaultValue": "false",
+                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "line": 20
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "description": "<p>How large should the button be?</p>\n",
+                    "line": 32,
+                    "type": "\"small\" | \"medium\" | \"large\""
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "description": "<p>Optional click handler</p>\n",
+                    "line": 46,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "styleUrl": "./button.css"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 48
+                    }
+                }
+            }
+        },
+        {
+            "name": "CheckboxesCreatorComponent",
+            "id": "component-CheckboxesCreatorComponent-dd281a768af8167b6f199c7562e23c0a",
+            "file": "src/app/features/issue-creator/checkboxes-creator/checkboxes-creator.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-checkboxes-creator",
+            "styleUrls": [
+                "./checkboxes-creator.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./checkboxes-creator.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "addCheckbox",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "line": 20,
+                    "type": "EventEmitter<void>"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "drop",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "CdkDragDrop<string[]>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "CdkDragDrop<string[]>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "moveItemInFormArray",
+                    "args": [
+                        {
+                            "name": "formArray",
+                            "type": "FormArray"
+                        },
+                        {
+                            "name": "fromIndex",
+                            "type": "number"
+                        },
+                        {
+                            "name": "toIndex",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "jsdoctags": [
+                        {
+                            "name": "formArray",
+                            "type": "FormArray",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "fromIndex",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "toIndex",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, NgModule, Output } from '@angular/core';\nimport { IssueFormDirective } from '../../../directives/issue-form.directive';\nimport { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';\nimport { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatExpansionModule } from '@angular/material/expansion';\nimport { MatChipsModule } from '@angular/material/chips';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'app-checkboxes-creator',\n  templateUrl: './checkboxes-creator.component.html',\n  styleUrls: ['./checkboxes-creator.component.scss'],\n})\nexport class CheckboxesCreatorComponent extends IssueFormDirective {\n  @Output() addCheckbox: EventEmitter<void> = new EventEmitter<void>();\n\n  get label(): string {\n    return this.formGroup.value.attributes.label;\n  }\n\n  get isLabelInvalid(): boolean {\n    return (\n      !!this.formGroup.get('attributes')?.get('label')?.touched &&\n      !!this.formGroup.get('attributes')?.get('label')?.errors\n    );\n  }\n\n  get optionsControls(): FormGroup[] {\n    return (this.formGroup.get('attributes')?.get('options') as FormArray).controls as FormGroup[];\n  }\n\n  drop(event: CdkDragDrop<string[]>): void {\n    this.moveItemInFormArray(\n      this.formGroup.get('attributes')?.get('options') as FormArray,\n      event.previousIndex,\n      event.currentIndex,\n    );\n  }\n\n  moveItemInFormArray(formArray: FormArray, fromIndex: number, toIndex: number): void {\n    const dir = toIndex > fromIndex ? 1 : -1;\n\n    const item = formArray.at(fromIndex);\n    for (let i = fromIndex; i * dir < toIndex * dir; i = i + dir) {\n      const current = formArray.at(i + dir);\n      formArray.setControl(i, current);\n    }\n    formArray.setControl(toIndex, item);\n  }\n}\n\n@NgModule({\n  declarations: [CheckboxesCreatorComponent],\n  imports: [\n    MatButtonModule,\n    MatExpansionModule,\n    MatChipsModule,\n    ReactiveFormsModule,\n    MatFormFieldModule,\n    MatInputModule,\n    DragDropModule,\n    MatIconModule,\n    MatCheckboxModule,\n    CommonModule,\n  ],\n  exports: [CheckboxesCreatorComponent],\n})\nexport class CheckboxesCreatorModule {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".checkbox-item {\n  align-items: center;\n  display: flex;\n}\n",
+                    "styleUrl": "./checkboxes-creator.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": "IssueFormDirective",
+            "accessors": {
+                "label": {
+                    "name": "label",
+                    "getSignature": {
+                        "name": "label",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 22
+                    }
+                },
+                "isLabelInvalid": {
+                    "name": "isLabelInvalid",
+                    "getSignature": {
+                        "name": "isLabelInvalid",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 26
+                    }
+                },
+                "optionsControls": {
+                    "name": "optionsControls",
+                    "getSignature": {
+                        "name": "optionsControls",
+                        "type": "[]",
+                        "returnType": "FormGroup[]",
+                        "line": 33
+                    }
+                }
+            },
+            "templateData": "<mat-expansion-panel>\n\n  <mat-expansion-panel-header>\n    <mat-panel-title>\n      <mat-chip-list>\n        <!-- TODO : add color -->\n        <mat-chip>checkboxes</mat-chip>\n      </mat-chip-list>\n    </mat-panel-title>\n    <mat-panel-description>\n      <span class=\"error-message\" *ngIf=\"isLabelInvalid; else labelValid\">\n        missing label\n      </span>\n      <ng-template #labelValid>\n        {{label}}\n      </ng-template>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n\n  <section [formGroup]=\"formGroup\">\n    <mat-form-field class=\"element-creator-field\">\n      <mat-label>ID</mat-label>\n      <input matInput type=\"text\" formControlName=\"id\">\n      <mat-hint>Must be unique in the form definition</mat-hint>\n    </mat-form-field>\n\n    <section class=\"element-creator-container\" formGroupName=\"attributes\">\n      <mat-form-field class=\"element-creator-field\">\n        <mat-label>label</mat-label>\n        <input matInput type=\"text\" formControlName=\"label\">\n        <mat-hint>A brief description of the expected user input</mat-hint>\n      </mat-form-field>\n\n      <mat-form-field class=\"element-creator-field\">\n        <mat-label>description</mat-label>\n        <input matInput type=\"text\" formControlName=\"description\">\n        <mat-hint>provide context or guidancet</mat-hint>\n      </mat-form-field>\n\n      <fieldset formArrayName=\"options\">\n        <legend>checkboxes</legend>\n        <section cdkDropList (cdkDropListDropped)=\"drop($event)\">\n          <article cdkDrag *ngFor=\"let control of optionsControls; let i = index\" [formGroupName]=\"i\">\n            <article class=\"checkbox-item\">\n              <aside cdkDragHandle>\n                <mat-icon>drag_indicator</mat-icon>\n              </aside>\n              <input type=\"text\" formControlName=\"label\">\n\n              <div formGroupName=\"validations\">\n                <mat-checkbox formControlName=\"required\">This element must be filled to submit an issue</mat-checkbox>\n              </div>\n            </article>\n          </article>\n        </section>\n        <button mat-raised-button type=\"button\" color=\"primary\" (click)=\"addCheckbox.emit()\">add option</button>\n        <!-- TODO : add a delete option -->\n      </fieldset>\n    </section>\n\n    <section class=\"actions-btn-container\">\n      <button mat-stroked-button color=\"warn\" (click)=\"delete.emit()\">\n        delete\n      </button>\n    </section>\n\n  </section>\n</mat-expansion-panel>\n"
+        },
+        {
+            "name": "DropdownCreatorComponent",
+            "id": "component-DropdownCreatorComponent-a5707fe6abd457f8daefb2af79323f48",
+            "file": "src/app/features/issue-creator/dropdown-creator/dropdown-creator.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-dropdown-creator",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./dropdown-creator.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "options",
+                    "defaultValue": "[]",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "optionsControl",
+                    "defaultValue": "new FormControl(null)",
+                    "type": "FormControl",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "separatorKeysCodes",
+                    "defaultValue": "[ENTER, COMMA]",
+                    "type": "number[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "addOption",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MatChipInputEvent"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MatChipInputEvent",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "dropOption",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "CdkDragDrop<string[]>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "CdkDragDrop<string[]>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isOptionsInvalid",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 57
+                },
+                {
+                    "name": "removeOption",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, NgModule } from '@angular/core';\nimport { IssueFormDirective } from '../../../directives/issue-form.directive';\nimport { MatExpansionModule } from '@angular/material/expansion';\nimport { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';\nimport { FormControl, ReactiveFormsModule } from '@angular/forms';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\nimport { MatIconModule } from '@angular/material/icon';\nimport { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';\nimport { COMMA, ENTER } from '@angular/cdk/keycodes';\nimport { MatButtonModule } from '@angular/material/button';\n\n@Component({\n  selector: 'app-dropdown-creator',\n  templateUrl: './dropdown-creator.component.html',\n})\nexport class DropdownCreatorComponent extends IssueFormDirective {\n  // TODO : change to a Set for unique items\n  options: string[] = [];\n  separatorKeysCodes: number[] = [ENTER, COMMA];\n  optionsControl: FormControl = new FormControl(null);\n\n  get label(): string {\n    return this.formGroup.value.attributes.label;\n  }\n\n  get isLabelInvalid(): boolean {\n    return (\n      !!this.formGroup.get('attributes')?.get('label')?.touched &&\n      !!this.formGroup.get('attributes')?.get('label')?.errors\n    );\n  }\n\n  dropOption(event: CdkDragDrop<string[]>) {\n    moveItemInArray(this.options, event.previousIndex, event.currentIndex);\n    this.formGroup.get('attributes')?.get('options')?.setValue(this.options);\n  }\n\n  addOption(event: MatChipInputEvent): void {\n    const value = (event.value || '').trim();\n\n    if (value) {\n      this.options.push(value);\n      this.formGroup.get('attributes')?.get('options')?.setValue(this.options);\n    }\n\n    event.chipInput!.clear();\n    this.optionsControl.setValue(null);\n  }\n\n  removeOption(index: number): void {\n    this.options.splice(index, 1);\n    this.formGroup.get('attributes')?.get('options')?.setValue(this.options);\n  }\n\n  isOptionsInvalid(): boolean {\n    return this.optionsControl.touched && !!this.optionsControl.errors;\n  }\n}\n\n@NgModule({\n  declarations: [DropdownCreatorComponent],\n  imports: [\n    MatExpansionModule,\n    MatChipsModule,\n    ReactiveFormsModule,\n    MatFormFieldModule,\n    MatInputModule,\n    MatCheckboxModule,\n    MatIconModule,\n    DragDropModule,\n    MatButtonModule,\n  ],\n  exports: [DropdownCreatorComponent],\n})\nexport class DropdownCreatorModule {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": "IssueFormDirective",
+            "accessors": {
+                "label": {
+                    "name": "label",
+                    "getSignature": {
+                        "name": "label",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 24
+                    }
+                },
+                "isLabelInvalid": {
+                    "name": "isLabelInvalid",
+                    "getSignature": {
+                        "name": "isLabelInvalid",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 28
+                    }
+                }
+            },
+            "templateData": "<mat-expansion-panel>\n\n  <mat-expansion-panel-header>\n    <mat-panel-title>\n      <mat-chip-list>\n        <!-- TODO : add color -->\n        <mat-chip>dropdown</mat-chip>\n      </mat-chip-list>\n    </mat-panel-title>\n    <mat-panel-description>\n      <span class=\"error-message\" *ngIf=\"isLabelInvalid; else labelValid\">\n        missing label\n      </span>\n      <ng-template #labelValid>\n        {{label}}\n      </ng-template>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n\n  <section [formGroup]=\"formGroup\">\n    <mat-form-field class=\"element-creator-field\">\n      <mat-label>ID</mat-label>\n      <input matInput type=\"text\" formControlName=\"id\">\n      <mat-hint>Must be unique in the form definition</mat-hint>\n    </mat-form-field>\n\n    <section class=\"element-creator-container\" formGroupName=\"attributes\">\n      <mat-form-field class=\"element-creator-field\">\n        <mat-label>label</mat-label>\n        <input matInput type=\"text\" formControlName=\"label\">\n        <mat-hint>A brief description of the expected user input</mat-hint>\n      </mat-form-field>\n\n      <mat-form-field class=\"element-creator-field\">\n        <mat-label>description</mat-label>\n        <input matInput type=\"text\" formControlName=\"description\">\n        <mat-hint>provide context or guidance</mat-hint>\n      </mat-form-field>\n\n      <mat-form-field class=\"element-creator-field\">\n        <mat-label>options</mat-label>\n        <input\n          matInput\n          type=\"text\"\n          [formControl]=\"optionsControl\"\n          [matChipInputFor]=\"optionList\"\n          [matChipInputSeparatorKeyCodes]=\"separatorKeysCodes\"\n          (matChipInputTokenEnd)=\"addOption($event)\"\n        >\n        <mat-hint>placeholder that renders in the field when empty</mat-hint>\n        <!-- TODO : should depend on optionList being empty and optionsControl being touched -->\n        <mat-error *ngIf=\"false\">must include at least one option</mat-error>\n      </mat-form-field>\n      <mat-chip-list\n        #optionList\n        cdkDropList\n        cdkDropListOrientation=\"vertical\"\n        (cdkDropListDropped)=\"dropOption($event)\">\n        <mat-chip\n          cdkDrag\n          *ngFor=\"let option of options; let i = index\"\n          [removable]=\"true\"\n          (removed)=\"removeOption(i)\"\n        >\n          {{option}}\n          <mat-icon matChipRemove>cancel</mat-icon>\n        </mat-chip>\n      </mat-chip-list>\n      <mat-checkbox formControlName=\"multiple\">Multiple options can be selected</mat-checkbox>\n    </section>\n\n    <section class=\"element-creator-container\" formGroupName=\"validations\">\n      <mat-checkbox formControlName=\"required\">This element must be filled to submit an issue</mat-checkbox>\n      <!-- TODO : add hint => Prevents form submission until element is completed. -->\n    </section>\n\n    <section class=\"actions-btn-container\">\n      <button mat-stroked-button color=\"warn\" (click)=\"delete.emit()\">\n        delete\n      </button>\n    </section>\n  </section>\n</mat-expansion-panel>\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-246e2a69dc126a3bd76c6328dd3b93e2",
+            "file": "src/stories/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-header",
+            "styleUrls": [
+                "./header.css"
+            ],
+            "styles": [],
+            "template": "<header>    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "line": 53,
+                    "type": "unknown"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 62,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 56,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 59,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n",
+                    "styleUrl": "./header.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
+            "name": "InputCreatorComponent",
+            "id": "component-InputCreatorComponent-35c8c63c5a98b9f0b71a464c0915d98b",
+            "file": "src/app/features/issue-creator/input-creator/input-creator.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-input-creator",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./input-creator.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "formGroup",
+                    "line": 15,
+                    "type": "FormGroup"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {Component, EventEmitter, Input, NgModule, Output} from '@angular/core';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatInputModule } from '@angular/material/input';\nimport {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';\nimport {CommonModule} from \"@angular/common\";\n\n@Component({\n  selector: 'app-input-creator',\n  templateUrl: './input-creator.component.html',\n})\nexport class InputCreatorComponent {\n  @Input()\n  formGroup!: FormGroup;\n\n  get labelControl(): FormControl {\n    return this.formGroup.get('attributes')?.get('label') as FormControl;\n  }\n\n  get isLabelInvalid(): boolean {\n    return this.labelControl.touched && this.labelControl.invalid;\n  }\n}\n\n@NgModule({\n  declarations: [InputCreatorComponent],\n  imports: [\n    MatFormFieldModule,\n    MatCheckboxModule,\n    MatInputModule,\n    ReactiveFormsModule,\n    CommonModule,\n  ],\n  exports: [InputCreatorComponent],\n})\nexport class InputCreatorModule {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "accessors": {
+                "labelControl": {
+                    "name": "labelControl",
+                    "getSignature": {
+                        "name": "labelControl",
+                        "type": "",
+                        "returnType": "FormControl",
+                        "line": 17
+                    }
+                },
+                "isLabelInvalid": {
+                    "name": "isLabelInvalid",
+                    "getSignature": {
+                        "name": "isLabelInvalid",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 21
+                    }
+                }
+            },
+            "templateData": "<section [formGroup]=\"formGroup\">\n  <mat-form-field class=\"element-creator-field\">\n    <mat-label>ID</mat-label>\n    <input matInput type=\"text\" formControlName=\"id\">\n    <mat-hint>Must be unique in the form definition</mat-hint>\n    <!-- TODO : add validator => Can only use alpha-numeric characters, -, and _ -->\n  </mat-form-field>\n\n  <section class=\"element-creator-container\" formGroupName=\"attributes\">\n    <mat-form-field class=\"element-creator-field\">\n      <mat-label>label</mat-label>\n      <input matInput type=\"text\" formControlName=\"label\">\n      <mat-hint>A brief description of the expected user input</mat-hint>\n      <mat-error *ngIf=\"isLabelInvalid\">missing label</mat-error>\n    </mat-form-field>\n\n    <mat-form-field class=\"element-creator-field\">\n      <mat-label>description</mat-label>\n      <input matInput type=\"text\" formControlName=\"description\">\n      <mat-hint>Provide context or guidance</mat-hint>\n    </mat-form-field>\n\n    <mat-form-field class=\"element-creator-field\">\n      <mat-label>placeholder</mat-label>\n      <input matInput type=\"text\" formControlName=\"placeholder\">\n      <mat-hint>Rendered in the field when empty</mat-hint>\n    </mat-form-field>\n\n    <mat-form-field class=\"element-creator-field\">\n      <mat-label>value</mat-label>\n      <input matInput type=\"text\" formControlName=\"value\">\n      <mat-hint>Pre-filled text in the field.</mat-hint>\n    </mat-form-field>\n  </section>\n\n  <section class=\"element-creator-field\" formGroupName=\"validations\">\n    <mat-checkbox formControlName=\"required\">This element must be filled to submit an issue</mat-checkbox>\n    <!-- TODO : add hint => Prevents form submission until element is completed. -->\n  </section>\n</section>\n"
+        },
+        {
+            "name": "MarkdownCreatorComponent",
+            "id": "component-MarkdownCreatorComponent-8147952709103a18dbb3c2f54301d8a0",
+            "file": "src/app/features/issue-creator/markdown-creator/markdown-creator.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-markdown-creator",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./markdown-creator.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, NgModule } from '@angular/core';\nimport { IssueFormDirective } from '../../../directives/issue-form.directive';\nimport { MatExpansionModule } from '@angular/material/expansion';\nimport { MatChipsModule } from '@angular/material/chips';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { FormControl, ReactiveFormsModule } from '@angular/forms';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatInputModule } from '@angular/material/input';\n\n@Component({\n  selector: 'app-markdown-creator',\n  templateUrl: './markdown-creator.component.html',\n})\nexport class MarkdownCreatorComponent extends IssueFormDirective {\n  get control(): FormControl {\n    return this.formGroup.get('attributes')?.get('value') as FormControl;\n  }\n}\n\n@NgModule({\n  declarations: [MarkdownCreatorComponent],\n  imports: [\n    MatExpansionModule,\n    MatChipsModule,\n    MatFormFieldModule,\n    ReactiveFormsModule,\n    MatButtonModule,\n    MatInputModule,\n  ],\n  exports: [MarkdownCreatorComponent],\n})\nexport class MarkdownCreatorModule {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": "IssueFormDirective",
+            "accessors": {
+                "control": {
+                    "name": "control",
+                    "getSignature": {
+                        "name": "control",
+                        "type": "",
+                        "returnType": "FormControl",
+                        "line": 15
+                    }
+                }
+            },
+            "templateData": "<mat-expansion-panel>\n\n  <mat-expansion-panel-header>\n    <mat-panel-title>\n      <mat-chip-list>\n        <!-- TODO :add color -->\n        <mat-chip>markdown</mat-chip>\n      </mat-chip-list>\n    </mat-panel-title>\n  </mat-expansion-panel-header>\n\n  <mat-form-field class=\"element-creator-container\">\n    <mat-label>Leave a comment</mat-label>\n    <textarea matInput placeholder=\"Ex. It makes me feel...\" [formControl]=\"control\"></textarea>\n  </mat-form-field>\n\n  <section class=\"actions-btn-container\">\n    <button mat-stroked-button color=\"warn\" (click)=\"delete.emit()\">\n      delete\n    </button>\n  </section>\n\n</mat-expansion-panel>\n\n\n"
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-8f196770333aa216860a88c0b6b221aa",
+            "file": "src/stories/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-page",
+            "styleUrls": [
+                "./page.css"
+            ],
+            "styles": [],
+            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "line": 64,
+                    "type": "unknown"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 73,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 67,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 70,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-page',\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport default class PageComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n\n// export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (\n//   <article>\n//     <Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />\n\n// );\n// Page.propTypes = {\n//   user: PropTypes.shape({}),\n//   onLogin: PropTypes.func.isRequired,\n//   onLogout: PropTypes.func.isRequired,\n//   onCreateAccount: PropTypes.func.isRequired,\n// };\n\n// Page.defaultProps = {\n//   user: null,\n// };\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nh2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\np {\n  margin: 1em 0;\n}\n\na {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nli {\n  margin-bottom: 8px;\n}\n\n.tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\n.tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\n.tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\n.tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "styleUrl": "./page.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
+            "name": "TextareaCreatorComponent",
+            "id": "component-TextareaCreatorComponent-27f52368edaf969b6130bce28e500c3a",
+            "file": "src/app/features/issue-creator/textarea-creator/textarea-creator.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-textarea-creator",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./textarea-creator.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, NgModule } from '@angular/core';\nimport { MatExpansionModule } from '@angular/material/expansion';\nimport { MatChipsModule } from '@angular/material/chips';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\nimport { IssueFormDirective } from '../../../directives/issue-form.directive';\nimport { MatButtonModule } from '@angular/material/button';\n\n@Component({\n  selector: 'app-textarea-creator',\n  templateUrl: './textarea-creator.component.html',\n})\nexport class TextareaCreatorComponent extends IssueFormDirective {\n  get label(): string {\n    return this.formGroup.value.attributes.label;\n  }\n\n  get isLabelInvalid(): boolean {\n    return (\n      !!this.formGroup.get('attributes')?.get('label')?.touched &&\n      !!this.formGroup.get('attributes')?.get('label')?.errors\n    );\n  }\n}\n\n@NgModule({\n  declarations: [TextareaCreatorComponent],\n  imports: [\n    MatExpansionModule,\n    MatChipsModule,\n    ReactiveFormsModule,\n    MatFormFieldModule,\n    MatInputModule,\n    MatCheckboxModule,\n    MatButtonModule,\n  ],\n  exports: [TextareaCreatorComponent],\n})\nexport class TextareaCreatorModule {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": "IssueFormDirective",
+            "accessors": {
+                "label": {
+                    "name": "label",
+                    "getSignature": {
+                        "name": "label",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 16
+                    }
+                },
+                "isLabelInvalid": {
+                    "name": "isLabelInvalid",
+                    "getSignature": {
+                        "name": "isLabelInvalid",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 20
+                    }
+                }
+            },
+            "templateData": "<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <mat-panel-title>\n      <mat-chip-list>\n        <!-- TODO : add color -->\n        <mat-chip>textarea</mat-chip>\n      </mat-chip-list>\n    </mat-panel-title>\n    <mat-panel-description>\n      <span class=\"error-message\" *ngIf=\"isLabelInvalid; else labelValid\">\n        missing label\n      </span>\n      <ng-template #labelValid>\n        {{label}}\n      </ng-template>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n\n  <section [formGroup]=\"formGroup\">\n    <mat-form-field class=\"element-creator-field\">\n      <mat-label>ID</mat-label>\n      <input matInput type=\"text\" formControlName=\"id\">\n      <mat-hint>Must be unique in the form definition</mat-hint>\n    </mat-form-field>\n\n    <section class=\"element-creator-container\" formGroupName=\"attributes\">\n      <mat-form-field class=\"element-creator-field\">\n        <mat-label>label</mat-label>\n        <input matInput type=\"text\" formControlName=\"label\">\n        <mat-hint>A brief description of the expected user input</mat-hint>\n      </mat-form-field>\n\n      <mat-form-field class=\"element-creator-field\">\n        <mat-label>description</mat-label>\n        <input matInput type=\"text\" formControlName=\"description\">\n        <mat-hint>provide context or guidance</mat-hint>\n      </mat-form-field>\n\n      <mat-form-field class=\"element-creator-field\">\n        <mat-label>placeholder</mat-label>\n        <input matInput type=\"text\" formControlName=\"placeholder\">\n        <mat-hint>placeholder that renders in the field when empty</mat-hint>\n      </mat-form-field>\n\n      <mat-form-field class=\"element-creator-field\">\n        <mat-label>value</mat-label>\n        <input matInput type=\"text\" formControlName=\"value\">\n        <mat-hint>Text that is pre-filled in the field.</mat-hint>\n      </mat-form-field>\n      <mat-form-field>\n        <mat-label>render</mat-label>\n        <input matInput type=\"text\" formControlName=\"render\">\n        <mat-hint>Format the codeblock (languages supported <a href=\"https://github.com/github/linguist/blob/master/lib/linguist/languages.yml\">here)</a></mat-hint>\n      </mat-form-field>\n    </section>\n    <section class=\"element-creator-container\" formGroupName=\"validations\">\n      <mat-checkbox formControlName=\"required\">This element must be filled to submit an issue</mat-checkbox>\n      <!-- TODO : add hint => Prevents form submission until element is completed. -->\n    </section>\n    <section class=\"actions-btn-container\">\n      <button mat-stroked-button color=\"warn\" (click)=\"delete.emit()\">\n        delete\n      </button>\n    </section>\n  </section>\n</mat-expansion-panel>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        },
+                        {
+                            "name": "IssueFormDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "CheckboxesCreatorModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "CheckboxesCreatorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "CheckboxesCreatorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "DropdownCreatorModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "DropdownCreatorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "DropdownCreatorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "InputCreatorModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "InputCreatorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "InputCreatorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "MarkdownCreatorModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "MarkdownCreatorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "MarkdownCreatorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "MarkedModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "MarkedPipe"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "MarkedPipe"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "TextareaCreatorModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "TextareaCreatorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "TextareaCreatorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: true,\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false,\n}"
+            },
+            {
+                "name": "filled",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  props: {\n    formGroup: filledForm\n  }\n})"
+            },
+            {
+                "name": "filledForm",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                "type": "FormGroup",
+                "defaultValue": "new FormGroup({\n  type: new FormControl('input'),\n  id: new FormControl('foo'),\n  attributes: new FormGroup({\n    label: new FormControl('Version', Validators.required),\n    description: new FormControl('indicates the version of the project'),\n    placeholder: new FormControl('eg v01.2.3'),\n    value: new FormControl(''),\n  }),\n  validations: new FormGroup({\n    required: new FormControl(true),\n  }),\n})"
+            },
+            {
+                "name": "Large",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedIn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedIn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "pristine",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  props: {\n    formGroup: new FormGroup({\n      type: new FormControl('input'),\n      id: new FormControl(null),\n      attributes: new FormGroup({\n        label: new FormControl(null, Validators.required),\n        description: new FormControl(null),\n        placeholder: new FormControl(null),\n        value: new FormControl(null),\n      }),\n      validations: new FormGroup({\n        required: new FormControl(false),\n      }),\n    })\n  }\n})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "literal type"
+            },
+            {
+                "name": "Secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Small",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "Story<Button>",
+                "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "type": "Story<Header>",
+                "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "type": "Story<Page>",
+                "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "touched",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  props: {\n    formGroup: touchedForm\n  }\n})"
+            },
+            {
+                "name": "touchedForm",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                "type": "FormGroup",
+                "defaultValue": "new FormGroup({\n  type: new FormControl('input'),\n  id: new FormControl(null),\n  attributes: new FormGroup({\n    label: new FormControl(null, Validators.required),\n    description: new FormControl(null),\n    placeholder: new FormControl(null),\n    value: new FormControl(null),\n  }),\n  validations: new FormGroup({\n    required: new FormControl(false),\n  }),\n})"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "literal type"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true,\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false,\n}"
+                }
+            ],
+            "src/app/features/issue-creator/input-creator/input-creator.stories.ts": [
+                {
+                    "name": "filled",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  props: {\n    formGroup: filledForm\n  }\n})"
+                },
+                {
+                    "name": "filledForm",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                    "type": "FormGroup",
+                    "defaultValue": "new FormGroup({\n  type: new FormControl('input'),\n  id: new FormControl('foo'),\n  attributes: new FormGroup({\n    label: new FormControl('Version', Validators.required),\n    description: new FormControl('indicates the version of the project'),\n    placeholder: new FormControl('eg v01.2.3'),\n    value: new FormControl(''),\n  }),\n  validations: new FormGroup({\n    required: new FormControl(true),\n  }),\n})"
+                },
+                {
+                    "name": "pristine",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  props: {\n    formGroup: new FormGroup({\n      type: new FormControl('input'),\n      id: new FormControl(null),\n      attributes: new FormGroup({\n        label: new FormControl(null, Validators.required),\n        description: new FormControl(null),\n        placeholder: new FormControl(null),\n        value: new FormControl(null),\n      }),\n      validations: new FormGroup({\n        required: new FormControl(false),\n      }),\n    })\n  }\n})"
+                },
+                {
+                    "name": "touched",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  props: {\n    formGroup: touchedForm\n  }\n})"
+                },
+                {
+                    "name": "touchedForm",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                    "type": "FormGroup",
+                    "defaultValue": "new FormGroup({\n  type: new FormControl('input'),\n  id: new FormControl(null),\n  attributes: new FormGroup({\n    label: new FormControl(null, Validators.required),\n    description: new FormControl(null),\n    placeholder: new FormControl(null),\n    value: new FormControl(null),\n  }),\n  validations: new FormGroup({\n    required: new FormControl(false),\n  }),\n})"
+                }
+            ],
+            "src/stories/Button.stories.ts": [
+                {
+                    "name": "Large",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Small",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "Story<Button>",
+                    "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+                }
+            ],
+            "src/stories/Header.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "type": "Story<Header>",
+                    "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+                }
+            ],
+            "src/stories/Page.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "Story<Page>",
+                    "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 2,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/directives/issue-form.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "IssueFormDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/issue-creator/checkboxes-creator/checkboxes-creator.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CheckboxesCreatorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/issue-creator/dropdown-creator/dropdown-creator.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DropdownCreatorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/issue-creator/input-creator/input-creator.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InputCreatorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "filled",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "filledForm",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "pristine",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "touched",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/issue-creator/input-creator/input-creator.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "touchedForm",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/issue-creator/markdown-creator/markdown-creator.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MarkdownCreatorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/issue-creator/textarea-creator/textarea-creator.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TextareaCreatorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/forms/issue-form-group.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "IssueFormGroup",
+                "coveragePercent": 0,
+                "coverageCount": "0/17",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/checkbox-element.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CheckboxElement",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/checkboxes-element.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CheckboxesElement",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/dropdown-element.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DropdownElement",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/input-element.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "InputElement",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/markdown-element.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "MarkdownElement",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/textarea-element.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "TextareaElement",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pipes/marked.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "MarkedPipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Large",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Small",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}
