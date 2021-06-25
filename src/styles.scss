@@ -37,6 +37,21 @@ legend {
   padding: 3px 6px;
 }
 
-fieldset {
-  margin-bottom: 1rem;
+/* Preview */
+
+.required-marker {
+  color: rgb(203, 36, 49);
+}
+
+.preview-label {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.preview-description {
+  color: rgb(88, 96, 105);
+  font-size: 12px;
+  margin-bottom: 8px;
+  margin-top: 0;
 }
