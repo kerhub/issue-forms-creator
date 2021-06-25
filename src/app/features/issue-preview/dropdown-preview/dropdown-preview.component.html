@@ -1,0 +1,14 @@
+<label *ngIf="element.attributes.label; else labelManquant" class="preview-label" [for]="element.id">
+  {{element.attributes.label}}
+  <span class="required-marker" *ngIf="element.validations.required">*</span>
+</label>
+<ng-template #labelManquant>
+  <a class="error-message">missing label</a>
+</ng-template>
+<p class="preview-description">{{element.attributes.description}}</p>
+<select *ngIf="element.attributes.options; else emptyList" [id]="element.id" [multiple]="element.attributes.multiple">
+  <option *ngFor="let option of element.attributes.options" [value]="option">{{option}}</option>
+</select>
+<ng-template #emptyList>
+  <a class="error-message">missing options</a>
+</ng-template>
