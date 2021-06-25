@@ -1,11 +1,9 @@
 import { Component, NgModule } from '@angular/core';
 import { IssueFormDirective } from '../../../directives/issue-form.directive';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-markdown-creator',
@@ -15,18 +13,15 @@ export class MarkdownCreatorComponent extends IssueFormDirective {
   get control(): FormControl {
     return this.formGroup.get('attributes')?.get('value') as FormControl;
   }
+
+  get isValueInvalid(): boolean {
+    return this.control.touched && this.control.invalid;
+  }
 }
 
 @NgModule({
   declarations: [MarkdownCreatorComponent],
-  imports: [
-    MatExpansionModule,
-    MatChipsModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatInputModule,
-  ],
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, CommonModule],
   exports: [MarkdownCreatorComponent],
 })
 export class MarkdownCreatorModule {}
