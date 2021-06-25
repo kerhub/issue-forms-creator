@@ -1,0 +1,25 @@
+<mat-expansion-panel>
+
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <mat-chip-list>
+        <!-- TODO :add color -->
+        <mat-chip>markdown</mat-chip>
+      </mat-chip-list>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <mat-form-field class="element-creator-container">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..." [formControl]="control"></textarea>
+  </mat-form-field>
+
+  <section class="actions-btn-container">
+    <button mat-stroked-button color="warn" (click)="delete.emit()">
+      delete
+    </button>
+  </section>
+
+</mat-expansion-panel>
+
+
