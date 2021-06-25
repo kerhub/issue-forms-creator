@@ -1,6 +1,5 @@
 import { Component, NgModule } from '@angular/core';
 import { IssueFormDirective } from '../../../directives/issue-form.directive';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,7 +8,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dropdown-creator',
@@ -25,16 +24,17 @@ export class DropdownCreatorComponent extends IssueFormDirective {
     return this.formGroup.value.attributes.label;
   }
 
-  get isLabelInvalid(): boolean {
-    return (
-      !!this.formGroup.get('attributes')?.get('label')?.touched &&
-      !!this.formGroup.get('attributes')?.get('label')?.errors
-    );
+  get labelControl(): FormControl {
+    return this.formGroup.get('attributes')?.get('label') as FormControl;
+  }
+
+  updateOptionsControl(): void {
+    this.formGroup.get('attributes')?.get('options')?.setValue(this.options);
   }
 
   dropOption(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.options, event.previousIndex, event.currentIndex);
-    this.formGroup.get('attributes')?.get('options')?.setValue(this.options);
+    this.updateOptionsControl();
   }
 
   addOption(event: MatChipInputEvent): void {
@@ -42,7 +42,7 @@ export class DropdownCreatorComponent extends IssueFormDirective {
 
     if (value) {
       this.options.push(value);
-      this.formGroup.get('attributes')?.get('options')?.setValue(this.options);
+      this.updateOptionsControl();
     }
 
     event.chipInput!.clear();
@@ -51,18 +51,13 @@ export class DropdownCreatorComponent extends IssueFormDirective {
 
   removeOption(index: number): void {
     this.options.splice(index, 1);
-    this.formGroup.get('attributes')?.get('options')?.setValue(this.options);
-  }
-
-  isOptionsInvalid(): boolean {
-    return this.optionsControl.touched && !!this.optionsControl.errors;
+    this.updateOptionsControl();
   }
 }
 
 @NgModule({
   declarations: [DropdownCreatorComponent],
   imports: [
-    MatExpansionModule,
     MatChipsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -70,7 +65,7 @@ export class DropdownCreatorComponent extends IssueFormDirective {
     MatCheckboxModule,
     MatIconModule,
     DragDropModule,
-    MatButtonModule,
+    CommonModule,
   ],
   exports: [DropdownCreatorComponent],
 })
