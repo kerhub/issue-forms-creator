@@ -1,0 +1,10 @@
+<label *ngIf="element.attributes.label; else labelManquant" class="preview-label" [for]="element.id">
+  {{element.attributes.label}}
+  <span class="required-marker" *ngIf="element.validations.required">*</span>
+</label>
+<ng-template #labelManquant>
+  <a class="error-message">missing label</a>
+</ng-template>
+<p class="preview-description">{{element.attributes.description}}</p>
+<textarea [id]="element.id" [placeholder]="element.attributes.placeholder" [value]="element.attributes.value">
+</textarea>
