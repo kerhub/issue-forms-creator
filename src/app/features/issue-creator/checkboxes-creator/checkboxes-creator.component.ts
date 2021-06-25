@@ -1,9 +1,7 @@
-import { Component, EventEmitter, NgModule, Output } from '@angular/core';
-import { IssueFormDirective } from '../../../directives/issue-form.directive';
+import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -16,25 +14,18 @@ import { CommonModule } from '@angular/common';
   templateUrl: './checkboxes-creator.component.html',
   styleUrls: ['./checkboxes-creator.component.scss'],
 })
-export class CheckboxesCreatorComponent extends IssueFormDirective {
-  @Output() addCheckbox: EventEmitter<void> = new EventEmitter<void>();
+export class CheckboxesCreatorComponent {
+  @Input()
+  formGroup!: FormGroup;
 
-  get label(): string {
-    return this.formGroup.value.attributes.label;
-  }
-
-  get isLabelInvalid(): boolean {
-    return (
-      !!this.formGroup.get('attributes')?.get('label')?.touched &&
-      !!this.formGroup.get('attributes')?.get('label')?.errors
-    );
-  }
+  @Output()
+  addCheckbox: EventEmitter<void> = new EventEmitter<void>();
 
   get optionsControls(): FormGroup[] {
     return (this.formGroup.get('attributes')?.get('options') as FormArray).controls as FormGroup[];
   }
 
-  drop(event: CdkDragDrop<string[]>): void {
+  drop(event: CdkDragDrop<FormGroup[]>): void {
     this.moveItemInFormArray(
       this.formGroup.get('attributes')?.get('options') as FormArray,
       event.previousIndex,
@@ -58,7 +49,6 @@ export class CheckboxesCreatorComponent extends IssueFormDirective {
   declarations: [CheckboxesCreatorComponent],
   imports: [
     MatButtonModule,
-    MatExpansionModule,
     MatChipsModule,
     ReactiveFormsModule,
     MatFormFieldModule,

@@ -1,21 +1,3 @@
-<mat-expansion-panel>
-
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      <mat-chip-list>
-        <!-- TODO : add color -->
-        <mat-chip>checkboxes</mat-chip>
-      </mat-chip-list>
-    </mat-panel-title>
-    <mat-panel-description>
-      <span class="error-message" *ngIf="isLabelInvalid; else labelValid">
-        missing label
-      </span>
-      <ng-template #labelValid>
-        {{label}}
-      </ng-template>
-    </mat-panel-description>
-  </mat-expansion-panel-header>
 
   <section [formGroup]="formGroup">
     <mat-form-field class="element-creator-field">
@@ -34,11 +16,11 @@
       <mat-form-field class="element-creator-field">
         <mat-label>description</mat-label>
         <input matInput type="text" formControlName="description">
-        <mat-hint>provide context or guidancet</mat-hint>
+        <mat-hint>provide context or guidance</mat-hint>
       </mat-form-field>
 
       <fieldset formArrayName="options">
-        <legend>checkboxes</legend>
+        <legend>checkbox list</legend>
         <section cdkDropList (cdkDropListDropped)="drop($event)">
           <article cdkDrag *ngFor="let control of optionsControls; let i = index" [formGroupName]="i">
             <article class="checkbox-item">
@@ -58,11 +40,4 @@
       </fieldset>
     </section>
 
-    <section class="actions-btn-container">
-      <button mat-stroked-button color="warn" (click)="delete.emit()">
-        delete
-      </button>
-    </section>
-
   </section>
-</mat-expansion-panel>
