@@ -1,68 +1,40 @@
-<mat-expansion-panel>
+<section [formGroup]="formGroup">
+  <mat-form-field class="element-creator-field">
+    <mat-label>ID</mat-label>
+    <input matInput type="text" formControlName="id">
+    <mat-hint>Must be unique in the form definition</mat-hint>
+    <!-- TODO : add validator => Can only use alpha-numeric characters, -, and _ -->
+  </mat-form-field>
 
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      <mat-chip-list>
-        <!-- TODO : add color -->
-        <mat-chip>input</mat-chip>
-      </mat-chip-list>
-    </mat-panel-title>
-    <mat-panel-description>
-      <span class="error-message" *ngIf="isLabelInvalid; else labelValid">
-        missing label
-      </span>
-      <ng-template #labelValid>
-        {{label}}
-      </ng-template>
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-
-  <section [formGroup]="formGroup">
+  <section class="element-creator-container" formGroupName="attributes">
     <mat-form-field class="element-creator-field">
-      <mat-label>ID</mat-label>
-      <input matInput type="text" formControlName="id">
-      <mat-hint>Must be unique in the form definition</mat-hint>
-      <!-- TODO : add validator => Can only use alpha-numeric characters, -, and _ -->
+      <mat-label>label</mat-label>
+      <input matInput type="text" formControlName="label">
+      <mat-hint>A brief description of the expected user input</mat-hint>
+      <mat-error *ngIf="isLabelInvalid">the label is required</mat-error>
     </mat-form-field>
 
-    <section class="element-creator-container" formGroupName="attributes">
-      <mat-form-field class="element-creator-field">
-        <mat-label>label</mat-label>
-        <input matInput type="text" formControlName="label">
-        <mat-hint>A brief description of the expected user input</mat-hint>
-        <mat-error *ngIf="isLabelInvalid">missing label</mat-error>
-      </mat-form-field>
+    <mat-form-field class="element-creator-field">
+      <mat-label>description</mat-label>
+      <input matInput type="text" formControlName="description">
+      <mat-hint>Provide context or guidance</mat-hint>
+    </mat-form-field>
 
-      <mat-form-field class="element-creator-field">
-        <mat-label>description</mat-label>
-        <input matInput type="text" formControlName="description">
-        <mat-hint>Provide context or guidance</mat-hint>
-      </mat-form-field>
+    <mat-form-field class="element-creator-field">
+      <mat-label>placeholder</mat-label>
+      <input matInput type="text" formControlName="placeholder">
+      <mat-hint>Rendered in the field when empty</mat-hint>
+    </mat-form-field>
 
-      <mat-form-field class="element-creator-field">
-        <mat-label>placeholder</mat-label>
-        <input matInput type="text" formControlName="placeholder">
-        <mat-hint>Rendered in the field when empty</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field class="element-creator-field">
-        <mat-label>value</mat-label>
-        <input matInput type="text" formControlName="value">
-        <mat-hint>Pre-filled text in the field.</mat-hint>
-      </mat-form-field>
-    </section>
-
-    <section class="element-creator-field" formGroupName="validations">
-      <mat-checkbox formControlName="required">This element must be filled to submit an issue</mat-checkbox>
-      <!-- TODO : add hint => Prevents form submission until element is completed. -->
-    </section>
-
-    <section class="actions-btn-container">
-      <button mat-stroked-button color="warn" (click)="delete.emit()">
-        delete
-      </button>
-    </section>
-
+    <mat-form-field class="element-creator-field">
+      <mat-label>value</mat-label>
+      <input matInput type="text" formControlName="value">
+      <mat-hint>Pre-filled text in the field.</mat-hint>
+    </mat-form-field>
   </section>
 
-</mat-expansion-panel>
+  <section class="element-creator-field" formGroupName="validations">
+    <mat-checkbox formControlName="required">This element must be filled to submit an issue</mat-checkbox>
+    <!-- TODO : add hint => Prevents form submission until element is completed. -->
+  </section>
+</section>

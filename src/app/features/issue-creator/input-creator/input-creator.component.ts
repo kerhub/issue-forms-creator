@@ -1,29 +1,24 @@
-import { Component, EventEmitter, NgModule, Output } from '@angular/core';
-import { IssueFormDirective } from '../../../directives/issue-form.directive';
+import { Component, Input, NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-input-creator',
   templateUrl: './input-creator.component.html',
 })
-export class InputCreatorComponent extends IssueFormDirective {
-  @Output() updatePreview: EventEmitter<string> = new EventEmitter<string>();
+export class InputCreatorComponent {
+  @Input()
+  formGroup!: FormGroup;
 
-  get label(): string {
-    return this.formGroup.value.attributes.label;
+  get labelControl(): FormControl {
+    return this.formGroup.get('attributes')?.get('label') as FormControl;
   }
 
   get isLabelInvalid(): boolean {
-    return (
-      !!this.formGroup.get('attributes')?.get('label')?.touched &&
-      !!this.formGroup.get('attributes')?.get('label')?.invalid
-    );
+    return this.labelControl.touched && this.labelControl.invalid;
   }
 }
 
@@ -31,12 +26,10 @@ export class InputCreatorComponent extends IssueFormDirective {
   declarations: [InputCreatorComponent],
   imports: [
     MatFormFieldModule,
-    MatExpansionModule,
-    MatChipsModule,
     MatCheckboxModule,
-    MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
+    CommonModule,
   ],
   exports: [InputCreatorComponent],
 })
