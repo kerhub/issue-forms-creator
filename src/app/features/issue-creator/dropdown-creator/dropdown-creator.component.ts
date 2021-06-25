@@ -1,7 +1,6 @@
-import { Component, NgModule } from '@angular/core';
-import { IssueFormDirective } from '../../../directives/issue-form.directive';
+import { Component, Input, NgModule } from '@angular/core';
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -14,19 +13,14 @@ import { CommonModule } from '@angular/common';
   selector: 'app-dropdown-creator',
   templateUrl: './dropdown-creator.component.html',
 })
-export class DropdownCreatorComponent extends IssueFormDirective {
+export class DropdownCreatorComponent {
   // TODO : change to a Set for unique items
   options: string[] = [];
   separatorKeysCodes: number[] = [ENTER, COMMA];
   optionsControl: FormControl = new FormControl(null);
 
-  get label(): string {
-    return this.formGroup.value.attributes.label;
-  }
-
-  get labelControl(): FormControl {
-    return this.formGroup.get('attributes')?.get('label') as FormControl;
-  }
+  @Input()
+  formGroup!: FormGroup;
 
   updateOptionsControl(): void {
     this.formGroup.get('attributes')?.get('options')?.setValue(this.options);

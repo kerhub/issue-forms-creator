@@ -1,7 +1,6 @@
-import { Component, NgModule } from '@angular/core';
-import { IssueFormDirective } from '../../../directives/issue-form.directive';
+import { Component, Input, NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 
@@ -9,13 +8,12 @@ import { CommonModule } from '@angular/common';
   selector: 'app-markdown-creator',
   templateUrl: './markdown-creator.component.html',
 })
-export class MarkdownCreatorComponent extends IssueFormDirective {
+export class MarkdownCreatorComponent {
+  @Input()
+  formGroup!: FormGroup;
+
   get control(): FormControl {
     return this.formGroup.get('attributes')?.get('value') as FormControl;
-  }
-
-  get isValueInvalid(): boolean {
-    return this.control.touched && this.control.invalid;
   }
 }
 
