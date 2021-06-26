@@ -49,7 +49,7 @@ export class TopLevelCreatorComponent {
   addAssigneeFromInput(event: MatChipInputEvent): void {
     if (event.value) {
       this.assignees.add(event.value);
-      this.form.get('assignees')?.setValue(Array.from(this.labels));
+      this.form.get('assignees')?.setValue(Array.from(this.assignees));
       event.chipInput!.clear();
     }
   }
