@@ -1,0 +1,35 @@
+.title-input {
+  background-color: #fafbfc;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  height: 26px;
+  margin: 0.5rem;
+  padding: 5px 12px;
+}
+
+.name {
+  border-bottom: 1px solid #e1e4e8;
+  font-weight: 600;
+  line-height: 36px;
+  margin-bottom: 8px;
+  margin-top: 0;
+  padding-bottom: 8px;
+}
+
+.description {
+  color: rgb(36, 41, 46);
+  font-size: 14px;
+  line-height: 21px;
+  margin-top: 0;
+}
+
+.issue-container {
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.issue-form-container {
+  padding: 1rem;
+}

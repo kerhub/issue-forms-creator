@@ -1,0 +1,15 @@
+<h2 class="name" *ngIf="name; else missingName">{{name}}</h2>
+<ng-template #missingName>
+  <a class="error-message">missing name</a>
+</ng-template>
+<p class="description" *ngIf="description; else missingDescription">{{description}}</p>
+<ng-template #missingDescription>
+  <a class="error-message">missing description</a>
+</ng-template>
+<section class="issue-container">
+  <input class="title-input" type="text" placeholder="Title" [value]="title">
+  <section class="issue-form-container">
+    <ng-content></ng-content>
+  </section>
+</section>
+
