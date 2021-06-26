@@ -1,43 +1,42 @@
+<section [formGroup]="formGroup">
+  <mat-form-field class="element-creator-field">
+    <mat-label>ID</mat-label>
+    <input matInput type="text" formControlName="id">
+    <mat-hint>Must be unique in the form definition</mat-hint>
+  </mat-form-field>
 
-  <section [formGroup]="formGroup">
+  <section class="element-creator-container" formGroupName="attributes">
     <mat-form-field class="element-creator-field">
-      <mat-label>ID</mat-label>
-      <input matInput type="text" formControlName="id">
-      <mat-hint>Must be unique in the form definition</mat-hint>
+      <mat-label>label</mat-label>
+      <input matInput type="text" formControlName="label">
+      <mat-hint>A brief description of the expected user input</mat-hint>
     </mat-form-field>
 
-    <section class="element-creator-container" formGroupName="attributes">
-      <mat-form-field class="element-creator-field">
-        <mat-label>label</mat-label>
-        <input matInput type="text" formControlName="label">
-        <mat-hint>A brief description of the expected user input</mat-hint>
-      </mat-form-field>
+    <mat-form-field class="element-creator-field">
+      <mat-label>description</mat-label>
+      <input matInput type="text" formControlName="description">
+      <mat-hint>provide context or guidance</mat-hint>
+    </mat-form-field>
 
-      <mat-form-field class="element-creator-field">
-        <mat-label>description</mat-label>
-        <input matInput type="text" formControlName="description">
-        <mat-hint>provide context or guidance</mat-hint>
-      </mat-form-field>
+    <fieldset formArrayName="options" class="checkboxes-fieldset">
+      <legend>checkbox list</legend>
+      <section cdkDropList (cdkDropListDropped)="drop($event)">
+        <article cdkDrag *ngFor="let control of optionsControls; let i = index" [formGroupName]="i">
+          <article class="checkbox-item">
+            <aside cdkDragHandle>
+              <mat-icon>drag_indicator</mat-icon>
+            </aside>
+            <input type="text" formControlName="label">
 
-      <fieldset formArrayName="options">
-        <legend>checkbox list</legend>
-        <section cdkDropList (cdkDropListDropped)="drop($event)">
-          <article cdkDrag *ngFor="let control of optionsControls; let i = index" [formGroupName]="i">
-            <article class="checkbox-item">
-              <aside cdkDragHandle>
-                <mat-icon>drag_indicator</mat-icon>
-              </aside>
-              <input type="text" formControlName="label">
-
-              <div formGroupName="validations">
-                <mat-checkbox formControlName="required">This element must be filled to submit an issue</mat-checkbox>
-              </div>
-            </article>
+            <div formGroupName="validations">
+              <mat-checkbox formControlName="required">This element must be filled to submit an issue</mat-checkbox>
+            </div>
           </article>
-        </section>
-        <button mat-raised-button type="button" color="primary" (click)="addCheckbox.emit()">add option</button>
-        <!-- TODO : add a delete option -->
-      </fieldset>
-    </section>
-
+        </article>
+      </section>
+      <button mat-raised-button type="button" color="primary" (click)="addCheckbox.emit()">add option</button>
+      <!-- TODO : add a delete option -->
+    </fieldset>
   </section>
+
+</section>
