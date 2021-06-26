@@ -17,14 +17,12 @@
     </section>
   </form>
 </app-top-level-preview>
-<section *ngIf="form.value.labels?.length || form.value.assignees?.length">
+<section>
   <app-option-preview
-    *ngIf="form.value.assignees?.length"
     label="Assignees"
     [optionList]="form.value.assignees"
   ></app-option-preview>
   <app-option-preview
-    *ngIf="form.value.labels?.length"
     label="Labels"
     [optionList]="form.value.labels"
   ></app-option-preview>
