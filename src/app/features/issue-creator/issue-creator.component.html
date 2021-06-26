@@ -22,6 +22,7 @@
             </mat-chip-list>
           </mat-panel-title>
           <mat-panel-description>
+            {{control.value.attributes.label}}
           </mat-panel-description>
         </mat-expansion-panel-header>
         <ng-container [ngSwitch]="control.controls.type.value">
