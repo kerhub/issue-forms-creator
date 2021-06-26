@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  width: 250px;
+}
+
+.label {
+  color: rgb(88, 96, 105);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  margin-bottom: 4px;
+  padding: 4px 0;
+}
+
+.empty-list {
+  color: rgb(88, 96, 105);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.separator {
+  margin-top: 1rem;
+}
