@@ -1,1 +1,18 @@
-// to complete
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  .action-btn:not(:last-child) {
+    margin-right: 1rem;
+  }
+}
+
+.branding-container {
+  align-items: center;
+  display: flex;
+}
+
+.header-logo {
+  margin-right: 1rem;
+}
