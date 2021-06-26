@@ -1,0 +1,13 @@
+<form class="repository-form" [formGroup]="form" (ngSubmit)="loadRepository()">
+  <p class="title">
+    Load the related repository for an enhanced experience
+    <mat-icon [matTooltip]="tooltipMessage" matTooltipClass="tooltip">info</mat-icon>
+  </p>
+  <mat-form-field class="element-creator-field" floatLabel="always">
+    <mat-label>Repository</mat-label>
+    <input matInput formControlName="name" type="text" placeholder="expected format org/repo">
+    <button mat-icon-button matSuffix type="reset" (click)="reset()" aria-label="reset repository">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
+</form>

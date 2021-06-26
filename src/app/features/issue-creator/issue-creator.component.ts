@@ -16,6 +16,7 @@ import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { TopLevelCreatorModule } from './top-level-creator/top-level-creator.component';
+import { RepositoryFinderModule } from '../repository-finder/repository-finder.component';
 
 @Component({
   selector: 'app-issue-creator',
@@ -84,6 +85,7 @@ export class IssueCreatorComponent {
     MatInputModule,
     MatButtonModule,
     TopLevelCreatorModule,
+    RepositoryFinderModule,
   ],
   exports: [IssueCreatorComponent],
 })

@@ -1,0 +1,23 @@
+.repository-form {
+  border: 2px solid #43a047;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.title {
+  align-items: center;
+  color: rgb(88, 96, 105);
+  display: flex;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 30px;
+
+  mat-icon {
+    margin-left: 0.5rem;
+  }
+}
+
+.tooltip {
+  width: 150px;
+}
