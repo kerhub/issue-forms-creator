@@ -17,21 +17,16 @@
   margin-right: 1rem;
 }
 
-.issue-preview-container,
-.issue-creator-container {
-  display: block;
-  padding-top: 1rem;
-  width: 50%;
-}
-
 .issue-creator-container {
   padding-left: 1rem;
   padding-right: 2rem;
+  width: 40%;
 }
 
 .issue-preview-container {
   padding-left: 2rem;
   padding-right: 1rem;
+  width: 60%;
 }
 
 .main {
