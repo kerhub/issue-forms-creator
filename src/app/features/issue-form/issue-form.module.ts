@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { IssueCreatorModule } from '../issue-creator/issue-creator.component';
+import { IssuePreviewModule } from '../issue-preview/issue-preview.component';
 
 @NgModule({
   declarations: [IssueFormComponent],
@@ -16,6 +17,7 @@ import { IssueCreatorModule } from '../issue-creator/issue-creator.component';
     MatButtonModule,
     MatIconModule,
     IssueCreatorModule,
+    IssuePreviewModule,
   ],
 })
 export class IssueFormModule {}
