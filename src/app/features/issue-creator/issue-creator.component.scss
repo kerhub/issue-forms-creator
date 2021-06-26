@@ -1,0 +1,13 @@
+.delete-btn-container,
+.creator-menu-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-btn-container {
+  margin-top: 0.5rem;
+}
+
+.creator-menu-container {
+  margin-top: 1rem;
+}
