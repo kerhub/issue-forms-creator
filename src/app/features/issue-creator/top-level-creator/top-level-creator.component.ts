@@ -22,8 +22,8 @@ export class TopLevelCreatorComponent {
   labelsControl: FormControl = new FormControl(null);
   assigneesControl: FormControl = new FormControl(null);
 
-  labels = new Set(['bug']);
-  assignees = new Set(['geromegrignon']);
+  labels = new Set<string>();
+  assignees = new Set<string>();
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
   addLabels(): void {
