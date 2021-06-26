@@ -1,65 +1,81 @@
-<app-repository-finder></app-repository-finder>
-<form class="creator-container" [formGroup]="form">
-  <app-top-level-creator [form]="form"></app-top-level-creator>
-  <mat-accordion multi>
-    <mat-expansion-panel class="control-list" *ngFor="let control of controls; let i = index">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-chip-list>
-            <!-- TODO : add color -->
-            <mat-chip>{{control.value.type}}</mat-chip>
-          </mat-chip-list>
-        </mat-panel-title>
-        <mat-panel-description>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <ng-container [ngSwitch]="control.controls.type.value">
-        <ng-container *ngSwitchCase="'markdown'">
-          <app-markdown-creator [formGroup]="control"></app-markdown-creator>
+<section class="main-container">
+  <app-repository-finder></app-repository-finder>
+  <form class="creator-container" [formGroup]="form">
+    <mat-accordion class="header-accordion">
+      <mat-expansion-panel #headerPanel=matExpansionPanel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-chip-list>
+              <mat-chip color="primary" selected>Header</mat-chip>
+            </mat-chip-list>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-top-level-creator [form]="form"></app-top-level-creator>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion multi>
+      <mat-expansion-panel class="control-list" *ngFor="let control of controls; let i = index">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-chip-list>
+              <mat-chip color="primary" selected>{{control.value.type}}</mat-chip>
+            </mat-chip-list>
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ng-container [ngSwitch]="control.controls.type.value">
+          <ng-container *ngSwitchCase="'markdown'">
+            <app-markdown-creator [formGroup]="control"></app-markdown-creator>
+          </ng-container>
+          <ng-container *ngSwitchCase="'textarea'">
+            <app-textarea-creator [formGroup]="control"></app-textarea-creator>
+          </ng-container>
+          <ng-container *ngSwitchCase="'input'">
+            <app-input-creator [formGroup]="control"></app-input-creator>
+          </ng-container>
+          <ng-container *ngSwitchCase="'dropdown'">
+            <app-dropdown-creator [formGroup]="control"></app-dropdown-creator>
+          </ng-container>
+          <ng-container *ngSwitchCase="'checkboxes'">
+            <app-checkboxes-creator [formGroup]="control" (addCheckbox)="addCheckBoxOption(i)"></app-checkboxes-creator>
+          </ng-container>
         </ng-container>
-        <ng-container *ngSwitchCase="'textarea'">
-          <app-textarea-creator [formGroup]="control"></app-textarea-creator>
-        </ng-container>
-        <ng-container *ngSwitchCase="'input'">
-          <app-input-creator [formGroup]="control"></app-input-creator>
-        </ng-container>
-        <ng-container *ngSwitchCase="'dropdown'">
-          <app-dropdown-creator [formGroup]="control"></app-dropdown-creator>
-        </ng-container>
-        <ng-container *ngSwitchCase="'checkboxes'">
-          <app-checkboxes-creator [formGroup]="control" (addCheckbox)="addCheckBoxOption(i)"></app-checkboxes-creator>
-        </ng-container>
-      </ng-container>
-      <section class="delete-btn-container">
-        <button mat-stroked-button color="warn" (click)="deleteControl(i)">
-          delete
-        </button>
-      </section>
-    </mat-expansion-panel>
-  </mat-accordion>
+        <section class="delete-btn-container">
+          <button mat-stroked-button color="warn" (click)="deleteControl(i)">
+            delete
+          </button>
+        </section>
+      </mat-expansion-panel>
+    </mat-accordion>
 
-  <section class="creator-menu-container">
-    <button mat-mini-fab color="primary" type="button" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-      <mat-icon>add</mat-icon>
+    <section class="creator-menu-container">
+
+    </section>
+  </form>
+</section>
+<mat-toolbar class="bottom-toolbar">
+  <mat-chip>{{form.value.body.length}} element{{form.value.body.length > 1 ? 's' : ''}}</mat-chip>
+  <button mat-raised-button color="primary" type="button" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    add element
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item type="button" (click)="addInput()">
+      input
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item type="button" (click)="addInput()">
-        input
-      </button>
-      <button mat-menu-item type="button" (click)="addTextarea()">
-        textarea
-      </button>
-      <!-- TODO : disable if no element yet -->
-      <button mat-menu-item type="button" (click)="addMarkdown()">
-        markdown
-      </button>
-      <button mat-menu-item type="button" (click)="addDropdown()">
-        dropdown
-      </button>
-      <button mat-menu-item type="button" (click)="addCheckboxes()">
-        checkboxes
-      </button>
-    </mat-menu>
-  </section>
-</form>
+    <button mat-menu-item type="button" (click)="addTextarea()">
+      textarea
+    </button>
+    <!-- TODO : disable if no element yet -->
+    <button mat-menu-item type="button" (click)="addMarkdown()">
+      markdown
+    </button>
+    <button mat-menu-item type="button" (click)="addDropdown()">
+      dropdown
+    </button>
+    <button mat-menu-item type="button" (click)="addCheckboxes()">
+      checkboxes
+    </button>
+  </mat-menu>
+</mat-toolbar>
 

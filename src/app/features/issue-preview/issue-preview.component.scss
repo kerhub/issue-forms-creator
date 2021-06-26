@@ -1,4 +1,10 @@
 :host {
+  display: block;
+  height: calc(100vh - 80px);
+  overflow: scroll;
+}
+
+.preview-container {
   display: flex;
 }
 

@@ -3,7 +3,6 @@
   color: #fff;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
 
   .action-btn:not(:last-child) {
     margin-right: 1rem;
@@ -22,12 +21,14 @@
 .issue-creator-container {
   padding-left: 1rem;
   padding-right: 2rem;
+  padding-top: 1rem;
   width: 40%;
 }
 
 .issue-preview-container {
   padding-left: 2rem;
   padding-right: 1rem;
+  padding-top: 1rem;
   width: 60%;
 }
 

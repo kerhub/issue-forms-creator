@@ -11,3 +11,20 @@
 .creator-menu-container {
   margin-top: 1rem;
 }
+
+.header-accordion {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.main-container {
+  height: calc(100vh - 144px);
+  overflow: scroll;
+  padding-right: 1rem;
+}
+
+.bottom-toolbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}

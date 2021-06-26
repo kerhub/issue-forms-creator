@@ -9,6 +9,7 @@ import { IssueFormGroup } from '../../../forms/issue-form-group';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-top-level-creator',
@@ -70,6 +71,7 @@ export class TopLevelCreatorComponent {
     MatIconModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatExpansionModule,
   ],
   exports: [TopLevelCreatorComponent],
 })
