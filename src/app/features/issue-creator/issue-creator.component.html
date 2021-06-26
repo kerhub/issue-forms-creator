@@ -14,15 +14,20 @@
       </mat-expansion-panel>
     </mat-accordion>
     <mat-accordion multi #elementsAccordion=matAccordion>
-      <mat-expansion-panel class="control-list" *ngFor="let control of controls; let i = index">
+      <mat-expansion-panel class="control-list" *ngFor="let control of controls; let i = index" #panel=matExpansionPanel>
         <mat-expansion-panel-header>
-          <mat-panel-title>
+          <mat-panel-title class="panel-type-container">
             <mat-chip-list>
-              <mat-chip color="primary" selected>{{control.value.type}}</mat-chip>
+              <mat-chip class="panel-type" color="primary" selected>{{control.value.type}}</mat-chip>
             </mat-chip-list>
           </mat-panel-title>
           <mat-panel-description>
-            {{control.value.attributes.label}}
+            <ng-container *ngIf="!panel.expanded && control.invalid; else label">
+              <span class="error-message">fill the required fields</span>
+            </ng-container>
+            <ng-template #label>
+              {{control.value.attributes.label}}
+            </ng-template>
           </mat-panel-description>
         </mat-expansion-panel-header>
         <ng-container [ngSwitch]="control.controls.type.value">
