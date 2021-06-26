@@ -9,10 +9,12 @@ import { DropdownPreviewModule } from './dropdown-preview/dropdown-preview.compo
 import { InputPreviewModule } from './input-preview/input-preview.component';
 import { MarkdownPreviewModule } from './markdown-preview/markdown-preview.component';
 import { TextareaPreviewModule } from './textarea-preview/textarea-preview.component';
+import { OptionPreviewModule } from './option-preview/option-preview.component';
 
 @Component({
   selector: 'app-issue-preview',
   templateUrl: './issue-preview.component.html',
+  styleUrls: ['./issue-preview.component.scss'],
 })
 export class IssuePreviewComponent {
   @Input()
@@ -55,6 +57,7 @@ export class IssuePreviewComponent {
     InputPreviewModule,
     MarkdownPreviewModule,
     TextareaPreviewModule,
+    OptionPreviewModule,
   ],
   exports: [IssuePreviewComponent],
 })

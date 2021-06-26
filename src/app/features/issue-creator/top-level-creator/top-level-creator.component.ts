@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { IssueFormGroup } from '../../../forms/issue-form-group';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
@@ -18,6 +18,9 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 export class TopLevelCreatorComponent {
   @Input()
   form!: FormGroup;
+
+  labelsControl: FormControl = new FormControl(null);
+  assigneesControl: FormControl = new FormControl(null);
 
   labels = new Set(['bug']);
   assignees = new Set(['geromegrignon']);
@@ -34,6 +37,7 @@ export class TopLevelCreatorComponent {
   addLabelFromInput(event: MatChipInputEvent): void {
     if (event.value) {
       this.labels.add(event.value);
+      this.form.get('labels')?.setValue(Array.from(this.labels));
       event.chipInput!.clear();
     }
   }
@@ -45,6 +49,7 @@ export class TopLevelCreatorComponent {
   addAssigneeFromInput(event: MatChipInputEvent): void {
     if (event.value) {
       this.assignees.add(event.value);
+      this.form.get('assignees')?.setValue(Array.from(this.labels));
       event.chipInput!.clear();
     }
   }

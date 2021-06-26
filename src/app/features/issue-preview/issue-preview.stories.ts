@@ -37,3 +37,27 @@ export const filled = () => ({
     }),
   },
 });
+
+export const labels = () => ({
+  props: {
+    form: new FormGroup({
+      name: new FormControl('Bug report', Validators.required),
+      description: new FormControl('template for bug report', Validators.required),
+      title: new FormControl('[Bug]: ', Validators.required),
+      labels: new FormControl(['bug', 'triage']),
+      body: new FormArray([]),
+    }),
+  },
+});
+
+export const assignees = () => ({
+  props: {
+    form: new FormGroup({
+      name: new FormControl('Bug report', Validators.required),
+      description: new FormControl('template for bug report', Validators.required),
+      title: new FormControl('[Bug]: ', Validators.required),
+      assignees: new FormControl(['geromegrignon']),
+      body: new FormArray([]),
+    }),
+  },
+});
