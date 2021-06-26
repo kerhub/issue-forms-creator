@@ -36,7 +36,7 @@ export class IssueFormComponent {
     formArray.setControl(toIndex, item);
   }
 
-  async copy(): Promise<void> {
+  async copyToClipboard(): Promise<void> {
     const formattedIssue = yaml.dump({
       ...this.form.value,
       labels: [],
