@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-textarea-preview',
   templateUrl: './textarea-preview.component.html',
+  styleUrls: ['./textarea-preview.component.scss'],
 })
 export class TextareaPreviewComponent {
   @Input()
