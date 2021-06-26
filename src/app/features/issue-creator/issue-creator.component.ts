@@ -13,7 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
-import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
+import { MatAccordion, MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { MarkdownCreatorModule } from './markdown-creator/markdown-creator.component';
 import { TextareaCreatorModule } from './textarea-creator/textarea-creator.component';
@@ -38,6 +38,7 @@ export class IssueCreatorComponent implements AfterViewInit {
   form: IssueFormGroup = new IssueFormGroup();
 
   @ViewChild('headerPanel') headerPanel!: MatExpansionPanel;
+  @ViewChild('elementsAccordion') elementsAccordion!: MatAccordion;
   @ViewChildren(MatExpansionPanel) panels!: QueryList<MatExpansionPanel>;
   @ViewChildren(MatExpansionPanel, { read: ElementRef }) panelsRef!: QueryList<ElementRef>;
 
@@ -94,6 +95,11 @@ export class IssueCreatorComponent implements AfterViewInit {
         }),
       500,
     );
+  }
+
+  closeAllPanels(): void {
+    this.headerPanel.close();
+    this.elementsAccordion.closeAll();
   }
 }
 

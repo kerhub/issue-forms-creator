@@ -28,3 +28,12 @@
   display: flex;
   justify-content: space-between;
 }
+
+.bottom-toolbar-actions {
+  align-items: center;
+  display: flex;
+
+  button:first-child {
+    margin-right: 1rem;
+  }
+}
