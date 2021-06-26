@@ -1,0 +1,83 @@
+<mat-card class="top-elements__container" [formGroup]="form">
+  <mat-form-field class="element-creator-field">
+    <mat-label>Name</mat-label>
+    <input matInput type="text" formControlName="name" required>
+    <mat-hint>A name for the issue form template. Must be unique from all other templates</mat-hint>
+    <mat-error *ngIf="form.get('name')?.touched && form.get('name')?.invalid">required field</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="element-creator-field">
+    <mat-label>Description</mat-label>
+    <input matInput type="text" formControlName="description" required>
+    <mat-hint>Description for the issue form template, which appears in the template chooser interface</mat-hint>
+    <mat-error *ngIf="form.get('description')?.touched && form.get('description')?.invalid">required field</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="element-creator-field">
+    <mat-label>Title</mat-label>
+    <input matInput type="text" formControlName="title" required>
+    <mat-hint>A default title that will be pre-populated in the issue submission form.</mat-hint>
+    <mat-error *ngIf="form.get('title')?.touched && form.get('title')?.invalid">required field</mat-error>
+  </mat-form-field>
+
+  <ng-container *ngIf="form.get('labels')">
+    <mat-form-field class="element-creator-field">
+      <mat-label>Labels</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="labels"
+        placeholder="New label"
+        [matChipInputFor]="labelList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="addLabelFromInput($event)">
+      <mat-hint>Automatically be added to issues created with this template.</mat-hint>
+    </mat-form-field>
+    <mat-chip-list #labelList aria-label="label">
+      <mat-chip
+        *ngFor="let label of labels"
+        [selectable]="true"
+        [removable]="true"
+        (removed)="removeLabel(label)">
+        {{label}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+  </ng-container>
+
+  <ng-container *ngIf="form.get('assignees')">
+    <mat-form-field class="element-creator-field assignees-field">
+      <mat-label>Assignees</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="assignees"
+        placeholder="New assignee"
+        [matChipInputFor]="assigneeList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="addAssigneeFromInput($event)">
+      <mat-hint>Automatically be added to issues created with this template.</mat-hint>
+    </mat-form-field>
+    <mat-chip-list
+      #assigneeList
+      aria-label="assignees">
+      <mat-chip
+        *ngFor="let assignee of assignees"
+        [selectable]="true"
+        [removable]="true"
+        (removed)="removeAssignee(assignee)">
+        {{assignee}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+  </ng-container>
+
+  <section class="options-container">
+    <button *ngIf="!form.get('labels')" mat-stroked-button color="primary" type="button" (click)="addLabels()">
+      add labels
+    </button>
+    <button *ngIf="!form.get('assignees')" mat-stroked-button color="primary" type="button" (click)="addAssignees()">
+      add assignees
+    </button>
+  </section>
+</mat-card>
