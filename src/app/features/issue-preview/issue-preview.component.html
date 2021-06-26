@@ -1,0 +1,32 @@
+<app-top-level-preview
+  [name]="form.value.name"
+  [description]="form.value.description"
+  [title]="form.value.title"
+>
+  <form [formGroup]="form">
+    <section cdkDropList (cdkDropListDropped)="drop($event)">
+      <section class="control-list" cdkDrag *ngFor="let control of controls; let i = index" cdkDragLockAxis="y">
+        <article class="control-item preview-control-item" [ngSwitch]="control.controls.type.value">
+          <aside class="drag-handler__container" cdkDragHandle>
+            <mat-icon class="drag-handler__icon">drag_indicator</mat-icon>
+          </aside>
+          <ng-container *ngSwitchCase="'markdown'">
+            <app-markdown-preview [formGroup]="control"></app-markdown-preview>
+          </ng-container>
+          <ng-container *ngSwitchCase="'textarea'">
+            <app-textarea-preview  [formGroup]="control"></app-textarea-preview>
+          </ng-container>
+          <ng-container *ngSwitchCase="'input'">
+            <app-input-preview [formGroup]="control"></app-input-preview>
+          </ng-container>
+          <ng-container *ngSwitchCase="'dropdown'">
+            <app-dropdown-preview [formGroup]="control"></app-dropdown-preview>
+          </ng-container>
+          <ng-container *ngSwitchCase="'checkboxes'">
+            <app-checkboxes-preview [formGroup]="control"></app-checkboxes-preview>
+          </ng-container>
+        </article>
+      </section>
+    </section>
+  </form>
+</app-top-level-preview>
