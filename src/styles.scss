@@ -1,4 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@use '~@angular/material' as mat;
+
+$my-primary: mat.define-palette(mat.$green-palette, 600);
+$my-accent: mat.define-palette(mat.$amber-palette, 800);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$my-warn: mat.define-palette(mat.$red-palette);
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+    warn: $my-warn,
+  )
+));
+
+@include mat.core-theme($my-theme);
+@include mat.button-theme($my-theme);
+@include mat.all-component-themes($my-theme);
 
 html,
 body { height: 100%; }

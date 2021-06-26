@@ -1,6 +1,6 @@
 <p class="label">{{label}}</p>
 <mat-chip-list *ngIf="optionList.length; else emptyList">
-  <mat-chip class="option" *ngFor="let option of optionList">{{option}}</mat-chip>
+  <mat-chip class="option" color="primary" selected *ngFor="let option of optionList">{{option}}</mat-chip>
 </mat-chip-list>
 <ng-template #emptyList>
   <span class="empty-list">None yet</span>
