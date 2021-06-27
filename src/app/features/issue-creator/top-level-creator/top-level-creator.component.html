@@ -35,7 +35,10 @@
             <mat-chip selected>{{label.name}}</mat-chip>
           </mat-option>
         </mat-select>
-        <mat-hint>Automatically be added to issues created with this template.</mat-hint>
+        <mat-hint *ngIf="repository$ | async as repository">
+          labels loaded from
+          <a [href]="repository">{{repository}}</a>
+        </mat-hint>
       </mat-form-field>
     </ng-container>
     <ng-template #labelChipList>
@@ -76,10 +79,13 @@
       </span>
           </mat-select-trigger>
           <mat-option *ngFor="let contributor of contributorList" [value]="contributor">
-            <mat-chip selected>{{contributor.login}}</mat-chip>
+            {{contributor.login}}
           </mat-option>
         </mat-select>
-        <mat-hint>Automatically be added to issues created with this template.</mat-hint>
+        <mat-hint *ngIf="repository$ | async as repository">
+          contributors loaded from
+          <a [href]="repository">{{repository}}</a>
+        </mat-hint>
       </mat-form-field>
     </ng-container>
     <ng-template #assigneeChipList>

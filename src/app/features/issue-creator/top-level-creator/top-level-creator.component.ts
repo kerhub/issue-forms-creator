@@ -37,10 +37,13 @@ export class TopLevelCreatorComponent implements OnInit, OnDestroy {
 
   labels$ = this.repositoryService.labels$;
   contributors$ = this.repositoryService.contributors$;
+  repository$ = this.repositoryService.repository$;
   destroy$: Subject<void> = new Subject<void>();
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  constructor(private readonly repositoryService: RepositoryService) {}
+  constructor(private readonly repositoryService: RepositoryService) {
+    repositoryService.repository$.subscribe(console.log);
+  }
 
   ngOnInit() {
     this.labelsGithubControl.valueChanges

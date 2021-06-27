@@ -12,6 +12,9 @@ import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/fo
 export class RepositoryService {
   githubApiUrl = 'https://api.github.com/repos';
 
+  repositorySubject: ReplaySubject<string | null> = new ReplaySubject<string | null>();
+  repository$: Observable<string | null> = this.repositorySubject.asObservable();
+
   labelsSubject: ReplaySubject<GithubLabel[] | null> = new ReplaySubject<GithubLabel[] | null>();
   labels$: Observable<GithubLabel[] | null> = this.labelsSubject.asObservable();
 
@@ -38,19 +41,29 @@ export class RepositoryService {
     return combineLatest<[GithubLabel[], GithubContributor[]]>([
       this.loadLabels(repository),
       this.loadContributors(repository),
-    ]);
+    ]).pipe(tap(() => this.updateRepository(repository)));
   }
 
   repositoryValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return this.loadRepositoryInfo(control.value).pipe(
         map(() => null),
-        catchError((error: HttpErrorResponse) => of({ httpError: error.error.message })),
+        catchError((error: HttpErrorResponse) => {
+          this.repositorySubject.next(null);
+          return of({ httpError: error.error.message });
+        }),
       );
     };
   }
 
+  updateRepository(repository: string): void {
+    const url = `https://github.com/${repository}`;
+    this.repositorySubject.next(url);
+  }
+
   reset(): void {
     this.labelsSubject.next(null);
+    this.contributorsSubject.next(null);
+    this.repositorySubject.next(null);
   }
 }
