@@ -6,12 +6,12 @@ It also explains the basic mechanics of using `git` and `node``.
 * [Prerequisite Software](#prerequisite-software)
 * [Getting the Sources](#getting-the-sources)
 * [Installing NPM Modules](#installing-npm-modules)
+* [Serving](#serving)
 * [Building](#building)
 * [Running Tests Locally](#running-tests-locally)
 * [Formatting your Source Code](#formatting-your-source-code)
 * [Linting/verifying your Source Code](#lintingverifying-your-source-code)
-* [Publishing Snapshot Builds](#publishing-snapshot-builds)
-* [Bazel Support](#bazel-support)
+
 
 See the [contribution guidelines](https://github.com/geromegrignon/issue-forms-creator/blob/main/CONTRIBUTING.md)
 if you'd like to contribute to this project.
