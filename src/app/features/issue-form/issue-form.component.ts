@@ -37,10 +37,19 @@ export class IssueFormComponent {
   }
 
   async copyToClipboard(): Promise<void> {
+    const body = [
+      ...this.form.value.body,
+      {
+        type: 'markdown',
+        attributes: {
+          value:
+            'This template was generated with [Issue Forms Creator](https://www.issue-forms-creator.app/)',
+        },
+      },
+    ];
     const formattedIssue = yaml.dump({
       ...this.form.value,
-      labels: [],
-      assignees: [],
+      body,
     });
     await navigator.clipboard.writeText(formattedIssue);
   }
