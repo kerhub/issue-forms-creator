@@ -4,14 +4,19 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { Meta } from '@storybook/angular/types-6-0';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TopLevelCreatorComponent, TopLevelCreatorModule } from './top-level-creator.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RepositoryService } from '../../../services/repository.service';
 
 export default {
   title: 'Components/Issue Creator/Top Level',
   component: TopLevelCreatorComponent,
   decorators: [
     moduleMetadata({
-      imports: [TopLevelCreatorModule, BrowserAnimationsModule],
-      providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }],
+      imports: [TopLevelCreatorModule, BrowserAnimationsModule, HttpClientTestingModule],
+      providers: [
+        RepositoryService,
+        { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
+      ],
     }),
   ],
 } as Meta;
