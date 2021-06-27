@@ -19,35 +19,20 @@
       <mat-hint>provide context or guidance</mat-hint>
     </mat-form-field>
 
-    <mat-form-field class="element-creator-field">
-      <mat-label>options</mat-label>
-      <input
-        matInput
-        type="text"
-        [formControl]="optionsControl"
-        [matChipInputFor]="optionList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="addOption($event)"
-      >
-      <mat-hint>placeholder that renders in the field when empty</mat-hint>
-      <!-- TODO : should depend on optionList being empty and optionsControl being touched -->
-      <mat-error *ngIf="false">must include at least one option</mat-error>
-    </mat-form-field>
-    <mat-chip-list
-      #optionList
-      cdkDropList
-      cdkDropListOrientation="vertical"
-      (cdkDropListDropped)="dropOption($event)">
-      <mat-chip
-        cdkDrag
-        *ngFor="let option of options; let i = index"
-        [removable]="true"
-        (removed)="removeOption(i)"
-      >
-        {{option}}
-        <mat-icon matChipRemove>cancel</mat-icon>
-      </mat-chip>
-    </mat-chip-list>
+    <fieldset class="options-fieldset" [formGroup]="optionsForm">
+      <legend>option list</legend>
+      <section cdkDropList (cdkDropListDropped)="drop($event)" formArrayName="optionsFormArray">
+        <article cdkDrag *ngFor="let control of optionsControls; let i = index">
+          <app-checkbox-option [form]="control" (delete)="removeOption(i)" [removable]="optionsControls.length > 1"></app-checkbox-option>
+        </article>
+      </section>
+      <section class="action-container">
+        <button mat-icon-button type="button" color="primary" aria-label="add a new option" (click)="addOption()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </section>
+    </fieldset>
+
     <mat-checkbox formControlName="multiple">Multiple options can be selected</mat-checkbox>
   </section>
 

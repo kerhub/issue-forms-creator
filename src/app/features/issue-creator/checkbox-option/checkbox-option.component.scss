@@ -19,7 +19,7 @@
 .field-container {
   width: 100%;
 
-  .field:first-child {
+  .field:not(:last-child) {
     margin-bottom: 4px;
   }
 }

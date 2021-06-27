@@ -1,51 +1,96 @@
-import { Component, Input, NgModule } from '@angular/core';
-import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, Input, NgModule, OnDestroy, OnInit } from '@angular/core';
+import { MatChipsModule } from '@angular/material/chips';
+import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
-import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { CommonModule } from '@angular/common';
+import { CheckboxOptionModule } from '../checkbox-option/checkbox-option.component';
+import { MatButtonModule } from '@angular/material/button';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+interface DropdownOption {
+  label: string;
+}
 
 @Component({
   selector: 'app-dropdown-creator',
   templateUrl: './dropdown-creator.component.html',
+  styleUrls: ['./dropdown-creator.component.scss'],
 })
-export class DropdownCreatorComponent {
-  // TODO : change to a Set for unique items
-  options: string[] = [];
+export class DropdownCreatorComponent implements OnInit, OnDestroy {
+  options: Set<string> = new Set<string>();
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  optionsControl: FormControl = new FormControl(null);
+
+  optionsForm: FormGroup = new FormGroup({
+    optionsFormArray: new FormArray([this.createOption()], Validators.required),
+  });
+
+  destroy$: Subject<void> = new Subject<void>();
 
   @Input()
   formGroup!: FormGroup;
+
+  ngOnInit() {
+    this.optionsForm
+      .get('optionsFormArray')
+      ?.valueChanges.pipe(takeUntil(this.destroy$))
+      .subscribe((options: DropdownOption[]) => {
+        this.formGroup
+          .get('attributes')
+          ?.get('options')
+          ?.setValue(options.map(option => option.label));
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  get optionsControls(): FormGroup[] {
+    return (this.optionsForm.get('optionsFormArray') as FormArray).controls as FormGroup[];
+  }
 
   updateOptionsControl(): void {
     this.formGroup.get('attributes')?.get('options')?.setValue(this.options);
   }
 
-  dropOption(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.options, event.previousIndex, event.currentIndex);
-    this.updateOptionsControl();
+  drop(event: CdkDragDrop<FormGroup[]>): void {
+    this.moveItemInFormArray(
+      this.optionsForm.get('optionsFormArray') as FormArray,
+      event.previousIndex,
+      event.currentIndex,
+    );
   }
 
-  addOption(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
+  moveItemInFormArray(formArray: FormArray, fromIndex: number, toIndex: number): void {
+    const dir = toIndex > fromIndex ? 1 : -1;
 
-    if (value) {
-      this.options.push(value);
-      this.updateOptionsControl();
+    const item = formArray.at(fromIndex);
+    for (let i = fromIndex; i * dir < toIndex * dir; i = i + dir) {
+      const current = formArray.at(i + dir);
+      formArray.setControl(i, current);
     }
+    formArray.setControl(toIndex, item);
+  }
 
-    event.chipInput!.clear();
-    this.optionsControl.setValue(null);
+  addOption(): void {
+    (this.optionsForm.get('optionsFormArray') as FormArray).push(this.createOption());
   }
 
   removeOption(index: number): void {
-    this.options.splice(index, 1);
-    this.updateOptionsControl();
+    (this.optionsForm.get('optionsFormArray') as FormArray).removeAt(index);
+  }
+
+  createOption(): FormGroup {
+    return new FormGroup({
+      label: new FormControl(),
+    });
   }
 }
 
@@ -60,6 +105,8 @@ export class DropdownCreatorComponent {
     MatIconModule,
     DragDropModule,
     CommonModule,
+    CheckboxOptionModule,
+    MatButtonModule,
   ],
   exports: [DropdownCreatorComponent],
 })

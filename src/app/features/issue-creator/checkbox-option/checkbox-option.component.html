@@ -9,12 +9,12 @@
     </label>
     <input class="label-field element-creator-field" id="label-field" type="text" formControlName="label">
   </article>
-  <article class="field" formGroupName="validations">
+  <article class="field" formGroupName="validations" *ngIf="form.get('validations')">
     <label for="required-field">required</label>
     <input id="required-field" type="checkbox" formControlName="required">
   </article>
 </section>
-<button mat-icon-button color="warn" aria-label="delete checkbox option" (click)="delete.emit()">
+<button [disabled]="!removable" mat-icon-button color="warn" aria-label="delete checkbox option" (click)="delete.emit()">
   <mat-icon>delete</mat-icon>
 </button>
 

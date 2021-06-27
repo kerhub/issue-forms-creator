@@ -44,7 +44,7 @@
             <app-dropdown-creator [formGroup]="control"></app-dropdown-creator>
           </ng-container>
           <ng-container *ngSwitchCase="'checkboxes'">
-            <app-checkboxes-creator [formGroup]="control" (addCheckbox)="addCheckboxOption(i)" (removeCheckbox)="removeCheckboxOption($event)"></app-checkboxes-creator>
+            <app-checkboxes-creator [formGroup]="control" (addCheckbox)="addCheckboxOption(i)" (removeCheckbox)="removeCheckboxOption($event, i)"></app-checkboxes-creator>
           </ng-container>
         </ng-container>
         <section class="delete-btn-container">

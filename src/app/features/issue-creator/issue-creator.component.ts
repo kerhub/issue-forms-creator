@@ -79,8 +79,8 @@ export class IssueCreatorComponent implements AfterViewInit {
     this.form.addCheckboxOption(index);
   }
 
-  removeCheckboxOption(index: number): void {
-    this.form.removeCheckboxOption(index);
+  removeCheckboxOption(indexCheckBox: number, indexElement: number): void {
+    this.form.removeCheckboxOption(indexCheckBox, indexElement);
   }
 
   deleteControl(index: number): void {
