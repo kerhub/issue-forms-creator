@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { IssueFormComponent } from './issue-form.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { IssueFormModule } from './issue-form.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IconModule } from '../../shared/icon.module';
 
 describe('IssueFormComponent', () => {
   let component: IssueFormComponent;
@@ -12,8 +11,7 @@ describe('IssueFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [IssueFormComponent],
-      imports: [MatIconModule, MatButtonModule, MatToolbarModule, HttpClientTestingModule],
+      imports: [IssueFormModule, HttpClientTestingModule, BrowserAnimationsModule, IconModule],
     }).compileComponents();
   });
 
