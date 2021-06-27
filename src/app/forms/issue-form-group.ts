@@ -3,9 +3,9 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export class IssueFormGroup extends FormGroup {
   constructor() {
     super({
-      name: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
-      title: new FormControl(null, Validators.required),
+      name: new FormControl('Bug report', Validators.required),
+      description: new FormControl('template for bug reports', Validators.required),
+      title: new FormControl('[Bug]: ', Validators.required),
       body: new FormArray([]),
     });
   }
