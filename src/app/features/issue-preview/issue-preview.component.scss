@@ -14,7 +14,31 @@ app-top-level-preview {
 }
 
 .preview-options {
+  align-items: flex-start;
   display: flex;
   justify-content: flex-end;
   margin-bottom: 0.5rem;
+}
+
+.clipboard-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 56px;
+  margin-left: 1rem;
+}
+
+.clipboard-success,
+.clipboard-error {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+.clipboard-success {
+  color: #37843a;
+}
+
+.clipboard-error {
+  color: #f00;
 }

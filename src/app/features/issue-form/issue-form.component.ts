@@ -12,6 +12,8 @@ const yaml = require('js-yaml');
 })
 export class IssueFormComponent {
   form: IssueFormGroup = new IssueFormGroup();
+  clipboardSuccess: boolean = false;
+  clipboardError: boolean = false;
 
   get controls(): FormGroup[] {
     return (this.form.get('body') as FormArray).controls as FormGroup[];
@@ -37,6 +39,8 @@ export class IssueFormComponent {
   }
 
   async copyToClipboard(): Promise<void> {
+    this.clipboardSuccess = false;
+    this.clipboardError = false;
     const body = [
       ...this.form.value.body,
       {
@@ -47,10 +51,20 @@ export class IssueFormComponent {
         },
       },
     ];
+
+    if (this.form.invalid) {
+      this.clipboardError = true;
+      setTimeout(() => (this.clipboardError = false), 2000);
+      return;
+    }
+
     const formattedIssue = yaml.dump({
       ...this.form.value,
       body,
     });
     await navigator.clipboard.writeText(formattedIssue);
+
+    this.clipboardSuccess = true;
+    setTimeout(() => (this.clipboardSuccess = false), 1000);
   }
 }

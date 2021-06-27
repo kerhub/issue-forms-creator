@@ -1,4 +1,4 @@
-import { Component, Input, NgModule } from '@angular/core';
+import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { TopLevelPreviewModule } from './top-level-preview/top-level-preview.component';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -12,6 +12,7 @@ import { TextareaPreviewModule } from './textarea-preview/textarea-preview.compo
 import { OptionPreviewModule } from './option-preview/option-preview.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-issue-preview',
@@ -21,6 +22,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class IssuePreviewComponent {
   @Input()
   form!: FormGroup;
+
+  @Input()
+  clipboardSuccess: boolean = false;
+
+  @Input()
+  clipboardError: boolean = false;
+
+  @Output()
+  copyToClipboard: EventEmitter<void> = new EventEmitter<void>();
 
   get controls(): FormGroup[] {
     return (this.form.get('body') as FormArray).controls as FormGroup[];
@@ -62,6 +72,7 @@ export class IssuePreviewComponent {
     OptionPreviewModule,
     MatButtonToggleModule,
     MatTooltipModule,
+    MatButtonModule,
   ],
   exports: [IssuePreviewComponent],
 })

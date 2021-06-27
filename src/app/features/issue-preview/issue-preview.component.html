@@ -3,6 +3,11 @@
     <mat-button-toggle value="bold" checked>Live preview</mat-button-toggle>
     <mat-button-toggle value="italic" disabled matTooltip="work in progress">Yaml preview</mat-button-toggle>
   </mat-button-toggle-group>
+  <section class="clipboard-container">
+    <button mat-raised-button class="clipboard-btn" color="primary" (click)="copyToClipboard.emit()">copy to clipboard</button>
+    <span *ngIf="clipboardSuccess" class="clipboard-success">Copied!</span>
+    <span *ngIf="clipboardError && form.invalid" class="clipboard-error">Failed! Missing fields</span>
+  </section>
 </section>
 <section class="preview-container">
   <app-top-level-preview
