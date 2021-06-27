@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TopLevelCreatorComponent, TopLevelCreatorModule } from './top-level-creator.component';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TopLevelCreatorComponent', () => {
   let component: TopLevelCreatorComponent;
@@ -9,7 +9,7 @@ describe('TopLevelCreatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TopLevelCreatorModule],
+      imports: [TopLevelCreatorModule, HttpClientTestingModule],
     }).compileComponents();
   });
 
