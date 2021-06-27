@@ -39,8 +39,6 @@ jobs:
         run: npm run prettier:check
       - name: Check ESLinter
         run: npm run lint
-      - name: Check stylelint
-        run: npm run stylelint:ci
       - name: Check unit tests
         run: npm run test --ci --lastCommit --maxWorkers=50%
         env:

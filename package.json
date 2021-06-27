@@ -15,9 +15,7 @@
     "prepare": "husky install",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
-    "build-storybook": "npm run docs:json && build-storybook",
-    "stylelint:fix": "stylelint --fix \"**/*.scss\"",
-    "stylelint:ci": "stylelint \"**/*.scss\""
+    "build-storybook": "npm run docs:json && build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -74,15 +72,10 @@
     "karma-coverage": "~2.0.3",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.1",
-    "stylelint": "^13.13.1",
-    "stylelint-config-sass-guidelines": "^8.0.0",
-    "stylelint-config-standard": "^22.0.0",
     "typescript": "~4.2.3"
   },
   "lint-staged": {
     "src/**/*.ts": "eslint --cache --fix",
-    "src/**/*.{ts,js,css,md,json}": "prettier:write",
-    "src/**/*.css": "stylelint --fix",
-    "src/**/*.scss": "stylelint --syntax=scss --fix"
+    "src/**/*.{js,json,css,scss,ts,html,component.html}": "prettier --write"
   }
 }

@@ -7,13 +7,15 @@ $my-accent: mat.define-palette(mat.$amber-palette, 700);
 // The "warn" palette is optional and defaults to red if not specified.
 $my-warn: mat.define-palette(mat.$red-palette);
 
-$my-theme: mat.define-light-theme((
-  color: (
-    primary: $my-primary,
-    accent: $my-accent,
-    warn: $my-warn,
-  ),
-));
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $my-accent,
+      warn: $my-warn,
+    ),
+  )
+);
 
 @include mat.core-theme($my-theme);
 @include mat.button-theme($my-theme);
