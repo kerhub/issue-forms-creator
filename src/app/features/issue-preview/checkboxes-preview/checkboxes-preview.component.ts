@@ -2,6 +2,7 @@ import { Component, Input, NgModule } from '@angular/core';
 import { CheckboxesElement } from '../../../models/checkboxes-element';
 import { FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MarkedModule } from '../../../pipes/marked.pipe';
 
 @Component({
   selector: 'app-checkboxes-preview',
@@ -17,7 +18,7 @@ export class CheckboxesPreviewComponent {
 
 @NgModule({
   declarations: [CheckboxesPreviewComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, MarkedModule],
   exports: [CheckboxesPreviewComponent],
 })
 export class CheckboxesPreviewModule {}

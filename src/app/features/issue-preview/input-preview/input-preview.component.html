@@ -5,5 +5,5 @@
 <ng-template #labelManquant>
   <a class="error-message">missing label</a>
 </ng-template>
-<p class="preview-description">{{element.attributes.description}}</p>
+<p class="preview-description" [innerHTML]="element.attributes.description | marked"></p>
 <input [id]="element.id" type="text" [placeholder]="element.attributes.placeholder ?? ''" [value]="element.attributes.value">

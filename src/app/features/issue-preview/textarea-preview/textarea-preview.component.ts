@@ -2,6 +2,7 @@ import { Component, Input, NgModule } from '@angular/core';
 import { TextareaElement } from '../../../models/textarea-element';
 import { FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MarkedModule } from '../../../pipes/marked.pipe';
 
 @Component({
   selector: 'app-textarea-preview',
@@ -19,7 +20,7 @@ export class TextareaPreviewComponent {
 
 @NgModule({
   declarations: [TextareaPreviewComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, MarkedModule],
   exports: [TextareaPreviewComponent],
 })
 export class TextareaPreviewModule {}
