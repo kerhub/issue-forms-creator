@@ -19,6 +19,10 @@ export class IssueFormComponent {
     return (this.form.get('body') as FormArray).controls as FormGroup[];
   }
 
+  resetIssue(): void {
+    this.form = new IssueFormGroup();
+  }
+
   drop(event: CdkDragDrop<string[]>): void {
     this.moveItemInFormArray(
       this.form.get('body') as FormArray,
