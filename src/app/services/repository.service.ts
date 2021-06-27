@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { GithubLabel } from '../models/github/github-label';
 import { tap } from 'rxjs/operators';
 import { GithubContributor } from '../models/github/github-contributor';
@@ -11,10 +11,10 @@ import { GithubContributor } from '../models/github/github-contributor';
 export class RepositoryService {
   githubApiUrl = 'https://api.github.com/repos';
 
-  labelsSubject: Subject<GithubLabel[] | null> = new Subject<GithubLabel[] | null>();
+  labelsSubject: ReplaySubject<GithubLabel[] | null> = new ReplaySubject<GithubLabel[] | null>();
   labels$: Observable<GithubLabel[] | null> = this.labelsSubject.asObservable();
 
-  contributorsSubject: Subject<GithubContributor[] | null> = new Subject<
+  contributorsSubject: ReplaySubject<GithubContributor[] | null> = new ReplaySubject<
     GithubContributor[] | null
   >();
   contributors$: Observable<GithubContributor[] | null> = this.contributorsSubject.asObservable();
