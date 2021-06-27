@@ -10,7 +10,7 @@
     "test:watch": "ng test --watch",
     "test:update": "ng test -u",
     "lint": "ng lint",
-    "prettier:format": "prettier --write \"**/*.{js,json,css,scss,ts,html,component.html}\"",
+    "prettier:write": "prettier --write \"**/*.{js,json,css,scss,ts,html,component.html}\"",
     "prettier:check": "prettier \"**/*.{js,json,css,scss,ts,html,component.html}\" --list-different",
     "prepare": "husky install",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
@@ -81,7 +81,7 @@
   },
   "lint-staged": {
     "src/**/*.ts": "eslint --cache --fix",
-    "src/**/*.{ts,js,css,md,json}": "prettier --write",
+    "src/**/*.{ts,js,css,md,json}": "prettier:write",
     "src/**/*.css": "stylelint --fix",
     "src/**/*.scss": "stylelint --syntax=scss --fix"
   }
