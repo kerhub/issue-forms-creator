@@ -32,6 +32,9 @@ export class IssuePreviewComponent {
   @Output()
   copyToClipboard: EventEmitter<void> = new EventEmitter<void>();
 
+  @Output()
+  scrollToError: EventEmitter<number> = new EventEmitter<number>();
+
   get controls(): FormGroup[] {
     return (this.form.get('body') as FormArray).controls as FormGroup[];
   }

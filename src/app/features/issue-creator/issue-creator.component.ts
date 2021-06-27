@@ -27,6 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { TopLevelCreatorModule } from './top-level-creator/top-level-creator.component';
 import { RepositoryFinderModule } from '../repository-finder/repository-finder.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ErrorMessageModule } from '../../shared/components/error-message/error-message.component';
 
 @Component({
   selector: 'app-issue-creator',
@@ -36,6 +37,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 export class IssueCreatorComponent implements AfterViewInit {
   @Input()
   form: IssueFormGroup = new IssueFormGroup();
+
+  @Input()
+  set scrollableItem(scrollable: { position: number }) {
+    setTimeout(() => {
+      this.panelsRef.get(scrollable?.position)?.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start',
+      });
+      this.panels.get(scrollable?.position)?.open();
+    }, 500);
+  }
 
   @ViewChild('headerPanel') headerPanel!: MatExpansionPanel;
   @ViewChild('elementsAccordion') elementsAccordion!: MatAccordion;
@@ -48,6 +61,14 @@ export class IssueCreatorComponent implements AfterViewInit {
 
   get controls(): FormGroup[] {
     return (this.form.get('body') as FormArray).controls as FormGroup[];
+  }
+
+  get isTopInvalid(): boolean {
+    return (
+      !!this.form.get('name')?.invalid ||
+      !!this.form.get('description')?.invalid ||
+      !!this.form.get('title')?.invalid
+    );
   }
 
   addMarkdown(): void {
@@ -128,6 +149,7 @@ export class IssueCreatorComponent implements AfterViewInit {
     TopLevelCreatorModule,
     RepositoryFinderModule,
     MatToolbarModule,
+    ErrorMessageModule,
   ],
   exports: [IssueCreatorComponent],
 })

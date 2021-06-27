@@ -4,11 +4,16 @@
     <mat-accordion class="header-accordion">
       <mat-expansion-panel #headerPanel=matExpansionPanel>
         <mat-expansion-panel-header>
-          <mat-panel-title>
+          <mat-panel-title class="panel-type-container">
             <mat-chip-list>
               <mat-chip color="accent" selected>issue headers</mat-chip>
             </mat-chip-list>
           </mat-panel-title>
+          <mat-panel-description>
+            <ng-container *ngIf="!headerPanel.expanded && isTopInvalid">
+              <app-error-message [hasLink]="false" errorMessage="fill the required fields"></app-error-message>
+            </ng-container>
+          </mat-panel-description>
         </mat-expansion-panel-header>
         <app-top-level-creator [form]="form"></app-top-level-creator>
       </mat-expansion-panel>
@@ -18,12 +23,12 @@
         <mat-expansion-panel-header>
           <mat-panel-title class="panel-type-container">
             <mat-chip-list>
-              <mat-chip class="panel-type" color="primary" selected>{{control.value.type}}</mat-chip>
+              <mat-chip color="primary" selected>{{control.value.type}}</mat-chip>
             </mat-chip-list>
           </mat-panel-title>
           <mat-panel-description>
             <ng-container *ngIf="!panel.expanded && control.invalid; else label">
-              <span class="error-message">fill the required fields</span>
+              <app-error-message [hasLink]="false" errorMessage="fill the required fields"></app-error-message>
             </ng-container>
             <ng-template #label>
               {{control.value.attributes.label}}

@@ -2,7 +2,7 @@
   {{element.attributes.label}}
 </label>
 <ng-template #labelManquant>
-  <a class="error-message">missing label</a>
+  <app-error-message (scrollToError)="scrollToError.emit()"></app-error-message>
 </ng-template>
 <p class="preview-description" [innerHTML]="element.attributes.description | marked"></p>
 <section *ngFor="let option of element.attributes.options; let i = index">
@@ -13,7 +13,7 @@
       <span class="required-marker" *ngIf="option.validations.required">*</span>
     </span>
     <ng-template #missingCheckboxLabel>
-      <a class="error-message">missing checkbox label</a>
+      <app-error-message errorMessage="missing checkbox label" (scrollToError)="scrollToError.emit()"></app-error-message>
     </ng-template>
   </label>
 </section>

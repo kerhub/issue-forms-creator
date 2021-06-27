@@ -13,12 +13,13 @@
   </mat-toolbar>
 </header>
 <main class="main">
-  <app-issue-creator class="issue-creator-container" [form]="form"></app-issue-creator>
+  <app-issue-creator class="issue-creator-container" [form]="form" [scrollableItem]="scrollableItem"></app-issue-creator>
   <app-issue-preview
     class="issue-preview-container"
     [form]="form"
     [clipboardSuccess]="clipboardSuccess"
     [clipboardError]="clipboardError"
     (copyToClipboard)="copyToClipboard()"
+    (scrollToError)="scrollToError($event)"
   ></app-issue-preview>
 </main>

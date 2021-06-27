@@ -14,6 +14,7 @@ export class IssueFormComponent {
   form: IssueFormGroup = new IssueFormGroup();
   clipboardSuccess: boolean = false;
   clipboardError: boolean = false;
+  scrollableItem!: { position: number };
 
   get controls(): FormGroup[] {
     return (this.form.get('body') as FormArray).controls as FormGroup[];
@@ -70,5 +71,9 @@ export class IssueFormComponent {
 
     this.clipboardSuccess = true;
     setTimeout(() => (this.clipboardSuccess = false), 1000);
+  }
+
+  scrollToError(index: number): void {
+    this.scrollableItem = Object.assign({ position: index });
   }
 }
