@@ -22,20 +22,14 @@
       <legend>checkbox list</legend>
       <section cdkDropList (cdkDropListDropped)="drop($event)">
         <article cdkDrag *ngFor="let control of optionsControls; let i = index" [formGroupName]="i">
-          <article class="checkbox-item">
-            <aside cdkDragHandle>
-              <mat-icon>drag_indicator</mat-icon>
-            </aside>
-            <input type="text" formControlName="label">
-
-            <div formGroupName="validations">
-              <mat-checkbox formControlName="required">This element must be filled to submit an issue</mat-checkbox>
-            </div>
-          </article>
+          <app-checkbox-option [form]="control" (delete)="removeCheckbox.emit(i)"></app-checkbox-option>
         </article>
       </section>
-      <button mat-raised-button type="button" color="primary" (click)="addCheckbox.emit()">add option</button>
-      <!-- TODO : add a delete option -->
+      <section class="action-container">
+        <button mat-icon-button type="button" color="primary" aria-label="add a new checkbox option" (click)="addCheckbox.emit()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </section>
     </fieldset>
   </section>
 

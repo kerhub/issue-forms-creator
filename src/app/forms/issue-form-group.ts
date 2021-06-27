@@ -44,6 +44,12 @@ export class IssueFormGroup extends FormGroup {
     );
   }
 
+  removeCheckboxOption(index: number): void {
+    (
+      (this.get('body') as FormArray).at(index).get('attributes')?.get('options') as FormArray
+    ).removeAt(index);
+  }
+
   deleteControl(index: number): void {
     (this.get('body') as FormArray).removeAt(index);
   }

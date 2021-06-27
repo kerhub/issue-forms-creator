@@ -1,8 +1,8 @@
-.checkbox-item {
-  align-items: center;
-  display: flex;
-}
-
 .checkboxes-fieldset {
   margin-top: 0.5rem;
+}
+
+.action-container {
+  display: flex;
+  justify-content: flex-end;
 }

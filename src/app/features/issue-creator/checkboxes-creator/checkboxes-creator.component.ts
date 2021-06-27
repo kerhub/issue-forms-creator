@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
+import { CheckboxOptionModule } from '../checkbox-option/checkbox-option.component';
 
 @Component({
   selector: 'app-checkboxes-creator',
@@ -20,6 +21,9 @@ export class CheckboxesCreatorComponent {
 
   @Output()
   addCheckbox: EventEmitter<void> = new EventEmitter<void>();
+
+  @Output()
+  removeCheckbox: EventEmitter<number> = new EventEmitter<number>();
 
   get optionsControls(): FormGroup[] {
     return (this.formGroup.get('attributes')?.get('options') as FormArray).controls as FormGroup[];
@@ -57,6 +61,7 @@ export class CheckboxesCreatorComponent {
     MatIconModule,
     MatCheckboxModule,
     CommonModule,
+    CheckboxOptionModule,
   ],
   exports: [CheckboxesCreatorComponent],
 })

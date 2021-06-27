@@ -1,0 +1,29 @@
+:host {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  display: flex;
+  margin-bottom: 4px;
+  padding: 4px 0;
+}
+
+.field {
+  display: flex;
+
+  label {
+    flex-basis: 100px;
+  }
+}
+
+.field-container {
+  width: 100%;
+
+  .field:first-child {
+    margin-bottom: 4px;
+  }
+}
+
+.label-field {
+  margin-left: 4px;
+}

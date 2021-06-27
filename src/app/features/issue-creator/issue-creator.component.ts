@@ -75,8 +75,12 @@ export class IssueCreatorComponent implements AfterViewInit {
     this.updateVisibility();
   }
 
-  addCheckBoxOption(index: number): void {
+  addCheckboxOption(index: number): void {
     this.form.addCheckboxOption(index);
+  }
+
+  removeCheckboxOption(index: number): void {
+    this.form.removeCheckboxOption(index);
   }
 
   deleteControl(index: number): void {

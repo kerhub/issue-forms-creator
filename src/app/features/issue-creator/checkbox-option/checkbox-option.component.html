@@ -1,0 +1,20 @@
+<button mat-icon-button aria-label="drag checkbox option" cdkDragHandle>
+  <mat-icon>drag_indicator</mat-icon>
+</button>
+<section class="field-container" [formGroup]="form">
+  <article class="field">
+    <label for="label-field">
+      label
+      <span class="required-marker">*</span>
+    </label>
+    <input class="label-field element-creator-field" id="label-field" type="text" formControlName="label">
+  </article>
+  <article class="field" formGroupName="validations">
+    <label for="required-field">required</label>
+    <input id="required-field" type="checkbox" formControlName="required">
+  </article>
+</section>
+<button mat-icon-button color="warn" aria-label="delete checkbox option" (click)="delete.emit()">
+  <mat-icon>delete</mat-icon>
+</button>
+
