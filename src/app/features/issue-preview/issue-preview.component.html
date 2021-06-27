@@ -1,3 +1,9 @@
+<section class="preview-options">
+  <mat-button-toggle-group name="preview options" aria-label="preview options">
+    <mat-button-toggle value="bold" checked>Live preview</mat-button-toggle>
+    <mat-button-toggle value="italic" disabled matTooltip="work in progress">Yaml preview</mat-button-toggle>
+  </mat-button-toggle-group>
+</section>
 <section class="preview-container">
   <app-top-level-preview
     [name]="form.value.name"

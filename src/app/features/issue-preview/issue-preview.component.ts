@@ -10,6 +10,8 @@ import { InputPreviewModule } from './input-preview/input-preview.component';
 import { MarkdownPreviewModule } from './markdown-preview/markdown-preview.component';
 import { TextareaPreviewModule } from './textarea-preview/textarea-preview.component';
 import { OptionPreviewModule } from './option-preview/option-preview.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-issue-preview',
@@ -58,6 +60,8 @@ export class IssuePreviewComponent {
     MarkdownPreviewModule,
     TextareaPreviewModule,
     OptionPreviewModule,
+    MatButtonToggleModule,
+    MatTooltipModule,
   ],
   exports: [IssuePreviewComponent],
 })
