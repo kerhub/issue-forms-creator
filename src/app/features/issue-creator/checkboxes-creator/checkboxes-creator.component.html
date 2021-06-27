@@ -22,7 +22,7 @@
       <legend>checkbox list</legend>
       <section cdkDropList (cdkDropListDropped)="drop($event)">
         <article cdkDrag *ngFor="let control of optionsControls; let i = index" [formGroupName]="i">
-          <app-checkbox-option [form]="control" (delete)="removeCheckbox.emit(i)"></app-checkbox-option>
+          <app-checkbox-option [form]="control" (delete)="removeCheckbox.emit(i)" [removable]="optionsControls.length > 1"></app-checkbox-option>
         </article>
       </section>
       <section class="action-container">
