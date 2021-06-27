@@ -1,19 +1,26 @@
-<label *ngIf="element.attributes.label; else labelManquant" class="preview-label" [for]="element.id">
-  {{element.attributes.label}}
+<label
+  *ngIf="element.attributes.label; else labelManquant"
+  class="preview-label"
+  [for]="element.id"
+>
+  {{ element.attributes.label }}
 </label>
 <ng-template #labelManquant>
   <app-error-message (scrollToError)="scrollToError.emit()"></app-error-message>
 </ng-template>
 <p class="preview-description" [innerHTML]="element.attributes.description | marked"></p>
 <section *ngFor="let option of element.attributes.options; let i = index">
-  <input [id]="i" type="checkbox" [required]="option.validations.required" disabled>
+  <input [id]="i" type="checkbox" [required]="option.validations.required" disabled />
   <label [for]="i">
     <span *ngIf="option.label; else missingCheckboxLabel">
-      {{option.label}}
+      {{ option.label }}
       <span class="required-marker" *ngIf="option.validations.required">*</span>
     </span>
     <ng-template #missingCheckboxLabel>
-      <app-error-message errorMessage="missing checkbox label" (scrollToError)="scrollToError.emit()"></app-error-message>
+      <app-error-message
+        errorMessage="missing checkbox label"
+        (scrollToError)="scrollToError.emit()"
+      ></app-error-message>
     </ng-template>
   </label>
 </section>

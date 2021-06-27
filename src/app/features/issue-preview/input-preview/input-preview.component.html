@@ -1,9 +1,18 @@
-<label *ngIf="element.attributes.label; else labelManquant" class="preview-label" [for]="element.id">
-  {{element.attributes.label}}
+<label
+  *ngIf="element.attributes.label; else labelManquant"
+  class="preview-label"
+  [for]="element.id"
+>
+  {{ element.attributes.label }}
   <span class="required-marker" *ngIf="element.validations.required">*</span>
 </label>
 <ng-template #labelManquant>
   <app-error-message (scrollToError)="scrollToError.emit()"></app-error-message>
 </ng-template>
 <p class="preview-description" [innerHTML]="element.attributes.description | marked"></p>
-<input [id]="element.id" type="text" [placeholder]="element.attributes.placeholder ?? ''" [value]="element.attributes.value">
+<input
+  [id]="element.id"
+  type="text"
+  [placeholder]="element.attributes.placeholder ?? ''"
+  [value]="element.attributes.value"
+/>

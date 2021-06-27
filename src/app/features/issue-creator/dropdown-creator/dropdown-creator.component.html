@@ -1,21 +1,21 @@
 <section [formGroup]="formGroup">
   <mat-form-field class="element-creator-field">
     <mat-label>ID</mat-label>
-    <input matInput type="text" formControlName="id">
+    <input matInput type="text" formControlName="id" />
     <mat-hint>Must be unique in the form definition</mat-hint>
   </mat-form-field>
 
   <section class="element-creator-container" formGroupName="attributes">
     <mat-form-field class="element-creator-field">
       <mat-label>label</mat-label>
-      <input matInput type="text" formControlName="label" required>
+      <input matInput type="text" formControlName="label" required />
       <mat-hint>A brief description of the expected user input</mat-hint>
       <mat-error>the label is required</mat-error>
     </mat-form-field>
 
     <mat-form-field class="element-creator-field">
       <mat-label>description</mat-label>
-      <input matInput type="text" formControlName="description">
+      <input matInput type="text" formControlName="description" />
       <mat-hint>provide context or guidance</mat-hint>
     </mat-form-field>
 
@@ -23,11 +23,21 @@
       <legend>option list</legend>
       <section cdkDropList (cdkDropListDropped)="drop($event)" formArrayName="optionsFormArray">
         <article cdkDrag *ngFor="let control of optionsControls; let i = index">
-          <app-checkbox-option [form]="control" (delete)="removeOption(i)" [removable]="optionsControls.length > 1"></app-checkbox-option>
+          <app-checkbox-option
+            [form]="control"
+            (delete)="removeOption(i)"
+            [removable]="optionsControls.length > 1"
+          ></app-checkbox-option>
         </article>
       </section>
       <section class="action-container">
-        <button mat-icon-button type="button" color="primary" aria-label="add a new option" (click)="addOption()">
+        <button
+          mat-icon-button
+          type="button"
+          color="primary"
+          aria-label="add a new option"
+          (click)="addOption()"
+        >
           <mat-icon>add</mat-icon>
         </button>
       </section>
@@ -37,7 +47,9 @@
   </section>
 
   <section class="element-creator-container" formGroupName="validations">
-    <mat-checkbox formControlName="required">This element must be filled to submit an issue</mat-checkbox>
+    <mat-checkbox formControlName="required"
+      >This element must be filled to submit an issue</mat-checkbox
+    >
     <!-- TODO : add hint => Prevents form submission until element is completed. -->
   </section>
 </section>

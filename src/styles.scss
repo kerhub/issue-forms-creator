@@ -12,7 +12,7 @@ $my-theme: mat.define-light-theme((
     primary: $my-primary,
     accent: $my-accent,
     warn: $my-warn,
-  )
+  ),
 ));
 
 @include mat.core-theme($my-theme);
@@ -20,7 +20,9 @@ $my-theme: mat.define-light-theme((
 @include mat.all-component-themes($my-theme);
 
 html,
-body { height: 100%; }
+body {
+  height: 100%;
+}
 
 body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;

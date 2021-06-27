@@ -1,14 +1,25 @@
-<label *ngIf="element.attributes.label; else labelManquant" class="preview-label" [for]="element.id">
-  {{element.attributes.label}}
+<label
+  *ngIf="element.attributes.label; else labelManquant"
+  class="preview-label"
+  [for]="element.id"
+>
+  {{ element.attributes.label }}
   <span class="required-marker" *ngIf="element.validations.required">*</span>
 </label>
 <ng-template #labelManquant>
   <app-error-message (scrollToError)="scrollToError.emit()"></app-error-message>
 </ng-template>
 <p class="preview-description" [innerHTML]="element.attributes.description | marked"></p>
-<select *ngIf="element.attributes.options; else emptyList" [id]="element.id" [multiple]="element.attributes.multiple">
-  <option *ngFor="let option of element.attributes.options" [value]="option">{{option}}</option>
+<select
+  *ngIf="element.attributes.options; else emptyList"
+  [id]="element.id"
+  [multiple]="element.attributes.multiple"
+>
+  <option *ngFor="let option of element.attributes.options" [value]="option">{{ option }}</option>
 </select>
 <ng-template #emptyList>
-  <app-error-message errorMessage="missing dropdown options" (scrollToError)="scrollToError.emit()"></app-error-message>
+  <app-error-message
+    errorMessage="missing dropdown options"
+    (scrollToError)="scrollToError.emit()"
+  ></app-error-message>
 </ng-template>

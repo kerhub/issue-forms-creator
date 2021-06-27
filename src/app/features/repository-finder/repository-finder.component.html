@@ -1,11 +1,13 @@
 <form class="repository-form" [formGroup]="form">
   <p class="title">
     Load the related repository for an enhanced experience
-    <mat-icon class="title-tooltip" [matTooltip]="tooltipMessage" matTooltipClass="tooltip">info</mat-icon>
+    <mat-icon class="title-tooltip" [matTooltip]="tooltipMessage" matTooltipClass="tooltip"
+      >info</mat-icon
+    >
   </p>
   <mat-form-field class="element-creator-field" floatLabel="always">
     <mat-label>Repository</mat-label>
-    <input matInput formControlName="name" type="text" placeholder="expected format org/repo">
+    <input matInput formControlName="name" type="text" placeholder="expected format org/repo" />
     <button mat-icon-button matSuffix type="reset" (click)="reset()" aria-label="reset repository">
       <mat-icon>clear</mat-icon>
     </button>
@@ -15,7 +17,7 @@
     </mat-hint>
     <mat-error>
       <mat-icon>priority_high</mat-icon>
-      {{form.get('name')?.getError('httpError')}}
+      {{ form.get('name')?.getError('httpError') }}
     </mat-error>
   </mat-form-field>
 </form>
