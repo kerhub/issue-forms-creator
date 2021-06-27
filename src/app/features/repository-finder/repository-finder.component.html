@@ -1,4 +1,4 @@
-<form class="repository-form" [formGroup]="form" (ngSubmit)="loadRepository()">
+<form class="repository-form" [formGroup]="form">
   <p class="title">
     Load the related repository for an enhanced experience
     <mat-icon class="title-tooltip" [matTooltip]="tooltipMessage" matTooltipClass="tooltip">info</mat-icon>
@@ -9,5 +9,13 @@
     <button mat-icon-button matSuffix type="reset" (click)="reset()" aria-label="reset repository">
       <mat-icon>clear</mat-icon>
     </button>
+    <mat-hint *ngIf="form.valid" class="repository-loaded">
+      <mat-icon>done</mat-icon>
+      repository loaded!
+    </mat-hint>
+    <mat-error>
+      <mat-icon>priority_high</mat-icon>
+      {{form.get('name')?.getError('httpError')}}
+    </mat-error>
   </mat-form-field>
 </form>

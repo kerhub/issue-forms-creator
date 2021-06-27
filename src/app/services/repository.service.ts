@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, ReplaySubject } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { combineLatest, Observable, of, ReplaySubject } from 'rxjs';
 import { GithubLabel } from '../models/github/github-label';
-import { tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { GithubContributor } from '../models/github/github-contributor';
+import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +32,22 @@ export class RepositoryService {
     return this.http
       .get<GithubContributor[]>(`${this.githubApiUrl}/${repository}/contributors`)
       .pipe(tap(contributors => this.contributorsSubject.next(contributors)));
+  }
+
+  loadRepositoryInfo(repository: string): Observable<[GithubLabel[], GithubContributor[]]> {
+    return combineLatest<[GithubLabel[], GithubContributor[]]>([
+      this.loadLabels(repository),
+      this.loadContributors(repository),
+    ]);
+  }
+
+  repositoryValidator(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      return this.loadRepositoryInfo(control.value).pipe(
+        map(() => null),
+        catchError((error: HttpErrorResponse) => of({ httpError: error.error.message })),
+      );
+    };
   }
 
   reset(): void {
