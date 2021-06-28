@@ -1,33 +1,35 @@
-# IssueFormsCreator
+<p align="center">
+ <img width="20%" height="20%" src="./src/assets/svg/logo.svg" alt="project logo">
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+<br />
 
-## Development server
+> build Issue Forms with forms with ease
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Issue Forms Creator is a generator for the [Github Issue Forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository#creating-issue-forms) feature.
+Rather than typing your own yaml file, fill a form and copy the yaml version.
 
-## Code scaffolding
+Benefits :
+* ✅ less prone errors
+* ✅ expose the all available options
+* ✅ live preview
+* ✅ use most of the [validations](https://gh-community.github.io/issue-template-feedback/structured/#common-validation-errors) made by Github
+* ✅ load an existing repo to retrieve labels and contributors
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Usage
 
-## Build
+* (optional) load your repository to retrieve labels and contributors
+* add and fill fields
+* copy the yaml file
+* create a `.yml` file into the `.github/ISSUE_TEMPLATE` folder
+* paste the copied content into this new file
+* commit the changes
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Developer
 
-## Running unit tests
+You will find guidelines to run the project [here](https://github.com/geromegrignon/issue-forms-creator/blob/main/docs/DEVELOPER.md)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Contributing
 
-## Running end-to-end tests
+Read through our [contributing guidelines](https://github.com/geromegrignon/issue-forms-creator/blob/main/CONTRIBUTING.md) to learn about our submission process, coding rules and more.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-## Credits
-
-<div>Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry">Kiranshastry</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-
-https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
