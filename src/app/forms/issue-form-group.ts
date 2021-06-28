@@ -9,6 +9,8 @@ import {
 import { CheckboxElement } from '../models/checkbox-element';
 
 export class IssueFormGroup extends FormGroup {
+  idRegex = /^[\w\d_-]+$/;
+
   constructor() {
     super({
       name: new FormControl('Bug report', Validators.required),
@@ -81,7 +83,7 @@ export class IssueFormGroup extends FormGroup {
   private createTextarea(): FormGroup {
     return new FormGroup({
       type: new FormControl('textarea'),
-      id: new FormControl(null),
+      id: new FormControl(null, Validators.pattern(this.idRegex)),
       attributes: new FormGroup({
         label: new FormControl(null, Validators.required),
         description: new FormControl(''),
@@ -98,7 +100,7 @@ export class IssueFormGroup extends FormGroup {
   private createInput(): FormGroup {
     return new FormGroup({
       type: new FormControl('input'),
-      id: new FormControl(null),
+      id: new FormControl(null, Validators.pattern(this.idRegex)),
       attributes: new FormGroup({
         label: new FormControl(null, Validators.required),
         description: new FormControl(null),
@@ -114,7 +116,7 @@ export class IssueFormGroup extends FormGroup {
   private createDropdown(): FormGroup {
     return new FormGroup({
       type: new FormControl('dropdown'),
-      id: new FormControl(null),
+      id: new FormControl(null, Validators.pattern(this.idRegex)),
       attributes: new FormGroup({
         label: new FormControl(null, Validators.required),
         description: new FormControl(''),
@@ -137,7 +139,7 @@ export class IssueFormGroup extends FormGroup {
   private createCheckboxes(): FormGroup {
     return new FormGroup({
       type: new FormControl('checkboxes'),
-      id: new FormControl(),
+      id: new FormControl(null, Validators.pattern(this.idRegex)),
       attributes: new FormGroup({
         label: new FormControl(null),
         description: new FormControl(),
