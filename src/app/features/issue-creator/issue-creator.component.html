@@ -5,9 +5,7 @@
       <mat-expansion-panel #headerPanel="matExpansionPanel">
         <mat-expansion-panel-header>
           <mat-panel-title class="panel-type-container">
-            <mat-chip-list>
-              <mat-chip color="accent" selected>issue header</mat-chip>
-            </mat-chip-list>
+            <article class="chip">issue header</article>
           </mat-panel-title>
           <mat-panel-description>
             <ng-container *ngIf="!headerPanel.expanded && isTopInvalid">
@@ -29,9 +27,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title class="panel-type-container">
-            <mat-chip-list>
-              <mat-chip color="primary" selected>{{ control.value.type }}</mat-chip>
-            </mat-chip-list>
+            <article class="chip">{{ control.value.type }}</article>
           </mat-panel-title>
           <mat-panel-description>
             <ng-container *ngIf="!panel.expanded && control.invalid; else label">
@@ -78,9 +74,9 @@
   </form>
 </section>
 <mat-toolbar class="bottom-toolbar">
-  <mat-chip
-    >{{ form.value.body.length }} element{{ form.value.body.length > 1 ? 's' : '' }}</mat-chip
-  >
+  <article class="chip chip-recap">
+    {{ form.value.body.length }} field{{ form.value.body.length > 1 ? 's' : '' }}
+  </article>
   <section class="bottom-toolbar-actions">
     <button mat-stroked-button type="button" color="primary" (click)="closeAllPanels()">
       close all
