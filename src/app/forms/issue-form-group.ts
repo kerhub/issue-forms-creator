@@ -16,7 +16,10 @@ export class IssueFormGroup extends FormGroup {
       title: new FormControl('[Bug]: ', Validators.required),
       body: new FormArray([]),
     });
-    this.get('body')?.setValidators(this.validateIdUniqueness());
+    this.get('body')?.setValidators([
+      this.validateIdUniqueness(),
+      this.validateNotOnlyMarkdownElements(),
+    ]);
   }
 
   addLabels(): void {
@@ -217,6 +220,24 @@ export class IssueFormGroup extends FormGroup {
       }
 
       return null;
+    };
+  }
+
+  validateNotOnlyMarkdownElements(): ValidatorFn {
+    return (formArray: AbstractControl) => {
+      const formElements = formArray.value as Array<any>;
+
+      for (let i = 0; i < formElements.length; i++) {
+        if (formElements[i].type !== 'markdown') {
+          return null;
+        }
+      }
+
+      return {
+        onlyMarkdownElements: {
+          message: 'must contain at least one non-markdown field',
+        },
+      };
     };
   }
 }

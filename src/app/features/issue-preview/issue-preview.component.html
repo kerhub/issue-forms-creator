@@ -1,10 +1,12 @@
 <section class="preview-options">
   <section class="errors-container">
-    <app-error-message
-      *ngFor="let error of errorsList"
-      [hasLink]="false"
-      [errorMessage]="error.message"
-    ></app-error-message>
+    <ng-container *ngIf="form?.get('body')?.valueChanges | async">
+      <app-error-message
+        *ngFor="let error of errorsList"
+        [hasLink]="false"
+        [errorMessage]="error.message"
+      ></app-error-message>
+    </ng-container>
   </section>
   <section class="actions-container">
     <mat-button-toggle-group name="preview options" aria-label="preview options">

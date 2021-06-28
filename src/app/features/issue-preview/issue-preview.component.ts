@@ -68,6 +68,11 @@ export class IssuePreviewComponent {
     if (this.form.get('body')?.getError('duplicateLabels')) {
       errorList.push(this.form.get('body')?.getError('duplicateLabels'));
     }
+
+    if (this.form.get('body')?.getError('onlyMarkdownElements')) {
+      errorList.push(this.form.get('body')?.getError('onlyMarkdownElements'));
+    }
+
     return errorList;
   }
 }
