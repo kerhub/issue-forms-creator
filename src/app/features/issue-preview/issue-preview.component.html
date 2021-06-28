@@ -22,7 +22,7 @@
         color="primary"
         (click)="copyToClipboard.emit()"
       >
-        copy to clipboard
+        copy yaml to clipboard
       </button>
       <span *ngIf="clipboardSuccess" class="clipboard-success">Copied!</span>
       <span *ngIf="clipboardError && form.invalid" class="clipboard-error"
