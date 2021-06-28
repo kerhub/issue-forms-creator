@@ -11,6 +11,7 @@
 </ng-template>
 <p class="preview-description" [innerHTML]="element.attributes.description | marked"></p>
 <input
+  class="input"
   [id]="element.id"
   type="text"
   [placeholder]="element.attributes.placeholder ?? ''"

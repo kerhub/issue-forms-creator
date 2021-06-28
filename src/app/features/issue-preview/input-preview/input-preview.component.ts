@@ -8,6 +8,7 @@ import { ErrorMessageModule } from '../../../shared/components/error-message/err
 @Component({
   selector: 'app-input-preview',
   templateUrl: './input-preview.component.html',
+  styleUrls: ['./input-preview.component.scss'],
 })
 export class InputPreviewComponent {
   @Input()
