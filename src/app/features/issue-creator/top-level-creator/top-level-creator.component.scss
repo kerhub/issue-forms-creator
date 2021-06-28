@@ -16,3 +16,9 @@
   font-size: 0.75em;
   opacity: 0.75;
 }
+
+@media screen and (max-width: 1207px) {
+  .name-field {
+    margin-bottom: 1rem;
+  }
+}

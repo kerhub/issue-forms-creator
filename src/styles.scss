@@ -79,3 +79,11 @@ legend {
   margin-bottom: 8px;
   margin-top: 4px;
 }
+
+.mat-checkbox-layout {
+  white-space: normal !important;
+}
+
+.mat-checkbox-layout .mat-checkbox-label {
+  line-height: 16px;
+}

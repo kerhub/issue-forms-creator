@@ -42,3 +42,13 @@ app-top-level-preview {
 .clipboard-error {
   color: #f00;
 }
+
+@media screen and (max-width: 1207px) {
+  .preview-container {
+    flex-direction: column-reverse;
+  }
+
+  .options-preview-container {
+    margin-bottom: 1rem;
+  }
+}

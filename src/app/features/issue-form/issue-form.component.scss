@@ -36,3 +36,56 @@
 .create-btn {
   margin-right: 1rem;
 }
+
+.alternative {
+  display: none;
+}
+
+@media screen and (max-width: 830px) {
+  .main {
+    display: none;
+  }
+
+  .create-btn {
+    display: none;
+  }
+
+  .alternative {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .logo {
+    height: 150px;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    width: auto;
+  }
+
+  .contribution-text {
+    border-top: solid 1px #e1e4e8;
+    margin-top: 0.5rem;
+    padding-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 830px) and (orientation: portrait) {
+  .alternative-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 830px) and (orientation: landscape) {
+  .alternative {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 2rem;
+  }
+}
