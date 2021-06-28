@@ -55,7 +55,7 @@ export class TopLevelCreatorComponent implements OnInit, OnDestroy {
     this.contributorsGithubControl.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe((contributors: GithubContributor[]) => {
-        this.form.get('contributors')?.setValue(contributors.map(contributor => contributor.login));
+        this.form.get('assignees')?.setValue(contributors.map(contributor => contributor.login));
       });
   }
 
