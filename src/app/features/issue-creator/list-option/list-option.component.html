@@ -8,10 +8,12 @@
       <span class="required-marker">*</span>
     </label>
     <input
+      #input
       class="label-field element-creator-field"
       id="label-field"
       type="text"
       formControlName="label"
+      (keyup.enter)="addOption.emit()"
     />
   </article>
   <article class="field" formGroupName="validations" *ngIf="form.get('validations')">

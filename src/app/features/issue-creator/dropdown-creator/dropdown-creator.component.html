@@ -23,11 +23,12 @@
       <legend>option list</legend>
       <section cdkDropList (cdkDropListDropped)="drop($event)" formArrayName="optionsFormArray">
         <article cdkDrag *ngFor="let control of optionsControls; let i = index">
-          <app-checkbox-option
+          <app-list-option
             [form]="control"
             (delete)="removeOption(i)"
             [removable]="optionsControls.length > 1"
-          ></app-checkbox-option>
+            (addOption)="addOption()"
+          ></app-list-option>
         </article>
       </section>
       <section class="action-container">

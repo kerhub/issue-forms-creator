@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CheckboxOptionComponent, CheckboxOptionModule } from './checkbox-option.component';
+import { ListOptionComponent, ListOptionModule } from './list-option.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-describe('CheckboxOptionComponent', () => {
-  let component: CheckboxOptionComponent;
-  let fixture: ComponentFixture<CheckboxOptionComponent>;
+describe('ListOptionComponent', () => {
+  let component: ListOptionComponent;
+  let fixture: ComponentFixture<ListOptionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CheckboxOptionModule],
+      imports: [ListOptionModule],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckboxOptionComponent);
+    fixture = TestBed.createComponent(ListOptionComponent);
     component = fixture.componentInstance;
   });
 

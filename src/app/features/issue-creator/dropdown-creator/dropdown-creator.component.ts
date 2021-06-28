@@ -1,4 +1,12 @@
-import { Component, Input, NgModule, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  NgModule,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { CommonModule } from '@angular/common';
-import { CheckboxOptionModule } from '../checkbox-option/checkbox-option.component';
+import { ListOptionComponent, ListOptionModule } from '../list-option/list-option.component';
 import { MatButtonModule } from '@angular/material/button';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -34,6 +42,9 @@ export class DropdownCreatorComponent implements OnInit, OnDestroy {
 
   @Input()
   formGroup!: FormGroup;
+
+  @ViewChildren(ListOptionComponent)
+  optionsComp!: QueryList<ListOptionComponent>;
 
   ngOnInit() {
     this.optionsForm
@@ -81,6 +92,7 @@ export class DropdownCreatorComponent implements OnInit, OnDestroy {
 
   addOption(): void {
     (this.optionsForm.get('optionsFormArray') as FormArray).push(this.createOption());
+    setTimeout(() => this.optionsComp.last.focus());
   }
 
   removeOption(index: number): void {
@@ -105,7 +117,7 @@ export class DropdownCreatorComponent implements OnInit, OnDestroy {
     MatIconModule,
     DragDropModule,
     CommonModule,
-    CheckboxOptionModule,
+    ListOptionModule,
     MatButtonModule,
   ],
   exports: [DropdownCreatorComponent],

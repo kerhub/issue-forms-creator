@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  NgModule,
+  Output,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,7 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
-import { CheckboxOptionModule } from '../checkbox-option/checkbox-option.component';
+import { ListOptionComponent, ListOptionModule } from '../list-option/list-option.component';
 
 @Component({
   selector: 'app-checkboxes-creator',
@@ -24,6 +32,9 @@ export class CheckboxesCreatorComponent {
 
   @Output()
   removeCheckbox: EventEmitter<number> = new EventEmitter<number>();
+
+  @ViewChildren(ListOptionComponent)
+  optionsComp!: QueryList<ListOptionComponent>;
 
   get optionsControls(): FormGroup[] {
     return (this.formGroup.get('attributes')?.get('options') as FormArray).controls as FormGroup[];
@@ -47,6 +58,11 @@ export class CheckboxesCreatorComponent {
     }
     formArray.setControl(toIndex, item);
   }
+
+  addOption(): void {
+    this.addCheckbox.emit();
+    setTimeout(() => this.optionsComp.last.focus());
+  }
 }
 
 @NgModule({
@@ -61,7 +77,7 @@ export class CheckboxesCreatorComponent {
     MatIconModule,
     MatCheckboxModule,
     CommonModule,
-    CheckboxOptionModule,
+    ListOptionModule,
   ],
   exports: [CheckboxesCreatorComponent],
 })
