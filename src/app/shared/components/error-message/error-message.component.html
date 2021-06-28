@@ -1,3 +1,8 @@
-<mat-icon class="error-message-icon">priority_high</mat-icon>
-<span>{{ errorMessage }}</span>
-<span *ngIf="hasLink" class="panel-link" (click)="scrollToError.emit()">Scroll to the field</span>
+<span class="error-message">
+  <mat-icon class="error-message-icon">report_problem</mat-icon>
+  {{ errorMessage }}
+</span>
+<button *ngIf="hasLink" class="panel-link" (click)="scrollToError.emit()">
+  <mat-icon class="panel-link-icon">open_in_new</mat-icon>
+  <span class="panel-link-label">scroll to the field</span>
+</button>
