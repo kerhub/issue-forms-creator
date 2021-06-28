@@ -23,6 +23,7 @@
     </span>
     <ng-template #missingCheckboxLabel>
       <app-error-message
+        class="error-message-inline"
         errorMessage="missing checkbox label"
         (scrollToError)="scrollToError.emit()"
       ></app-error-message>

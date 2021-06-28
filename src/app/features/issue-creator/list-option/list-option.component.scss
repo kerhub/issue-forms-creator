@@ -12,7 +12,7 @@
   display: flex;
 
   label {
-    flex-basis: 100px;
+    width: 60px;
   }
 }
 
@@ -26,4 +26,17 @@
 
 .label-field {
   margin-left: 4px;
+  width: 200px;
+}
+
+@media screen and (max-width: 955px) {
+  .label-field {
+    width: 100px;
+  }
+}
+
+@media screen and (min-width: 956px) and (max-width: 1300px) {
+  .label-field {
+    width: 150px;
+  }
 }

@@ -8,6 +8,7 @@ import { ErrorMessageModule } from '../../../shared/components/error-message/err
 @Component({
   selector: 'app-checkboxes-preview',
   templateUrl: './checkboxes-preview.component.html',
+  styleUrls: ['./checkboxes-preview.component.scss'],
 })
 export class CheckboxesPreviewComponent {
   @Input() formGroup!: FormGroup;
