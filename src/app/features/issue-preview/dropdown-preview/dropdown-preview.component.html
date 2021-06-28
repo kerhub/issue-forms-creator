@@ -20,11 +20,18 @@
   (scrollToError)="scrollToError.emit()"
   [errorMessage]="formGroup.get('attributes')?.get('options')?.getError('noneExists').message"
 ></app-error-message>
+
+<app-error-message
+  *ngIf="!formGroup.get('attributes')?.get('options')?.value.length"
+  (scrollToError)="scrollToError.emit()"
+  errorMessage="must contain at least one option"
+></app-error-message>
 <select
   *ngIf="element.attributes.options; else emptyList"
   [id]="element.id"
   [multiple]="element.attributes.multiple"
 >
+  <option *ngIf="!formGroup.get('validations')?.get('required')?.value" value="None">None</option>
   <option *ngFor="let option of element.attributes.options" [value]="option">{{ option }}</option>
 </select>
 <ng-template #emptyList>
