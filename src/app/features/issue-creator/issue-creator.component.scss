@@ -19,7 +19,8 @@
 
 .main-container {
   height: calc(100vh - 144px);
-  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: scroll;
   padding-right: 1rem;
 }
 
