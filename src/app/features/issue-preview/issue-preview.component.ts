@@ -65,10 +65,6 @@ export class IssuePreviewComponent {
       errorList.push(this.form.get('body')?.getError('duplicateIds'));
     }
 
-    if (this.form.get('body')?.getError('duplicateLabels')) {
-      errorList.push(this.form.get('body')?.getError('duplicateLabels'));
-    }
-
     if (this.form.get('body')?.getError('onlyMarkdownElements')) {
       errorList.push(this.form.get('body')?.getError('onlyMarkdownElements'));
     }
