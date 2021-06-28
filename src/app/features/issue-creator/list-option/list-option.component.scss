@@ -25,8 +25,18 @@
 }
 
 .label-field {
-  margin-left: 4px;
+  border: 1px solid #e1e4e8;
+  border-radius: 4px;
+  margin: 1px 1px 1px 4px;
+  padding-left: 6px;
   width: 200px;
+}
+
+.label-field:focus {
+  border-color: #43a047;
+  border-width: 2px;
+  margin: 0 0 0 3px;
+  outline: none !important;
 }
 
 @media screen and (max-width: 955px) {
