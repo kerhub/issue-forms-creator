@@ -46,7 +46,24 @@ export class IssueFormComponent {
   async copyToClipboard(): Promise<void> {
     this.clipboardSuccess = false;
     this.clipboardError = false;
-    const body = [
+
+    if (this.form.invalid) {
+      this.clipboardError = true;
+      setTimeout(() => (this.clipboardError = false), 2000);
+      return;
+    }
+
+    const formattedIssue = this.formatIssue();
+
+    const yamlIssue = yaml.dump(formattedIssue);
+    await navigator.clipboard.writeText(yamlIssue);
+
+    this.clipboardSuccess = true;
+    setTimeout(() => (this.clipboardSuccess = false), 1000);
+  }
+
+  formatIssue(): any {
+    const bodyWithPromotion = [
       ...this.form.value.body,
       {
         type: 'markdown',
@@ -57,20 +74,44 @@ export class IssueFormComponent {
       },
     ];
 
-    if (this.form.invalid) {
-      this.clipboardError = true;
-      setTimeout(() => (this.clipboardError = false), 2000);
-      return;
+    const issueWithPromotion = {
+      ...this.form.value,
+      body: bodyWithPromotion,
+    };
+
+    const issueWithoutNullReferences = this.removeNullReferences(issueWithPromotion);
+    const issueWithoutEmptyObjects = this.removeEmptyObjects(issueWithoutNullReferences);
+
+    return issueWithoutEmptyObjects;
+  }
+
+  // @ts-ignore
+  removeNullReferences(object: any): any {
+    for (let key in object) {
+      if (!object[key]) {
+        delete object[key];
+      }
+
+      if (typeof object[key] === 'object') {
+        this.removeNullReferences(object[key]);
+      }
     }
 
-    const formattedIssue = yaml.dump({
-      ...this.form.value,
-      body,
-    });
-    await navigator.clipboard.writeText(formattedIssue);
+    return object;
+  }
 
-    this.clipboardSuccess = true;
-    setTimeout(() => (this.clipboardSuccess = false), 1000);
+  removeEmptyObjects(object: any): any {
+    for (let key in object) {
+      if (typeof object[key] === 'object' && Object.keys(object[key]).length === 0) {
+        delete object[key];
+        this.removeNullReferences(object[key]);
+      }
+      if (typeof object[key] === 'object' && Object.keys(object[key]).length !== 0) {
+        this.removeEmptyObjects(object[key]);
+      }
+    }
+
+    return object;
   }
 
   scrollToError(index: number): void {
