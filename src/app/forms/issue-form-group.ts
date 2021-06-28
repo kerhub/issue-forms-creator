@@ -1,4 +1,12 @@
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
+import { CheckboxElement } from '../models/checkbox-element';
 
 export class IssueFormGroup extends FormGroup {
   constructor() {
@@ -8,6 +16,7 @@ export class IssueFormGroup extends FormGroup {
       title: new FormControl('[Bug]: ', Validators.required),
       body: new FormArray([]),
     });
+    this.get('body')?.setValidators(this.validateIdUniqueness());
   }
 
   addLabels(): void {
@@ -107,7 +116,10 @@ export class IssueFormGroup extends FormGroup {
         label: new FormControl(null, Validators.required),
         description: new FormControl(''),
         multiple: new FormControl(false),
-        options: new FormControl(null, Validators.required),
+        options: new FormControl(
+          [],
+          [Validators.required, this.validateDropdownOptionsUniqueness()],
+        ),
       }),
       validations: new FormGroup({
         required: new FormControl(false),
@@ -122,7 +134,10 @@ export class IssueFormGroup extends FormGroup {
       attributes: new FormGroup({
         label: new FormControl(null),
         description: new FormControl(),
-        options: new FormArray([this.createCheckbox()], Validators.required),
+        options: new FormArray(
+          [this.createCheckbox()],
+          [Validators.required, this.validateCheckboxUniqueness()],
+        ),
       }),
     });
   }
@@ -134,5 +149,74 @@ export class IssueFormGroup extends FormGroup {
         required: new FormControl(),
       }),
     });
+  }
+
+  validateIdUniqueness(): ValidatorFn {
+    return (formArray: AbstractControl) => {
+      const formElements = formArray.value as Array<any>;
+      let ids: Set<string> = new Set<string>();
+
+      formElements.forEach(element => {
+        if (element.id) {
+          ids.add(element.id);
+        }
+      });
+
+      if (ids.size < formElements.filter(element => element.id).length) {
+        return {
+          duplicateIds: {
+            message: 'Ids must be unique',
+          },
+        };
+      }
+
+      return null;
+    };
+  }
+
+  validateCheckboxUniqueness(): ValidatorFn {
+    return (formArray: AbstractControl) => {
+      const options = formArray.value as Array<CheckboxElement>;
+      let labels: Set<string> = new Set<string>();
+
+      options.forEach(element => {
+        if (element.label) {
+          labels.add(element.label);
+        }
+      });
+
+      if (labels.size < options.filter(element => element.label).length) {
+        return {
+          duplicateLabels: {
+            message: 'options must be unique',
+          },
+        };
+      }
+
+      return null;
+    };
+  }
+
+  validateDropdownOptionsUniqueness(): ValidatorFn {
+    return (formArray: AbstractControl) => {
+      const options = formArray.value as Array<string>;
+      let labels: Set<string> = new Set<string>();
+
+      options.forEach(element => {
+        if (element) {
+          labels.add(element);
+        }
+      });
+
+      if (labels.size < options.filter(element => element).length) {
+        return {
+          duplicateOptions: {
+            message: 'options must be unique',
+          },
+        };
+      }
+
+      return null;
+    };
   }
 }

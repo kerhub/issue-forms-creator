@@ -13,6 +13,7 @@ import { OptionPreviewModule } from './option-preview/option-preview.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
+import { ErrorMessageModule } from '../../shared/components/error-message/error-message.component';
 
 @Component({
   selector: 'app-issue-preview',
@@ -57,6 +58,18 @@ export class IssuePreviewComponent {
     }
     formArray.setControl(toIndex, item);
   }
+
+  get errorsList(): { message: string }[] {
+    let errorList = [];
+    if (this.form.get('body')?.getError('duplicateIds')) {
+      errorList.push(this.form.get('body')?.getError('duplicateIds'));
+    }
+
+    if (this.form.get('body')?.getError('duplicateLabels')) {
+      errorList.push(this.form.get('body')?.getError('duplicateLabels'));
+    }
+    return errorList;
+  }
 }
 
 @NgModule({
@@ -76,6 +89,7 @@ export class IssuePreviewComponent {
     MatButtonToggleModule,
     MatTooltipModule,
     MatButtonModule,
+    ErrorMessageModule,
   ],
   exports: [IssuePreviewComponent],
 })

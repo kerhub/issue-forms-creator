@@ -16,7 +16,7 @@ app-top-level-preview {
 .preview-options {
   align-items: flex-start;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-bottom: 0.5rem;
 }
 
@@ -41,6 +41,11 @@ app-top-level-preview {
 
 .clipboard-error {
   color: #f00;
+}
+
+.actions-container {
+  align-items: flex-start;
+  display: flex;
 }
 
 @media screen and (max-width: 1207px) {
