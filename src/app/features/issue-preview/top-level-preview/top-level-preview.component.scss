@@ -7,13 +7,19 @@
   padding: 5px 12px;
 }
 
+.separator {
+  margin-top: 24px;
+}
+
 .name {
-  border-bottom: 1px solid #e1e4e8;
   font-weight: 600;
   line-height: 36px;
-  margin-bottom: 8px;
   margin-top: 0;
-  padding-bottom: 8px;
+  margin-bottom: 0;
+}
+
+.error-name {
+  margin: 3px 0;
 }
 
 .description {
@@ -21,6 +27,10 @@
   font-size: 14px;
   line-height: 21px;
   margin-top: 0;
+}
+
+.error-description {
+  margin-bottom: 3px;
 }
 
 .issue-container {
@@ -32,4 +42,8 @@
 
 .issue-form-container {
   padding: 1rem;
+}
+
+.error-title {
+  border-color: #f00;
 }
