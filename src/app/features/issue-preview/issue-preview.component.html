@@ -41,7 +41,7 @@
     <form [formGroup]="form">
       <section>
         <section *ngFor="let control of controls; let i = index">
-          <article [ngSwitch]="control.controls.type.value">
+          <article class="field" [ngSwitch]="control.controls.type.value">
             <app-markdown-preview
               *ngSwitchCase="'markdown'"
               [formGroup]="control"
