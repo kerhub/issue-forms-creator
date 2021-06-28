@@ -121,7 +121,11 @@ export class IssueFormGroup extends FormGroup {
         multiple: new FormControl(false),
         options: new FormControl(
           [],
-          [Validators.required, this.validateDropdownOptionsUniqueness()],
+          [
+            Validators.required,
+            this.validateDropdownOptionsUniqueness(),
+            this.validateDropdownNone(),
+          ],
         ),
       }),
       validations: new FormGroup({
@@ -238,6 +242,26 @@ export class IssueFormGroup extends FormGroup {
           message: 'must contain at least one non-markdown field',
         },
       };
+    };
+  }
+
+  validateDropdownNone(): ValidatorFn {
+    return (formArray: AbstractControl) => {
+      const options = formArray.value as Array<string>;
+
+      const uppercasedOptions = options
+        .filter(option => option)
+        .map(option => option.toUpperCase());
+
+      if (uppercasedOptions.includes('NONE')) {
+        return {
+          noneExists: {
+            message: "must not include the reserved word, 'None'",
+          },
+        };
+      }
+
+      return null;
     };
   }
 }

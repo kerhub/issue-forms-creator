@@ -15,6 +15,11 @@
   (scrollToError)="scrollToError.emit()"
   [errorMessage]="formGroup.get('attributes')?.get('options')?.getError('duplicateOptions').message"
 ></app-error-message>
+<app-error-message
+  *ngIf="formGroup.get('attributes')?.get('options')?.getError('noneExists')"
+  (scrollToError)="scrollToError.emit()"
+  [errorMessage]="formGroup.get('attributes')?.get('options')?.getError('noneExists').message"
+></app-error-message>
 <select
   *ngIf="element.attributes.options; else emptyList"
   [id]="element.id"
