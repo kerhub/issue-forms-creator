@@ -63,8 +63,9 @@ export class IssueFormComponent {
   }
 
   formatIssue(): any {
+    const { body, ...headers } = this.form.value;
     const bodyWithPromotion = [
-      ...this.form.value.body,
+      ...body,
       {
         type: 'markdown',
         attributes: {
@@ -75,7 +76,7 @@ export class IssueFormComponent {
     ];
 
     const issueWithPromotion = {
-      ...this.form.value,
+      ...headers,
       body: bodyWithPromotion,
     };
 

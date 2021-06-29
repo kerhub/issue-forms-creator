@@ -1,6 +1,6 @@
 <section class="preview-options">
   <section class="errors-container">
-    <ng-container *ngIf="form?.get('body')?.valueChanges | async">
+    <ng-container *ngIf="(form?.get('body')?.valueChanges | async) || copyActivated">
       <app-error-message
         *ngFor="let error of errorsList"
         [hasLink]="false"
@@ -21,7 +21,7 @@
         class="clipboard-btn"
         color="primary"
         type="button"
-        (click)="copyToClipboard.emit()"
+        (click)="copyToClipboard.emit(); copyActivated = true"
       >
         copy yaml to clipboard
       </button>

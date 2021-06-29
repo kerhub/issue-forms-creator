@@ -21,6 +21,8 @@ import { ErrorMessageModule } from '../../shared/components/error-message/error-
   styleUrls: ['./issue-preview.component.scss'],
 })
 export class IssuePreviewComponent {
+  copyActivated = false;
+
   @Input()
   form!: FormGroup;
 

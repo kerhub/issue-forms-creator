@@ -32,14 +32,14 @@
         <mat-label>Labels</mat-label>
         <mat-select [formControl]="labelsGithubControl" multiple>
           <mat-select-trigger>
-            {{ labelsGithubControl.value ? labelsGithubControl.value[0].name : '' }}
+            {{ labelsGithubControl.value ? labelsGithubControl.value[0]?.name : '' }}
             <span *ngIf="labelsGithubControl.value?.length > 1" class="label-additional-selection">
               (+{{ labelsGithubControl.value.length - 1 }}
               {{ labelsGithubControl.value?.length === 2 ? 'other' : 'others' }})
             </span>
           </mat-select-trigger>
           <mat-option *ngFor="let label of labelList" [value]="label">
-            <article class="chip">{{ label.name }}</article>
+            <article class="chip">{{ label?.name }}</article>
           </mat-option>
         </mat-select>
         <mat-hint *ngIf="repository$ | async as repository">
@@ -82,7 +82,7 @@
         <mat-label>Assignees</mat-label>
         <mat-select [formControl]="contributorsGithubControl" multiple>
           <mat-select-trigger>
-            {{ contributorsGithubControl.value ? contributorsGithubControl.value[0].login : '' }}
+            {{ contributorsGithubControl.value ? contributorsGithubControl.value[0]?.login : '' }}
             <span
               *ngIf="contributorsGithubControl.value?.length > 1"
               class="label-additional-selection"

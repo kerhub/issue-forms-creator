@@ -4,7 +4,7 @@
   [for]="element.id"
 >
   {{ element.attributes.label }}
-  <span class="required-marker" *ngIf="element.validations.required">*</span>
+  <span class="required-marker" *ngIf="element.validations?.required">*</span>
 </label>
 <ng-template #labelManquant>
   <app-error-message (scrollToError)="scrollToError.emit()"></app-error-message>
