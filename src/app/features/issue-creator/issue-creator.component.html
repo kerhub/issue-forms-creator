@@ -19,14 +19,21 @@
         <app-top-level-creator [form]="form"></app-top-level-creator>
       </mat-expansion-panel>
     </mat-accordion>
-    <mat-accordion multi #elementsAccordion="matAccordion">
+    <mat-accordion
+      multi
+      #elementsAccordion="matAccordion"
+      cdkDropList
+      (cdkDropListDropped)="drop($event)"
+    >
       <mat-expansion-panel
         class="control-list"
         *ngFor="let control of controls; let i = index"
         #panel="matExpansionPanel"
+        cdkDrag
       >
         <mat-expansion-panel-header>
           <mat-panel-title class="panel-type-container">
+            <mat-icon cdkDragHandle>drag_indicator</mat-icon>
             <article class="chip">{{ control.value.type }}</article>
           </mat-panel-title>
           <mat-panel-description>

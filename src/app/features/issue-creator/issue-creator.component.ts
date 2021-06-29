@@ -28,6 +28,7 @@ import { TopLevelCreatorModule } from './top-level-creator/top-level-creator.com
 import { RepositoryFinderModule } from '../repository-finder/repository-finder.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ErrorMessageModule } from '../../shared/components/error-message/error-message.component';
+import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-issue-creator',
@@ -126,6 +127,25 @@ export class IssueCreatorComponent implements AfterViewInit {
     this.headerPanel.close();
     this.elementsAccordion.closeAll();
   }
+
+  drop(event: CdkDragDrop<string[]>): void {
+    this.moveItemInFormArray(
+      this.form.get('body') as FormArray,
+      event.previousIndex,
+      event.currentIndex,
+    );
+  }
+
+  moveItemInFormArray(formArray: FormArray, fromIndex: number, toIndex: number): void {
+    const dir = toIndex > fromIndex ? 1 : -1;
+
+    const item = formArray.at(fromIndex);
+    for (let i = fromIndex; i * dir < toIndex * dir; i = i + dir) {
+      const current = formArray.at(i + dir);
+      formArray.setControl(i, current);
+    }
+    formArray.setControl(toIndex, item);
+  }
 }
 
 @NgModule({
@@ -150,6 +170,7 @@ export class IssueCreatorComponent implements AfterViewInit {
     RepositoryFinderModule,
     MatToolbarModule,
     ErrorMessageModule,
+    DragDropModule,
   ],
   exports: [IssueCreatorComponent],
 })
