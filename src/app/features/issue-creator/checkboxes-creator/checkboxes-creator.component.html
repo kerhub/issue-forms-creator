@@ -22,7 +22,12 @@
     <fieldset formArrayName="options" class="checkboxes-fieldset">
       <legend>checkbox list</legend>
       <section cdkDropList (cdkDropListDropped)="drop($event)">
-        <article cdkDrag *ngFor="let control of optionsControls; let i = index" [formGroupName]="i">
+        <article
+          cdkDrag
+          *ngFor="let control of optionsControls; let i = index"
+          [formGroupName]="i"
+          cdkDragLockAxis="y"
+        >
           <app-list-option
             [form]="control"
             (delete)="removeCheckbox.emit(i)"

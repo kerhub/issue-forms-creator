@@ -23,7 +23,7 @@
     <fieldset class="options-fieldset" [formGroup]="optionsForm">
       <legend>option list</legend>
       <section cdkDropList (cdkDropListDropped)="drop($event)" formArrayName="optionsFormArray">
-        <article cdkDrag *ngFor="let control of optionsControls; let i = index">
+        <article cdkDrag *ngFor="let control of optionsControls; let i = index" cdkDragLockAxis="y">
           <app-list-option
             [form]="control"
             (delete)="removeOption(i)"

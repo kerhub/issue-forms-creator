@@ -30,10 +30,11 @@
         *ngFor="let control of controls; let i = index"
         #panel="matExpansionPanel"
         cdkDrag
+        cdkDragLockAxis="y"
       >
         <mat-expansion-panel-header>
           <mat-panel-title class="panel-type-container">
-            <mat-icon cdkDragHandle>drag_indicator</mat-icon>
+            <mat-icon class="drag-handle" cdkDragHandle>drag_indicator</mat-icon>
             <article class="chip">{{ control.value.type }}</article>
           </mat-panel-title>
           <mat-panel-description>

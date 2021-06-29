@@ -13,6 +13,7 @@ Benefits :
 * ✅ less prone errors
 * ✅ expose the all available options
 * ✅ live preview
+* ✅ drag and drop support to sort your content
 * ✅ use most of the [validations](https://gh-community.github.io/issue-template-feedback/structured/#common-validation-errors) made by Github
 * ✅ load an existing repo to retrieve labels and contributors
 
