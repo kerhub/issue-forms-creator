@@ -1,0 +1,29 @@
+name: Bug report
+description: template for bug reports
+title: '[Bug]: '
+labels:
+  - bug
+assignees:
+  - geromegrignon
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: A clear and concise description of the problem
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Minimal Reproduction
+      render: markdown
+  - type: textarea
+    attributes:
+      label: Exception or Error
+      description: provide error logs
+      render: markdown
+  - type: markdown
+    attributes:
+      value: >-
+        This template was generated with [Issue Forms
+        Creator](https://www.issue-forms-creator.app/)
