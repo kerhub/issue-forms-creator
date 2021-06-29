@@ -1,0 +1,32 @@
+name: Feature Request
+description: Suggest a feature
+title: '[Feature Request]: '
+labels:
+  - enhancement
+assignees:
+  - geromegrignon
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: A clear and concise description of the problem or missing capability
+      render: markup
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe the solution you'd like
+      description: If you have a solution in mind, please describe it.
+      render: markup
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe alternatives you've considered
+      description: Have you considered any alternative solutions or workarounds?
+      render: markup
+  - type: markdown
+    attributes:
+      value: >-
+        This template was generated with [Issue Forms
+        Creator](https://www.issue-forms-creator.app/)
