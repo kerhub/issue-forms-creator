@@ -8,7 +8,7 @@
   <mat-form-field class="element-creator-field" floatLabel="always">
     <mat-label>Repository</mat-label>
     <input matInput formControlName="name" type="text" placeholder="expected format org/repo" />
-    <button mat-icon-button matSuffix type="reset" (click)="reset()" aria-label="reset repository">
+    <button mat-icon-button matSuffix type="button" (click)="reset()" aria-label="reset repository">
       <mat-icon>clear</mat-icon>
     </button>
     <mat-hint *ngIf="form.valid" class="repository-loaded">

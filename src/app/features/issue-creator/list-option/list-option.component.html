@@ -1,4 +1,4 @@
-<button mat-icon-button aria-label="drag-handle" cdkDragHandle>
+<button mat-icon-button aria-label="drag-handle" type="button" cdkDragHandle>
   <mat-icon>drag_indicator</mat-icon>
 </button>
 <section class="field-container" [formGroup]="form">
@@ -24,6 +24,7 @@
 <button
   [disabled]="!removable"
   mat-icon-button
+  type="button"
   color="warn"
   aria-label="delete checkbox option"
   (click)="delete.emit()"
