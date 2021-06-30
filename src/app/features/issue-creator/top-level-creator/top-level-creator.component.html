@@ -39,7 +39,9 @@
             </span>
           </mat-select-trigger>
           <mat-option *ngFor="let label of labelList" [value]="label">
-            <article class="chip">{{ label?.name }}</article>
+            <article class="chip" [ngStyle]="{ 'background-color': label.color }">
+              {{ label?.name }}
+            </article>
           </mat-option>
         </mat-select>
         <mat-hint *ngIf="repository$ | async as repository">

@@ -26,9 +26,15 @@ export class RepositoryService {
   constructor(private readonly http: HttpClient) {}
 
   loadLabels(repository: string): Observable<GithubLabel[]> {
-    return this.http
-      .get<GithubLabel[]>(`${this.githubApiUrl}/${repository}/labels`)
-      .pipe(tap(labels => this.labelsSubject.next(labels)));
+    return this.http.get<GithubLabel[]>(`${this.githubApiUrl}/${repository}/labels`).pipe(
+      map(labels =>
+        labels.map(label => ({
+          ...label,
+          color: `#${label.color}`,
+        })),
+      ),
+      tap(labels => this.labelsSubject.next(labels)),
+    );
   }
 
   loadContributors(repository: string): Observable<GithubContributor[]> {

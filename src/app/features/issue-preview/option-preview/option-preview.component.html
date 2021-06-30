@@ -1,6 +1,26 @@
 <p class="label">{{ label }}</p>
 <ng-container *ngIf="optionList?.length; else emptyList">
-  <article class="option chip" *ngFor="let option of optionList">{{ option }}</article>
+  <ng-container *ngIf="isLabelsList && (labels$ | async) as githubLabelList; else customList">
+    <ng-container *ngFor="let githubLabel of githubLabelList; let i = index">
+      <ng-container *ngFor="let option of optionList">
+        <article
+          *ngIf="githubLabel.name === option"
+          class="chip"
+          [ngStyle]="{ 'background-color': githubLabel.color }"
+        >
+          {{ githubLabel.name }}
+        </article>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-template #customList>
+    <ng-container *ngIf="isLabelsList; else assignees">
+      <article class="chip" *ngFor="let option of optionList">{{ option }}</article>
+    </ng-container>
+    <ng-template #assignees>
+      <article class="assignee-item" *ngFor="let option of optionList">{{ option }}</article>
+    </ng-template>
+  </ng-template>
 </ng-container>
 <ng-template #emptyList>
   <span class="empty-list">None yet</span>

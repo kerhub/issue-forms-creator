@@ -74,6 +74,10 @@
   </app-top-level-preview>
   <section class="options-preview-container">
     <app-option-preview label="Assignees" [optionList]="form.value.assignees"></app-option-preview>
-    <app-option-preview label="Labels" [optionList]="form.value.labels"></app-option-preview>
+    <app-option-preview
+      [isLabelsList]="true"
+      label="Labels"
+      [optionList]="form.value.labels"
+    ></app-option-preview>
   </section>
 </section>
