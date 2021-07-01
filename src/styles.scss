@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @use '~@angular/material' as mat;
 
-$my-primary: mat.define-palette(mat.$green-palette, 700);
+$my-primary: mat.define-palette(mat.$green-palette, 800);
 $my-accent: mat.define-palette(mat.$blue-palette, 500);
 
 // The "warn" palette is optional and defaults to red if not specified.
@@ -87,7 +87,7 @@ blockquote {
 
 .chip {
   align-items: center;
-  background-color: #388e3c;
+  background-color: #2e7d32;
   border-radius: 16px;
   color: white;
   display: inline-flex;
