@@ -1,11 +1,11 @@
-export interface DropdownElement {
+export interface InputSection {
   type: string;
   id: string;
   attributes: {
     label: string;
     description: string;
-    options: string[];
-    multiple: boolean;
+    placeholder: string;
+    value: string;
   };
   validations: {
     required: boolean;

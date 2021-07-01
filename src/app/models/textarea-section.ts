@@ -1,4 +1,4 @@
-export interface TextareaElement {
+export interface TextareaSection {
   type: string;
   id: string;
   attributes: {

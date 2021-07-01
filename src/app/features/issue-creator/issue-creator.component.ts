@@ -52,7 +52,7 @@ export class IssueCreatorComponent implements AfterViewInit {
   }
 
   @ViewChild('headerPanel') headerPanel!: MatExpansionPanel;
-  @ViewChild('elementsAccordion') elementsAccordion!: MatAccordion;
+  @ViewChild('sectionsAccordion') sectionsAccordion!: MatAccordion;
   @ViewChildren(MatExpansionPanel) panels!: QueryList<MatExpansionPanel>;
   @ViewChildren(MatExpansionPanel, { read: ElementRef }) panelsRef!: QueryList<ElementRef>;
 
@@ -101,8 +101,8 @@ export class IssueCreatorComponent implements AfterViewInit {
     this.form.addCheckboxOption(index);
   }
 
-  removeCheckboxOption(indexCheckBox: number, indexElement: number): void {
-    this.form.removeCheckboxOption(indexCheckBox, indexElement);
+  removeCheckboxOption(indexCheckBox: number, indexSection: number): void {
+    this.form.removeCheckboxOption(indexCheckBox, indexSection);
   }
 
   deleteControl(index: number): void {
@@ -125,7 +125,7 @@ export class IssueCreatorComponent implements AfterViewInit {
 
   closeAllPanels(): void {
     this.headerPanel.close();
-    this.elementsAccordion.closeAll();
+    this.sectionsAccordion.closeAll();
   }
 
   drop(event: CdkDragDrop<string[]>): void {

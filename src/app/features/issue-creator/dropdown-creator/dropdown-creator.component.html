@@ -1,20 +1,20 @@
 <section [formGroup]="formGroup">
-  <mat-form-field class="element-creator-field">
+  <mat-form-field class="section-creator-field">
     <mat-label>ID</mat-label>
     <input matInput type="text" formControlName="id" />
     <mat-hint>Must be unique in the form definition</mat-hint>
     <mat-error>can contain only numbers, letters, -, _</mat-error>
   </mat-form-field>
 
-  <section class="element-creator-container" formGroupName="attributes">
-    <mat-form-field class="element-creator-field">
+  <section class="section-creator-container" formGroupName="attributes">
+    <mat-form-field class="section-creator-field">
       <mat-label>label</mat-label>
       <input matInput type="text" formControlName="label" required />
       <mat-hint>A brief description of the expected user input</mat-hint>
       <mat-error>the label is required</mat-error>
     </mat-form-field>
 
-    <mat-form-field class="element-creator-field">
+    <mat-form-field class="section-creator-field">
       <mat-label>description</mat-label>
       <input matInput type="text" formControlName="description" />
       <mat-hint>provide context or guidance</mat-hint>
@@ -48,10 +48,10 @@
     <mat-checkbox formControlName="multiple">Multiple options can be selected</mat-checkbox>
   </section>
 
-  <section class="element-creator-container" formGroupName="validations">
+  <section class="section-creator-container" formGroupName="validations">
     <mat-checkbox formControlName="required"
-      >This element must be filled to submit an issue</mat-checkbox
+      >This section must be filled to submit an issue</mat-checkbox
     >
-    <!-- TODO : add hint => Prevents form submission until element is completed. -->
+    <!-- TODO : add hint => Prevents form submission until section is completed. -->
   </section>
 </section>

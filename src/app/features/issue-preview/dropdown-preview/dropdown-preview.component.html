@@ -1,15 +1,15 @@
 <label
-  *ngIf="element.attributes.label; else labelManquant"
+  *ngIf="section.attributes.label; else labelManquant"
   class="preview-label"
-  [for]="element.id"
+  [for]="section.id"
 >
-  {{ element.attributes.label }}
-  <span class="required-marker" *ngIf="element.validations?.required">*</span>
+  {{ section.attributes.label }}
+  <span class="required-marker" *ngIf="section.validations?.required">*</span>
 </label>
 <ng-template #labelManquant>
   <app-error-message (scrollToError)="scrollToError.emit()"></app-error-message>
 </ng-template>
-<p class="preview-description" [innerHTML]="element.attributes.description | marked"></p>
+<p class="preview-description" [innerHTML]="section.attributes.description | marked"></p>
 <app-error-message
   *ngIf="formGroup.get('attributes')?.get('options')?.getError('duplicateOptions')"
   (scrollToError)="scrollToError.emit()"
@@ -27,12 +27,12 @@
   errorMessage="must contain at least one option"
 ></app-error-message>
 <select
-  *ngIf="element.attributes.options; else emptyList"
-  [id]="element.id"
-  [multiple]="element.attributes.multiple"
+  *ngIf="section.attributes.options; else emptyList"
+  [id]="section.id"
+  [multiple]="section.attributes.multiple"
 >
   <option *ngIf="!formGroup.get('validations')?.get('required')?.value" value="None">None</option>
-  <option *ngFor="let option of element.attributes.options" [value]="option">{{ option }}</option>
+  <option *ngFor="let option of section.attributes.options" [value]="option">{{ option }}</option>
 </select>
 <ng-template #emptyList>
   <app-error-message

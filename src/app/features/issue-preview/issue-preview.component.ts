@@ -67,8 +67,8 @@ export class IssuePreviewComponent {
       errorList.push(this.form.get('body')?.getError('duplicateIds'));
     }
 
-    if (this.form.get('body')?.getError('onlyMarkdownElements')) {
-      errorList.push(this.form.get('body')?.getError('onlyMarkdownElements'));
+    if (this.form.get('body')?.getError('onlyMarkdownSections')) {
+      errorList.push(this.form.get('body')?.getError('onlyMarkdownSections'));
     }
 
     return errorList;

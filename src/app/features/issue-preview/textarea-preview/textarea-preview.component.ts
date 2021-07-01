@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
-import { TextareaElement } from '../../../models/textarea-element';
+import { TextareaSection } from '../../../models/textarea-section';
 import { FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MarkedModule } from '../../../pipes/marked.pipe';
@@ -17,8 +17,8 @@ export class TextareaPreviewComponent {
   @Output()
   scrollToError: EventEmitter<void> = new EventEmitter<void>();
 
-  get element(): TextareaElement {
-    return this.formGroup.value as TextareaElement;
+  get section(): TextareaSection {
+    return this.formGroup.value as TextareaSection;
   }
 }
 

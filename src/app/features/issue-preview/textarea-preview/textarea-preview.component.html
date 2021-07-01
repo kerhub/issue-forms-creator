@@ -1,18 +1,18 @@
 <label
-  *ngIf="element.attributes.label; else labelManquant"
+  *ngIf="section.attributes.label; else labelManquant"
   class="preview-label"
-  [for]="element.id"
+  [for]="section.id"
 >
-  {{ element.attributes.label }}
-  <span class="required-marker" *ngIf="element.validations?.required">*</span>
+  {{ section.attributes.label }}
+  <span class="required-marker" *ngIf="section.validations?.required">*</span>
 </label>
 <ng-template #labelManquant>
   <app-error-message (scrollToError)="scrollToError.emit()"></app-error-message>
 </ng-template>
-<p class="preview-description" [innerHTML]="element.attributes.description | marked"></p>
+<p class="preview-description" [innerHTML]="section.attributes.description | marked"></p>
 <textarea
   class="textarea"
-  [id]="element.id"
-  [placeholder]="element.attributes.placeholder"
-  [value]="element.attributes.value"
+  [id]="section.id"
+  [placeholder]="section.attributes.placeholder"
+  [value]="section.attributes.value"
 ></textarea>

@@ -6,7 +6,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { CheckboxElement } from '../models/checkbox-element';
+import { CheckboxSection } from '../models/checkbox-section';
 
 export class IssueFormGroup extends FormGroup {
   idRegex = /^[\w\d_-]+$/;
@@ -20,7 +20,7 @@ export class IssueFormGroup extends FormGroup {
     });
     this.get('body')?.setValidators([
       this.validateIdUniqueness(),
-      this.validateNotOnlyMarkdownElements(),
+      this.validateNotOnlyMarkdownSections(),
     ]);
   }
 
@@ -58,10 +58,10 @@ export class IssueFormGroup extends FormGroup {
     );
   }
 
-  removeCheckboxOption(indexCheckBox: number, indexElement: number): void {
+  removeCheckboxOption(indexCheckBox: number, indexSection: number): void {
     (
       (this.get('body') as FormArray)
-        .at(indexElement)
+        .at(indexSection)
         .get('attributes')
         ?.get('options') as FormArray
     ).removeAt(indexCheckBox);
@@ -162,16 +162,16 @@ export class IssueFormGroup extends FormGroup {
 
   validateIdUniqueness(): ValidatorFn {
     return (formArray: AbstractControl) => {
-      const formElements = formArray.value as Array<any>;
+      const formSections = formArray.value as Array<any>;
       let ids: Set<string> = new Set<string>();
 
-      formElements.forEach(element => {
-        if (element.id) {
-          ids.add(element.id);
+      formSections.forEach(section => {
+        if (section.id) {
+          ids.add(section.id);
         }
       });
 
-      if (ids.size < formElements.filter(element => element.id).length) {
+      if (ids.size < formSections.filter(section => section.id).length) {
         return {
           duplicateIds: {
             message: 'Ids must be unique',
@@ -185,16 +185,16 @@ export class IssueFormGroup extends FormGroup {
 
   validateCheckboxUniqueness(): ValidatorFn {
     return (formArray: AbstractControl) => {
-      const options = formArray.value as Array<CheckboxElement>;
+      const options = formArray.value as Array<CheckboxSection>;
       let labels: Set<string> = new Set<string>();
 
-      options.forEach(element => {
-        if (element.label) {
-          labels.add(element.label);
+      options.forEach(option => {
+        if (option.label) {
+          labels.add(option.label);
         }
       });
 
-      if (labels.size < options.filter(element => element.label).length) {
+      if (labels.size < options.filter(option => option.label).length) {
         return {
           duplicateLabels: {
             message: 'options must be unique',
@@ -211,13 +211,13 @@ export class IssueFormGroup extends FormGroup {
       const options = formArray.value as Array<string>;
       let labels: Set<string> = new Set<string>();
 
-      options.forEach(element => {
-        if (element) {
-          labels.add(element);
+      options.forEach(option => {
+        if (option) {
+          labels.add(option);
         }
       });
 
-      if (labels.size < options.filter(element => element).length) {
+      if (labels.size < options.filter(option => option).length) {
         return {
           duplicateOptions: {
             message: 'options must be unique',
@@ -229,18 +229,18 @@ export class IssueFormGroup extends FormGroup {
     };
   }
 
-  validateNotOnlyMarkdownElements(): ValidatorFn {
+  validateNotOnlyMarkdownSections(): ValidatorFn {
     return (formArray: AbstractControl) => {
-      const formElements = formArray.value as Array<any>;
+      const formSections = formArray.value as Array<any>;
 
-      for (let i = 0; i < formElements.length; i++) {
-        if (formElements[i].type !== 'markdown') {
+      for (let i = 0; i < formSections.length; i++) {
+        if (formSections[i].type !== 'markdown') {
           return null;
         }
       }
 
       return {
-        onlyMarkdownElements: {
+        onlyMarkdownSections: {
           message: 'must contain at least one non-markdown field',
         },
       };

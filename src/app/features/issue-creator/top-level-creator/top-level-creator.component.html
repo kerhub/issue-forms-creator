@@ -1,19 +1,19 @@
 <section [formGroup]="form">
-  <mat-form-field class="element-creator-field name-field">
+  <mat-form-field class="section-creator-field name-field">
     <mat-label>Name</mat-label>
     <input matInput type="text" formControlName="name" required />
     <mat-hint>Name for the issue form template. Must be unique from all other templates</mat-hint>
     <mat-error>required field</mat-error>
   </mat-form-field>
 
-  <mat-form-field class="element-creator-field">
+  <mat-form-field class="section-creator-field">
     <mat-label>Description</mat-label>
     <input matInput type="text" formControlName="description" required />
     <mat-hint>Description for the issue form template</mat-hint>
     <mat-error>required field</mat-error>
   </mat-form-field>
 
-  <mat-form-field class="element-creator-field">
+  <mat-form-field class="section-creator-field">
     <mat-label>Title</mat-label>
     <input matInput type="text" formControlName="title" required />
     <mat-hint>A default title that will be pre-populated in the issue submission form.</mat-hint>
@@ -22,7 +22,7 @@
 
   <ng-container *ngIf="form.get('labels')">
     <ng-container *ngIf="labels$ | async as labelList; else labelChipList">
-      <mat-form-field class="element-creator-field">
+      <mat-form-field class="section-creator-field">
         <mat-label>Labels</mat-label>
         <mat-select [formControl]="labelsGithubControl" multiple>
           <mat-select-trigger>
@@ -45,7 +45,7 @@
       </mat-form-field>
     </ng-container>
     <ng-template #labelChipList>
-      <mat-form-field class="element-creator-field">
+      <mat-form-field class="section-creator-field">
         <mat-label>Labels</mat-label>
         <input
           matInput
@@ -74,7 +74,7 @@
 
   <ng-container *ngIf="form.get('assignees')">
     <ng-container *ngIf="contributors$ | async as contributorList; else assigneeChipList">
-      <mat-form-field class="element-creator-field">
+      <mat-form-field class="section-creator-field">
         <mat-label>Assignees (foo)</mat-label>
         <input
           matInput
@@ -110,7 +110,7 @@
       </mat-chip-list>
     </ng-container>
     <ng-template #assigneeChipList>
-      <mat-form-field class="element-creator-field assignees-field">
+      <mat-form-field class="section-creator-field assignees-field">
         <mat-label>Assignees</mat-label>
         <input
           matInput

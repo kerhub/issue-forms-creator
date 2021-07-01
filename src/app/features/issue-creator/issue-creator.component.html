@@ -21,7 +21,7 @@
     </mat-accordion>
     <mat-accordion
       multi
-      #elementsAccordion="matAccordion"
+      #sectionsAccordion="matAccordion"
       cdkDropList
       (cdkDropListDropped)="drop($event)"
     >
@@ -83,7 +83,7 @@
 </section>
 <mat-toolbar class="bottom-toolbar">
   <article class="chip chip-recap">
-    {{ form.value.body.length }} field{{ form.value.body.length > 1 ? 's' : '' }}
+    {{ form.value.body.length }} section{{ form.value.body.length > 1 ? 's' : '' }}
   </article>
   <section class="bottom-toolbar-actions">
     <button mat-stroked-button type="button" color="primary" (click)="closeAllPanels()">
@@ -96,12 +96,11 @@
       [matMenuTriggerFor]="menu"
       aria-label="Example icon-button with a menu"
     >
-      add field
+      add section
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item type="button" (click)="addInput()">input</button>
       <button mat-menu-item type="button" (click)="addTextarea()">textarea</button>
-      <!-- TODO : disable if no element yet -->
       <button mat-menu-item type="button" (click)="addMarkdown()">markdown</button>
       <button mat-menu-item type="button" (click)="addDropdown()">dropdown</button>
       <button mat-menu-item type="button" (click)="addCheckboxes()">checkboxes</button>

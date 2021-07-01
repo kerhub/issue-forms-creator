@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
-import { CheckboxesElement } from '../../../models/checkboxes-element';
+import { CheckboxesSection } from '../../../models/checkboxes-section';
 import { FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MarkedModule } from '../../../pipes/marked.pipe';
@@ -16,8 +16,8 @@ export class CheckboxesPreviewComponent {
   @Output()
   scrollToError: EventEmitter<void> = new EventEmitter<void>();
 
-  get element(): CheckboxesElement {
-    return this.formGroup.value as CheckboxesElement;
+  get section(): CheckboxesSection {
+    return this.formGroup.value as CheckboxesSection;
   }
 }
 
