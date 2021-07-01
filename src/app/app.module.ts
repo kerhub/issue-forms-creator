@@ -8,6 +8,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { IconModule } from './shared/icon.module';
+import { IssueFormModule } from './features/issue-form/issue-form.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { IconModule } from './shared/icon.module';
     AppRoutingModule,
     HttpClientModule,
     IconModule,
+    IssueFormModule,
   ],
   providers: [
     {

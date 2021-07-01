@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IssueFormRoutingModule } from './issue-form-routing.module';
 import { IssueFormComponent } from './issue-form.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,7 +11,6 @@ import { IssuePreviewModule } from '../issue-preview/issue-preview.component';
   declarations: [IssueFormComponent],
   imports: [
     CommonModule,
-    IssueFormRoutingModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,

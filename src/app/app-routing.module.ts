@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IssueFormComponent } from './features/issue-form/issue-form.component';
 
 const routes: Routes = [
   {
@@ -9,8 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'new',
-    loadChildren: () =>
-      import('./features/issue-form/issue-form.module').then(m => m.IssueFormModule),
+    component: IssueFormComponent,
   },
 ];
 
