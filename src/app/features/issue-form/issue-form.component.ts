@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { IssueFormGroup } from '../../forms/issue-form-group';
 import { FormArray, FormGroup } from '@angular/forms';
+import { Meta } from '@angular/platform-browser';
 
 const yaml = require('js-yaml');
 
@@ -15,6 +16,10 @@ export class IssueFormComponent {
   clipboardSuccess: boolean = false;
   clipboardError: boolean = false;
   scrollableItem!: { position: number };
+
+  constructor(private readonly meta: Meta) {
+    meta.addTag({ name: 'description', content: 'unofficial Github Issue Forms generator' });
+  }
 
   get controls(): FormGroup[] {
     return (this.form.get('body') as FormArray).controls as FormGroup[];
