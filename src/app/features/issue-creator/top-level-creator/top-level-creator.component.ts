@@ -90,6 +90,7 @@ export class TopLevelCreatorComponent implements OnInit, OnDestroy {
 
   removeLabel(label: string): void {
     this.labels.delete(label);
+    this.form.get('labels')?.setValue(Array.from(this.labels));
   }
 
   addAssigneeFromInput(event: MatChipInputEvent): void {
