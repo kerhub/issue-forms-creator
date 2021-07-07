@@ -14,9 +14,10 @@ import { RepositoryService } from '../../../services/repository.service';
 import { MatSelectModule } from '@angular/material/select';
 import { GithubLabel } from '../../../models/github/github-label';
 import { combineLatest, Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { map, switchMap, takeUntil } from 'rxjs/operators';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { GithubContributor } from '../../../models/github/github-contributor';
+import { FormService } from '../../../services/form.service';
 
 @Component({
   selector: 'app-top-level-creator',
@@ -57,7 +58,10 @@ export class TopLevelCreatorComponent implements OnInit, OnDestroy {
   destroy$: Subject<void> = new Subject<void>();
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  constructor(private readonly repositoryService: RepositoryService) {}
+  constructor(
+    private readonly repositoryService: RepositoryService,
+    private readonly formService: FormService,
+  ) {}
 
   ngOnInit() {
     this.labelsGithubControl.valueChanges
@@ -65,6 +69,13 @@ export class TopLevelCreatorComponent implements OnInit, OnDestroy {
       .subscribe((labels: GithubLabel[]) => {
         this.form.get('labels')?.setValue(labels.map(label => label.name));
       });
+
+    this.formService.populate$
+      .pipe(
+        switchMap(() => combineLatest([this.labels$, this.contributors$])),
+        map(([labels, contributors]) => ({ labels, contributors })),
+      )
+      .subscribe(({ labels, contributors }) => this.populate(labels, contributors));
   }
 
   ngOnDestroy() {
@@ -110,6 +121,25 @@ export class TopLevelCreatorComponent implements OnInit, OnDestroy {
     this.assignees.add(this.contributorsGithubControl.value);
     this.form.get('assignees')?.setValue(Array.from(this.assignees));
     this.contributorsGithubControl.reset();
+  }
+
+  populate(
+    githubLabels: GithubLabel[] | null,
+    githubContributors: GithubContributor[] | null,
+  ): void {
+    if (this.form.get('labels') && this.form.get('labels')?.value?.length) {
+      const formattedLabels = (this.form.get('labels')?.value as string[]).map(label =>
+        githubLabels?.find(githubLabel => githubLabel.name === label),
+      );
+      this.labelsGithubControl.setValue(formattedLabels, { onlySelf: true });
+    }
+
+    if (this.form.get('assignees') && this.form.get('assignees')?.value?.length) {
+      const formattedAssignees = (this.form.get('assignees')?.value as string[]).map(assignee =>
+        githubContributors?.find(githubLabel => githubLabel.login === assignee),
+      );
+      this.contributorsGithubControl.setValue(formattedAssignees, { onlySelf: true });
+    }
   }
 }
 

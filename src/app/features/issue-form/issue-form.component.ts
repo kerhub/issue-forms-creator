@@ -3,8 +3,10 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { IssueFormGroup } from '../../forms/issue-form-group';
 import { FormArray, FormGroup } from '@angular/forms';
 import { Meta } from '@angular/platform-browser';
-
-const yaml = require('js-yaml');
+import { YamlService } from '../../services/yaml.service';
+import { IssueForm } from '../../models/issue-form';
+import { PresetEnum } from '../../enums/preset.enum';
+import { FormService } from '../../services/form.service';
 
 @Component({
   selector: 'app-issue-form',
@@ -16,17 +18,18 @@ export class IssueFormComponent {
   clipboardSuccess: boolean = false;
   clipboardError: boolean = false;
   scrollableItem!: { position: number };
+  isSelectionMode: boolean = true;
 
-  constructor(private readonly meta: Meta) {
+  constructor(
+    private readonly meta: Meta,
+    private readonly yamlService: YamlService,
+    private readonly formService: FormService,
+  ) {
     meta.addTag({ name: 'description', content: 'unofficial Github Issue Forms generator' });
   }
 
   get controls(): FormGroup[] {
     return (this.form.get('body') as FormArray).controls as FormGroup[];
-  }
-
-  resetIssue(): void {
-    this.form = new IssueFormGroup();
   }
 
   drop(event: CdkDragDrop<string[]>): void {
@@ -49,78 +52,39 @@ export class IssueFormComponent {
   }
 
   async copyToClipboard(): Promise<void> {
-    this.clipboardSuccess = false;
-    this.clipboardError = false;
-
     if (this.form.invalid) {
       this.clipboardError = true;
       setTimeout(() => (this.clipboardError = false), 2000);
       return;
     }
 
-    const formattedIssue = this.formatIssue();
-
-    const yamlIssue = yaml.dump(formattedIssue);
-    await navigator.clipboard.writeText(yamlIssue);
+    await this.yamlService.copyToClipboard(this.form.value);
 
     this.clipboardSuccess = true;
     setTimeout(() => (this.clipboardSuccess = false), 1000);
   }
 
-  formatIssue(): any {
-    const { body, ...headers } = this.form.value;
-    const bodyWithPromotion = [
-      ...body,
-      {
-        type: 'markdown',
-        attributes: {
-          value:
-            'This template was generated with [Issue Forms Creator](https://www.issue-forms-creator.app/)',
-        },
-      },
-    ];
-
-    const issueWithPromotion = {
-      ...headers,
-      body: bodyWithPromotion,
-    };
-
-    const issueWithoutNullReferences = this.removeNullReferences(issueWithPromotion);
-    const issueWithoutEmptyObjects = this.removeEmptyObjects(issueWithoutNullReferences);
-
-    return issueWithoutEmptyObjects;
+  createNew(): void {
+    this.form.resetForm();
+    this.isSelectionMode = false;
   }
 
-  // @ts-ignore
-  removeNullReferences(object: any): any {
-    for (let key in object) {
-      if (!object[key]) {
-        delete object[key];
-      }
-
-      if (typeof object[key] === 'object') {
-        this.removeNullReferences(object[key]);
-      }
-    }
-
-    return object;
+  createWithPreset(preset: PresetEnum): void {
+    this.form.createPreset(preset);
+    this.formService.populate();
+    this.isSelectionMode = false;
   }
 
-  removeEmptyObjects(object: any): any {
-    for (let key in object) {
-      if (typeof object[key] === 'object' && Object.keys(object[key]).length === 0) {
-        delete object[key];
-        this.removeNullReferences(object[key]);
-      }
-      if (typeof object[key] === 'object' && Object.keys(object[key]).length !== 0) {
-        this.removeEmptyObjects(object[key]);
-      }
-    }
-
-    return object;
+  loadYamlFile(issue: IssueForm): void {
+    this.form.populate(issue);
+    this.isSelectionMode = false;
   }
 
   scrollToError(index: number): void {
     this.scrollableItem = Object.assign({ position: index });
+  }
+
+  switchSelectionMode(): void {
+    this.isSelectionMode = !this.isSelectionMode;
   }
 }

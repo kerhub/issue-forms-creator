@@ -1,0 +1,61 @@
+.template-selection-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 64px);
+  justify-content: center;
+}
+
+::ng-deep .action-btn .mat-button-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 8rem;
+}
+
+.options-container {
+  align-items: center;
+  border: 2px solid #2e7d32;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+
+  .action-btn:not(:last-child) {
+    margin-right: 4rem;
+  }
+}
+
+.option-title {
+  color: #2e7d32;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.separator {
+  border-bottom: 1px solid #e1e4e8;
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid #e1e4e8;
+  height: 1px;
+  margin-bottom: 1rem;
+  margin-top: 4rem;
+  width: 30%;
+}
+
+.separator-title {
+  bottom: 34px;
+  background-color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 5px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

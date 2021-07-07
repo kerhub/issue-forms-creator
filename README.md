@@ -14,6 +14,8 @@ Benefits :
 * ✅ expose the all available options
 * ✅ live preview
 * ✅ drag and drop support to sort your content
+* ✅ bug/feature request starters
+* ✅ yaml import support
 * ✅ use most of the [validations](https://gh-community.github.io/issue-template-feedback/structured/#common-validation-errors) made by Github
 * ✅ load an existing repo to retrieve labels and contributors
 

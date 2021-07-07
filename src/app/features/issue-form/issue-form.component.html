@@ -4,8 +4,12 @@
       <mat-icon class="header-logo" svgIcon="header-logo"></mat-icon>
       <h1>Issue Forms Creator</h1>
     </section>
-    <section>
-      <button mat-raised-button type="button" class="create-btn" (click)="resetIssue()">
+    <section class="creation-container">
+      <article class="creation-info">
+        <span>Discover advanced starters</span>
+        <mat-icon>chevron_right</mat-icon>
+      </article>
+      <button mat-raised-button type="button" class="create-btn" (click)="switchSelectionMode()">
         create new issue
       </button>
       <a
@@ -27,6 +31,7 @@
     [scrollableItem]="scrollableItem"
   ></app-issue-creator>
   <app-issue-preview
+    *ngIf="!isSelectionMode"
     class="issue-preview-container"
     [form]="form"
     [clipboardSuccess]="clipboardSuccess"
@@ -34,6 +39,14 @@
     (copyToClipboard)="copyToClipboard()"
     (scrollToError)="scrollToError($event)"
   ></app-issue-preview>
+  <app-template-selection
+    *ngIf="isSelectionMode"
+    class="template-selection-container"
+    (createNew)="createNew()"
+    (createWithContent)="loadYamlFile($event)"
+    (createWithPreset)="createWithPreset($event)"
+    (closeSelection)="isSelectionMode = false"
+  ></app-template-selection>
 </main>
 <main class="alternative">
   <img class="logo" src="assets/svg/logo.svg" alt="application logo" aria-hidden="true" />

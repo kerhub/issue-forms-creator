@@ -1,0 +1,60 @@
+<mat-card class="template-selection-container">
+  <button
+    class="action-btn"
+    type="button"
+    mat-raised-button
+    color="primary"
+    (click)="createNew.emit()"
+  >
+    <span>create from scratch</span>
+  </button>
+
+  <hr class="separator" />
+  <p class="separator-title">OR</p>
+
+  <h2>choose an option</h2>
+  <section class="options-container">
+    <h4 class="option-title">Presets</h4>
+    <section class="action-btn-container">
+      <button
+        class="action-btn"
+        type="button"
+        mat-raised-button
+        (click)="createWithPreset.emit(PresetEnum.BUG_REPORT)"
+      >
+        <span>load bug report</span>
+      </button>
+      <button
+        class="action-btn"
+        type="button"
+        mat-raised-button
+        (click)="createWithPreset.emit(PresetEnum.FEATURE_REQUEST)"
+      >
+        <span>load feature request</span>
+      </button>
+    </section>
+  </section>
+  <section class="options-container">
+    <h4 class="option-title">Yaml</h4>
+    <section>
+      <button class="action-btn" type="button" mat-raised-button (click)="loadYamlContent()">
+        <span>paste yaml content</span>
+      </button>
+      <button class="action-btn" type="button" mat-raised-button (click)="upload.click()">
+        <span>upload yaml file</span>
+      </button>
+    </section>
+  </section>
+
+  <input type="file" hidden #upload (change)="loadYamlFile($event)" />
+
+  <button
+    class="close-btn"
+    type="button"
+    mat-icon-button
+    color="warn"
+    (click)="closeSelection.emit()"
+  >
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-card>

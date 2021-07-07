@@ -7,6 +7,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { CheckboxSection } from '../models/checkbox-section';
+import { TextareaSection } from '../models/textarea-section';
+import { IssueForm } from '../models/issue-form';
+import { IssueSectionEnum } from '../enums/issue-section.enum';
+import { CheckboxesSection } from '../models/checkboxes-section';
+import { DropdownSection } from '../models/dropdown-section';
+import { MarkdownSection } from '../models/markdown-section';
+import { InputSection } from '../models/input-section';
+import { PresetEnum } from '../enums/preset.enum';
 
 export class IssueFormGroup extends FormGroup {
   idRegex = /^[\w\d_-]+$/;
@@ -24,32 +32,32 @@ export class IssueFormGroup extends FormGroup {
     ]);
   }
 
-  addLabels(): void {
-    this.addControl('labels', new FormControl());
+  addLabels(data?: string[]): void {
+    this.addControl('labels', new FormControl(data));
   }
 
-  addAssignees(): void {
-    this.addControl('assignees', new FormControl());
+  addAssignees(data?: string[]): void {
+    this.addControl('assignees', new FormControl(data));
   }
 
-  addMarkdown(): void {
-    (this.get('body') as FormArray).push(this.createMarkdown());
+  addMarkdown(data?: Partial<MarkdownSection>): void {
+    (this.get('body') as FormArray).push(this.createMarkdown(data));
   }
 
-  addTextarea(): void {
-    (this.get('body') as FormArray).push(this.createTextarea());
+  addTextarea(data?: Partial<TextareaSection>): void {
+    (this.get('body') as FormArray).push(this.createTextarea(data));
   }
 
-  addInput(): void {
-    (this.get('body') as FormArray).push(this.createInput());
+  addInput(data?: Partial<InputSection>): void {
+    (this.get('body') as FormArray).push(this.createInput(data));
   }
 
-  addDropdown(): void {
-    (this.get('body') as FormArray).push(this.createDropdown());
+  addDropdown(data?: Partial<DropdownSection>): void {
+    (this.get('body') as FormArray).push(this.createDropdown(data));
   }
 
-  addCheckboxes(): void {
-    (this.get('body') as FormArray).push(this.createCheckboxes());
+  addCheckboxes(data?: Partial<CheckboxesSection>): void {
+    (this.get('body') as FormArray).push(this.createCheckboxes(data));
   }
 
   addCheckboxOption(index: number): void {
@@ -71,93 +79,224 @@ export class IssueFormGroup extends FormGroup {
     (this.get('body') as FormArray).removeAt(index);
   }
 
-  private createMarkdown(): FormGroup {
+  private createMarkdown(data?: Partial<MarkdownSection>): FormGroup {
     return new FormGroup({
       type: new FormControl('markdown'),
       attributes: new FormGroup({
-        value: new FormControl(null, Validators.required),
+        value: new FormControl(data?.attributes?.value || null, Validators.required),
       }),
     });
   }
 
-  private createTextarea(): FormGroup {
+  private createTextarea(data?: Partial<TextareaSection>): FormGroup {
     return new FormGroup({
       type: new FormControl('textarea'),
-      id: new FormControl(null, Validators.pattern(this.idRegex)),
+      id: new FormControl(data?.id || null, Validators.pattern(this.idRegex)),
       attributes: new FormGroup({
-        label: new FormControl(null, Validators.required),
-        description: new FormControl(''),
-        placeholder: new FormControl(''),
-        value: new FormControl(null),
-        render: new FormControl(null),
+        label: new FormControl(data?.attributes?.label || null, Validators.required),
+        description: new FormControl(data?.attributes?.description || ''),
+        placeholder: new FormControl(data?.attributes?.placeholder || ''),
+        value: new FormControl(data?.attributes?.value || null),
+        render: new FormControl(data?.attributes?.render || null),
       }),
       validations: new FormGroup({
-        required: new FormControl(false),
+        required: new FormControl(data?.validations?.required || false),
       }),
     });
   }
 
-  private createInput(): FormGroup {
+  private createInput(data?: Partial<InputSection>): FormGroup {
     return new FormGroup({
       type: new FormControl('input'),
-      id: new FormControl(null, Validators.pattern(this.idRegex)),
+      id: new FormControl(data?.id || null, Validators.pattern(this.idRegex)),
       attributes: new FormGroup({
-        label: new FormControl(null, Validators.required),
-        description: new FormControl(null),
-        placeholder: new FormControl(null),
-        value: new FormControl(null),
+        label: new FormControl(data?.attributes?.label || null, Validators.required),
+        description: new FormControl(data?.attributes?.description || null),
+        placeholder: new FormControl(data?.attributes?.placeholder || null),
+        value: new FormControl(data?.attributes?.value || null),
       }),
       validations: new FormGroup({
-        required: new FormControl(false),
+        required: new FormControl(data?.validations?.required || false),
       }),
     });
   }
 
-  private createDropdown(): FormGroup {
+  private createDropdown(data?: Partial<DropdownSection>): FormGroup {
     return new FormGroup({
       type: new FormControl('dropdown'),
-      id: new FormControl(null, Validators.pattern(this.idRegex)),
+      id: new FormControl(data?.id || null, Validators.pattern(this.idRegex)),
       attributes: new FormGroup({
-        label: new FormControl(null, Validators.required),
-        description: new FormControl(''),
-        multiple: new FormControl(false),
-        options: new FormControl(
-          [],
-          [
-            Validators.required,
-            this.validateDropdownOptionsUniqueness(),
-            this.validateDropdownNone(),
-          ],
-        ),
+        label: new FormControl(data?.attributes?.label || null, Validators.required),
+        description: new FormControl(data?.attributes?.description || ''),
+        multiple: new FormControl(data?.attributes?.multiple || false),
+        options: new FormControl(data?.attributes?.options, [
+          Validators.required,
+          this.validateDropdownOptionsUniqueness(),
+          this.validateDropdownNone(),
+        ]),
       }),
       validations: new FormGroup({
-        required: new FormControl(false),
+        required: new FormControl(data?.validations?.required || false),
       }),
     });
   }
 
-  private createCheckboxes(): FormGroup {
+  private createCheckboxes(data?: Partial<CheckboxesSection>): FormGroup {
     return new FormGroup({
       type: new FormControl('checkboxes'),
-      id: new FormControl(null, Validators.pattern(this.idRegex)),
+      id: new FormControl(data?.id || null, Validators.pattern(this.idRegex)),
       attributes: new FormGroup({
-        label: new FormControl(null),
-        description: new FormControl(),
+        label: new FormControl(data?.attributes?.label || null),
+        description: new FormControl(data?.attributes?.description || null),
         options: new FormArray(
-          [this.createCheckbox()],
+          data?.attributes?.options.map(option => this.createCheckbox(option)) as AbstractControl[],
           [Validators.required, this.validateCheckboxUniqueness()],
         ),
       }),
     });
   }
 
-  private createCheckbox(): FormGroup {
+  private createCheckbox(data?: Partial<CheckboxSection>): FormGroup {
     return new FormGroup({
-      label: new FormControl(null, Validators.required),
+      label: new FormControl(data?.label || null, Validators.required),
       validations: new FormGroup({
-        required: new FormControl(),
+        required: new FormControl(data?.validations?.required || false),
       }),
     });
+  }
+
+  createPreset(preset: PresetEnum): void {
+    this.resetForm();
+    if (preset && preset === PresetEnum.BUG_REPORT) {
+      this.createBugReportPreset();
+    }
+
+    if (preset && preset === PresetEnum.FEATURE_REQUEST) {
+      this.createFeatureRequestPreset();
+    }
+  }
+
+  private createBugReportPreset(): void {
+    this.patchValue({
+      name: 'Bug report',
+      description: 'template for bug reports',
+      title: '[Bug]: ',
+    });
+
+    this.addLabels(['bug']);
+
+    this.addTextarea({
+      attributes: {
+        label: 'Description',
+        description: 'A clear and concise description of the problem',
+        placeholder: '',
+        value: '',
+        render: '',
+      },
+      validations: {
+        required: true,
+      },
+    });
+
+    this.addTextarea({
+      attributes: {
+        label: 'Minimal Reproduction',
+        description: 'provide steps to reproduce the problem',
+        placeholder: '',
+        value: '',
+        render: '',
+      },
+    });
+
+    this.addTextarea({
+      attributes: {
+        label: 'Exception or Error',
+        description: 'provide error logs',
+        placeholder: '',
+        value: '',
+        render: '',
+      },
+    });
+  }
+
+  private createFeatureRequestPreset(): void {
+    this.patchValue({
+      name: 'Feature Request',
+      description: 'template for missing feature',
+      title: '[Feature Request]: ',
+    });
+
+    this.addTextarea({
+      attributes: {
+        label: 'Description',
+        description: 'A clear and concise description of the problem or missing capability',
+        placeholder: '',
+        value: '',
+        render: '',
+      },
+      validations: {
+        required: true,
+      },
+    });
+
+    this.addTextarea({
+      attributes: {
+        label: "Describe the solution you'd like",
+        description: 'If you have a solution in mind, please describe it.',
+        placeholder: '',
+        value: '',
+        render: '',
+      },
+    });
+
+    this.addTextarea({
+      attributes: {
+        label: "Describe alternatives you've considered",
+        description: 'Have you considered any alternative solutions or workarounds?',
+        placeholder: '',
+        value: '',
+        render: '',
+      },
+    });
+  }
+
+  populate(issue: IssueForm): void {
+    this.resetForm();
+
+    const { body, ...headers } = issue;
+    this.patchValue(headers);
+
+    console.log(body);
+
+    body.forEach(section => {
+      switch (section.type) {
+        case IssueSectionEnum.TEXTAREA:
+          this.addTextarea(section as Partial<TextareaSection>);
+          break;
+        case IssueSectionEnum.DROPDOWN:
+          this.addDropdown(section as Partial<DropdownSection>);
+          break;
+        case IssueSectionEnum.CHECKBOXES:
+          this.addCheckboxes(section as Partial<CheckboxesSection>);
+          break;
+        case IssueSectionEnum.INPUT:
+          this.addInput(section as Partial<InputSection>);
+          break;
+        case IssueSectionEnum.MARKDOWN:
+          this.addMarkdown(section as Partial<MarkdownSection>);
+          break;
+        default:
+          return;
+      }
+    });
+  }
+
+  resetForm(): void {
+    const formArray = this.get('body') as FormArray;
+    while (formArray.length !== 0) {
+      formArray.removeAt(0);
+    }
+    this.reset();
   }
 
   validateIdUniqueness(): ValidatorFn {
