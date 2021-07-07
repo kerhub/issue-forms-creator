@@ -18,6 +18,7 @@
     <mat-error>
       <mat-icon>priority_high</mat-icon>
       {{ form.get('name')?.getError('httpError') }}
+      <span *ngIf="form.get('name')?.hasError('required')">this field can't be empty</span>
     </mat-error>
   </mat-form-field>
 </form>
