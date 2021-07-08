@@ -18,7 +18,7 @@ export class IssueFormComponent {
   clipboardSuccess: boolean = false;
   clipboardError: boolean = false;
   scrollableItem!: { position: number };
-  isSelectionMode: boolean = true;
+  isSelectionMode: boolean = false;
 
   constructor(
     private readonly meta: Meta,
