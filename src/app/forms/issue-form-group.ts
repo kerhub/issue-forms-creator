@@ -129,7 +129,7 @@ export class IssueFormGroup extends FormGroup {
         label: new FormControl(data?.attributes?.label || null, Validators.required),
         description: new FormControl(data?.attributes?.description || ''),
         multiple: new FormControl(data?.attributes?.multiple || false),
-        options: new FormControl(data?.attributes?.options, [
+        options: new FormControl(data?.attributes?.options || [], [
           Validators.required,
           this.validateDropdownOptionsUniqueness(),
           this.validateDropdownNone(),
@@ -149,7 +149,9 @@ export class IssueFormGroup extends FormGroup {
         label: new FormControl(data?.attributes?.label || null),
         description: new FormControl(data?.attributes?.description || null),
         options: new FormArray(
-          data?.attributes?.options.map(option => this.createCheckbox(option)) as AbstractControl[],
+          (data?.attributes?.options.map(option =>
+            this.createCheckbox(option),
+          ) as AbstractControl[]) || [],
           [Validators.required, this.validateCheckboxUniqueness()],
         ),
       }),
