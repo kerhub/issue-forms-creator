@@ -21,7 +21,7 @@ export const pristine = () => ({
     form: new FormGroup({
       name: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
-      title: new FormControl(null, Validators.required),
+      title: new FormControl(null),
       body: new FormArray([]),
     }),
   },
@@ -32,7 +32,7 @@ export const input = () => ({
     form: new FormGroup({
       name: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
-      title: new FormControl(null, Validators.required),
+      title: new FormControl(null),
       body: new FormArray([
         new FormGroup({
           type: new FormControl('input'),
@@ -57,7 +57,7 @@ export const textarea = () => ({
     form: new FormGroup({
       name: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
-      title: new FormControl(null, Validators.required),
+      title: new FormControl(null),
       body: new FormArray([
         new FormGroup({
           type: new FormControl('textarea'),
@@ -83,7 +83,7 @@ export const markdown = () => ({
     form: new FormGroup({
       name: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
-      title: new FormControl(null, Validators.required),
+      title: new FormControl(null),
       body: new FormArray([
         new FormGroup({
           type: new FormControl('markdown'),
@@ -101,7 +101,7 @@ export const checkboxes = () => ({
     form: new FormGroup({
       name: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
-      title: new FormControl(null, Validators.required),
+      title: new FormControl(null),
       body: new FormArray([
         new FormGroup({
           type: new FormControl('checkboxes'),
@@ -122,7 +122,7 @@ export const dropdown = () => ({
     form: new FormGroup({
       name: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
-      title: new FormControl(null, Validators.required),
+      title: new FormControl(null),
       body: new FormArray([
         new FormGroup({
           type: new FormControl('dropdown'),

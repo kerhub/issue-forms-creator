@@ -12,13 +12,7 @@
   ></app-error-message>
 </ng-template>
 <section class="issue-container">
-  <input
-    class="title-input"
-    [ngClass]="{ 'error-title': !title }"
-    type="text"
-    placeholder="Title"
-    [value]="title"
-  />
+  <input class="title-input" type="text" placeholder="Title" [value]="title" />
   <section class="issue-form-container">
     <ng-content></ng-content>
   </section>

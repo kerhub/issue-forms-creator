@@ -26,7 +26,7 @@ export const pristine = () => ({
     form: new FormGroup({
       name: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
-      title: new FormControl(null, Validators.required),
+      title: new FormControl(null),
       body: new FormArray([]),
     }),
   },
@@ -35,7 +35,7 @@ export const pristine = () => ({
 const touchedForm = new FormGroup({
   name: new FormControl(null, Validators.required),
   description: new FormControl(null, Validators.required),
-  title: new FormControl(null, Validators.required),
+  title: new FormControl(null),
   body: new FormArray([]),
 });
 touchedForm.markAllAsTouched();
@@ -51,7 +51,7 @@ export const labels = () => ({
     form: new FormGroup({
       name: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
-      title: new FormControl(null, Validators.required),
+      title: new FormControl(null),
       labels: new FormControl(null),
       body: new FormArray([]),
     }),
@@ -63,7 +63,7 @@ export const assignees = () => ({
     form: new FormGroup({
       name: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
-      title: new FormControl(null, Validators.required),
+      title: new FormControl(null),
       assignees: new FormControl(null),
       body: new FormArray([]),
     }),
@@ -75,7 +75,7 @@ export const filled = () => ({
     form: new FormGroup({
       name: new FormControl('Bug report', Validators.required),
       description: new FormControl('use this template to report bugs', Validators.required),
-      title: new FormControl('[BUG]: ', Validators.required),
+      title: new FormControl('[BUG]: '),
       labels: new FormControl(null),
       assignees: new FormControl(null),
       body: new FormArray([]),

@@ -23,7 +23,7 @@ export class IssueFormGroup extends FormGroup {
     super({
       name: new FormControl('Bug report', Validators.required),
       description: new FormControl('template for bug reports', Validators.required),
-      title: new FormControl('[Bug]: ', Validators.required),
+      title: new FormControl('[Bug]: '),
       body: new FormArray([]),
     });
     this.get('body')?.setValidators([
