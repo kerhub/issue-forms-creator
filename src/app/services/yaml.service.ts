@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IssueForm } from '../models/issue-form';
+import { IssueSection } from '../models/issue-section';
 
 const yaml = require('js-yaml');
 
@@ -38,7 +39,7 @@ export class YamlService {
     await navigator.clipboard.writeText(yamlIssue);
   }
 
-  private formatIssue(issueForm: IssueForm): IssueForm {
+  formatIssue(issueForm: IssueForm): IssueForm {
     const { body, ...headers } = issueForm;
     const bodyWithPromotion = [
       ...body,
@@ -53,42 +54,44 @@ export class YamlService {
 
     // hack to move labels/assignees on top of the json file, as it's required for the yaml validation
     const issueWithPromotion = {
-      ...headers,
-      body: bodyWithPromotion,
+      ...this.clearHeaders(headers),
+      body: this.clearBody(bodyWithPromotion),
     };
 
-    const issueWithoutNullReferences = this.removeNullReferences(issueWithPromotion);
-    const issueWithoutEmptyObjects = this.removeEmptyObjects(issueWithoutNullReferences);
-
-    return issueWithoutEmptyObjects;
+    return issueWithPromotion;
   }
 
-  // @ts-ignore
-  private removeNullReferences(object: any): any {
-    for (let key in object) {
-      if (!object[key]) {
-        delete object[key];
-      }
-
-      if (typeof object[key] === 'object') {
-        this.removeNullReferences(object[key]);
-      }
-    }
-
-    return object;
+  clearHeaders(form: Omit<IssueForm, 'body'>): Omit<IssueForm, 'body'> {
+    return this.removeNullProperties(
+      form,
+      ([_, v]) => (Array.isArray(v) && v.length > 0) || (v && !Array.isArray(v)),
+    );
   }
 
-  private removeEmptyObjects(object: any): any {
-    for (let key in object) {
-      if (typeof object[key] === 'object' && Object.keys(object[key]).length === 0) {
-        delete object[key];
-        this.removeNullReferences(object[key]);
-      }
-      if (typeof object[key] === 'object' && Object.keys(object[key]).length !== 0) {
-        this.removeEmptyObjects(object[key]);
-      }
-    }
+  clearBody(body: IssueSection[]): IssueSection[] {
+    return body
+      .map(section => this.removeNullProperties(section, ([_, v]) => v))
+      .map(section => this.removeEmptyObjects(section));
+  }
 
-    return object;
+  removeNullProperties(
+    object: any,
+    callback: ([key, value]: [key: string, value: any]) => boolean,
+  ): any {
+    return Object.entries(object)
+      .filter(callback)
+      .reduce(
+        (acc, [k, v]) => ({
+          ...acc,
+          [k]: v === Object(v) && !Array.isArray(v) ? this.removeNullProperties(v, callback) : v,
+        }),
+        {},
+      );
+  }
+
+  removeEmptyObjects(object: any): any {
+    return Object.entries(object)
+      .filter(([_, v]) => !(Object(v) && Object.keys(v as Object).length === 0))
+      .reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {});
   }
 }
