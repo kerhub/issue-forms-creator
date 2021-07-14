@@ -1,27 +1,4 @@
-<header class="header">
-  <section class="branding-container">
-    <mat-icon class="header-logo" svgIcon="header-logo"></mat-icon>
-    <h1 class="header-name">Issue Forms Creator</h1>
-  </section>
-  <section class="creation-container">
-    <article class="creation-info">
-      <span>Discover advanced starters</span>
-      <mat-icon>chevron_right</mat-icon>
-    </article>
-    <button mat-raised-button type="button" class="create-btn" (click)="switchSelectionMode()">
-      create new issue
-    </button>
-    <a
-      mat-icon-button
-      aria-label="link to the Github repository of the web application"
-      href="https://github.com/geromegrignon/issue-forms-creator"
-      rel="noopener"
-      target="_blank"
-    >
-      <mat-icon svgIcon="github-logo"></mat-icon>
-    </a>
-  </section>
-</header>
+<app-issue-form-header (switchSelectionMode)="switchSelectionMode()"></app-issue-form-header>
 <main class="main">
   <app-issue-creator
     class="issue-creator-container"

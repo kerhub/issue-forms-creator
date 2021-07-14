@@ -1,0 +1,55 @@
+.header {
+  align-items: center;
+  background-color: #000;
+  color: #fff !important;
+  display: flex;
+  height: 64px;
+  justify-content: space-between;
+  padding: 0 16px;
+
+  mat-icon {
+    color: white;
+  }
+}
+
+.branding-container {
+  align-items: center;
+  display: flex;
+}
+
+.header-logo {
+  margin-right: 1rem;
+}
+
+.header-name {
+  margin: 0;
+}
+
+.create-btn {
+  margin-right: 1rem;
+}
+
+.creation-container {
+  align-items: center;
+  display: flex;
+}
+
+.creation-info {
+  align-items: center;
+  background-color: #2179c0;
+  border-radius: 4px;
+  display: flex;
+  margin-right: 1rem;
+  padding: 4px 10px 4px 16px;
+
+  mat-icon {
+    color: #fff;
+    margin-left: 1rem;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .creation-container {
+    display: none;
+  }
+}
