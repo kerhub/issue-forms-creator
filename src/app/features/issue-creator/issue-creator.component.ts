@@ -26,7 +26,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { TopLevelCreatorModule } from './top-level-creator/top-level-creator.component';
 import { RepositoryFinderModule } from '../repository-finder/repository-finder.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { ErrorMessageModule } from '../../shared/components/error-message/error-message.component';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -168,7 +167,6 @@ export class IssueCreatorComponent implements AfterViewInit {
     MatButtonModule,
     TopLevelCreatorModule,
     RepositoryFinderModule,
-    MatToolbarModule,
     ErrorMessageModule,
     DragDropModule,
   ],

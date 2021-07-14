@@ -1,8 +1,11 @@
 .header {
+  align-items: center;
   background-color: #000;
   color: #fff;
   display: flex;
+  height: 64px;
   justify-content: space-between;
+  padding: 0 16px;
 }
 
 .branding-container {
@@ -12,6 +15,10 @@
 
 .header-logo {
   margin-right: 1rem;
+}
+
+.header-name {
+  margin: 0;
 }
 
 .issue-creator-container {

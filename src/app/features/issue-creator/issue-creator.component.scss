@@ -27,7 +27,9 @@
 .bottom-toolbar {
   align-items: center;
   display: flex;
+  height: 64px;
   justify-content: space-between;
+  padding-right: 1rem;
 }
 
 .bottom-toolbar-actions {
