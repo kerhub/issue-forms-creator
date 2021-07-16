@@ -8,8 +8,14 @@
       <span>Discover advanced starters</span>
       <mat-icon>chevron_right</mat-icon>
     </article>
-    <button mat-raised-button type="button" class="create-btn" (click)="switchSelectionMode.emit()">
-      create new issue
+    <button
+      mat-icon-button
+      type="button"
+      class="create-btn"
+      aria-label="create new issue"
+      (click)="switchSelectionMode.emit()"
+    >
+      <mat-icon>add</mat-icon>
     </button>
     <a
       mat-icon-button
