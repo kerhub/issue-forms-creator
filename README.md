@@ -36,3 +36,6 @@ You will find guidelines to run the project [here](https://github.com/geromegrig
 
 Read through our [contributing guidelines](https://github.com/geromegrignon/issue-forms-creator/blob/main/CONTRIBUTING.md) to learn about our submission process, coding rules and more.
 
+## Ui Component Library
+
+The UI Component Library is built with Storybook and deployed [here](https://issue-forms-creator-storybook.netlify.app/).
