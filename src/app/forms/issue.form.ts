@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { CheckboxSection } from '../models/checkbox-section';
 import { TextareaSection } from '../models/textarea-section';
-import { IssueForm } from '../models/issue-form';
+import { Issue } from '../models/issue';
 import { IssueSectionEnum } from '../enums/issue-section.enum';
 import { CheckboxesSection } from '../models/checkboxes-section';
 import { DropdownSection } from '../models/dropdown-section';
@@ -16,7 +16,7 @@ import { MarkdownSection } from '../models/markdown-section';
 import { InputSection } from '../models/input-section';
 import { PresetEnum } from '../enums/preset.enum';
 
-export class IssueFormGroup extends FormGroup {
+export class IssueForm extends FormGroup {
   idRegex = /^[\w\d_-]+$/;
 
   constructor() {
@@ -262,7 +262,7 @@ export class IssueFormGroup extends FormGroup {
     });
   }
 
-  populate(issue: IssueForm): void {
+  populate(issue: Issue): void {
     this.resetForm();
 
     const { body, ...headers } = issue;

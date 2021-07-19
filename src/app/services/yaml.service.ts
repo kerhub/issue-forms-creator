@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IssueForm } from '../models/issue-form';
+import { Issue } from '../models/issue';
 import { IssueSection } from '../models/issue-section';
 
 const yaml = require('js-yaml');
@@ -11,7 +11,7 @@ const yaml = require('js-yaml');
 export class YamlService {
   constructor() {}
 
-  parseYamlFile(file: File): Observable<IssueForm> {
+  parseYamlFile(file: File): Observable<Issue> {
     return new Observable(observer => {
       const reader = new FileReader();
       reader.readAsText(file, 'UTF-8');
@@ -32,14 +32,14 @@ export class YamlService {
     return yaml.load(content, { schema: yaml.JSON_SCHEMA });
   }
 
-  async copyToClipboard(issueForm: IssueForm): Promise<void> {
+  async copyToClipboard(issueForm: Issue): Promise<void> {
     const formattedIssue = this.formatIssue(issueForm);
 
     const yamlIssue = yaml.dump(formattedIssue);
     await navigator.clipboard.writeText(yamlIssue);
   }
 
-  formatIssue(issueForm: IssueForm): IssueForm {
+  formatIssue(issueForm: Issue): Issue {
     const { body, ...headers } = issueForm;
     const bodyWithPromotion = [
       ...body,
@@ -61,7 +61,7 @@ export class YamlService {
     return issueWithPromotion;
   }
 
-  clearHeaders(form: Omit<IssueForm, 'body'>): Omit<IssueForm, 'body'> {
+  clearHeaders(form: Omit<Issue, 'body'>): Omit<Issue, 'body'> {
     return this.removeNullProperties(
       form,
       ([_, v]) => (Array.isArray(v) && v.length > 0) || (v && !Array.isArray(v)),

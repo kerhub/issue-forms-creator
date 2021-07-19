@@ -1,6 +1,6 @@
 import { IssueSection } from './issue-section';
 
-export interface IssueForm {
+export interface Issue {
   name: string;
   description: string;
   title?: string;

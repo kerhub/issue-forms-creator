@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
-import { IssueFormGroup } from '../../../forms/issue-form-group';
+import { IssueForm } from '../../../forms/issue.form';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -84,11 +84,11 @@ export class TopLevelCreatorComponent implements OnInit, OnDestroy {
   }
 
   addLabels(): void {
-    (this.form as IssueFormGroup).addLabels();
+    (this.form as IssueForm).addLabels();
   }
 
   addAssignees(): void {
-    (this.form as IssueFormGroup).addAssignees();
+    (this.form as IssueForm).addAssignees();
   }
 
   addLabelFromInput(event: MatChipInputEvent): void {

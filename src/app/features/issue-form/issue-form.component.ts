@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { IssueFormGroup } from '../../forms/issue-form-group';
+import { IssueForm } from '../../forms/issue.form';
 import { FormArray, FormGroup } from '@angular/forms';
 import { Meta } from '@angular/platform-browser';
 import { YamlService } from '../../services/yaml.service';
-import { IssueForm } from '../../models/issue-form';
+import { Issue } from '../../models/issue';
 import { PresetEnum } from '../../enums/preset.enum';
 import { FormService } from '../../services/form.service';
 
@@ -14,7 +14,7 @@ import { FormService } from '../../services/form.service';
   styleUrls: ['./issue-form.component.scss'],
 })
 export class IssueFormComponent {
-  form: IssueFormGroup = new IssueFormGroup();
+  form: IssueForm = new IssueForm();
   clipboardSuccess: boolean = false;
   clipboardError: boolean = false;
   scrollableItem!: { position: number };
@@ -75,7 +75,7 @@ export class IssueFormComponent {
     this.isSelectionMode = false;
   }
 
-  loadYamlFile(issue: IssueForm): void {
+  loadYamlFile(issue: Issue): void {
     this.form.populate(issue);
     this.isSelectionMode = false;
   }

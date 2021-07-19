@@ -20,7 +20,7 @@ import { TextareaCreatorModule } from './textarea-creator/textarea-creator.compo
 import { InputCreatorModule } from './input-creator/input-creator.component';
 import { DropdownCreatorModule } from './dropdown-creator/dropdown-creator.component';
 import { CheckboxesCreatorModule } from './checkboxes-creator/checkboxes-creator.component';
-import { IssueFormGroup } from '../../forms/issue-form-group';
+import { IssueForm } from '../../forms/issue.form';
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -36,7 +36,7 @@ import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 })
 export class IssueCreatorComponent implements AfterViewInit {
   @Input()
-  form: IssueFormGroup = new IssueFormGroup();
+  form: IssueForm = new IssueForm();
 
   @Input()
   set scrollableItem(scrollable: { position: number }) {

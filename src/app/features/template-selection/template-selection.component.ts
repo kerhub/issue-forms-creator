@@ -2,7 +2,7 @@ import { Component, EventEmitter, NgModule, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { YamlService } from '../../services/yaml.service';
-import { IssueForm } from '../../models/issue-form';
+import { Issue } from '../../models/issue';
 import { PresetEnum } from '../../enums/preset.enum';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -15,7 +15,7 @@ export class TemplateSelectionComponent {
   PresetEnum = PresetEnum;
 
   @Output() createNew: EventEmitter<void> = new EventEmitter<void>();
-  @Output() createWithContent: EventEmitter<IssueForm> = new EventEmitter<IssueForm>();
+  @Output() createWithContent: EventEmitter<Issue> = new EventEmitter<Issue>();
   @Output() createWithPreset: EventEmitter<PresetEnum> = new EventEmitter<PresetEnum>();
   @Output() closeSelection: EventEmitter<void> = new EventEmitter<void>();
 

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IssueCreatorComponent, IssueCreatorModule } from './issue-creator.component';
-import { IssueFormGroup } from '../../forms/issue-form-group';
+import { IssueForm } from '../../forms/issue.form';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -20,7 +20,7 @@ describe('IssueCreatorComponent', () => {
   });
 
   it('should create', () => {
-    component.form = new IssueFormGroup();
+    component.form = new IssueForm();
     expect(component).toBeTruthy();
   });
 });
