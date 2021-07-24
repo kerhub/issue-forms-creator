@@ -15,6 +15,7 @@ import { DropdownSection } from '../models/dropdown-section';
 import { MarkdownSection } from '../models/markdown-section';
 import { InputSection } from '../models/input-section';
 import { PresetEnum } from '../enums/preset.enum';
+import { IssueSection } from '../models/issue-section';
 
 export class IssueForm extends FormGroup {
   idRegex = /^[\w\d_-]+$/;
@@ -26,10 +27,14 @@ export class IssueForm extends FormGroup {
       title: new FormControl('[Bug]: '),
       body: new FormArray([]),
     });
-    this.get('body')?.setValidators([
+    this.bodyControl.setValidators([
       this.validateIdUniqueness(),
       this.validateNotOnlyMarkdownSections(),
     ]);
+  }
+
+  get bodyControl(): FormArray {
+    return this.get('body') as FormArray;
   }
 
   addLabels(data?: string[]): void {
@@ -41,42 +46,39 @@ export class IssueForm extends FormGroup {
   }
 
   addMarkdown(data?: Partial<MarkdownSection>): void {
-    (this.get('body') as FormArray).push(this.createMarkdown(data));
+    this.bodyControl.push(this.createMarkdown(data));
   }
 
   addTextarea(data?: Partial<TextareaSection>): void {
-    (this.get('body') as FormArray).push(this.createTextarea(data));
+    this.bodyControl.push(this.createTextarea(data));
   }
 
   addInput(data?: Partial<InputSection>): void {
-    (this.get('body') as FormArray).push(this.createInput(data));
+    this.bodyControl.push(this.createInput(data));
   }
 
   addDropdown(data?: Partial<DropdownSection>): void {
-    (this.get('body') as FormArray).push(this.createDropdown(data));
+    this.bodyControl.push(this.createDropdown(data));
   }
 
   addCheckboxes(data?: Partial<CheckboxesSection>): void {
-    (this.get('body') as FormArray).push(this.createCheckboxes(data));
+    this.bodyControl.push(this.createCheckboxes(data));
   }
 
   addCheckboxOption(index: number): void {
-    ((this.get('body') as FormArray).at(index).get('attributes')?.get('options') as FormArray).push(
+    (this.bodyControl.at(index).get('attributes')?.get('options') as FormArray).push(
       this.createCheckbox(),
     );
   }
 
   removeCheckboxOption(indexCheckBox: number, indexSection: number): void {
-    (
-      (this.get('body') as FormArray)
-        .at(indexSection)
-        .get('attributes')
-        ?.get('options') as FormArray
-    ).removeAt(indexCheckBox);
+    (this.bodyControl.at(indexSection).get('attributes')?.get('options') as FormArray).removeAt(
+      indexCheckBox,
+    );
   }
 
   deleteControl(index: number): void {
-    (this.get('body') as FormArray).removeAt(index);
+    this.bodyControl.removeAt(index);
   }
 
   private createMarkdown(data?: Partial<MarkdownSection>): FormGroup {
@@ -268,8 +270,6 @@ export class IssueForm extends FormGroup {
     const { body, ...headers } = issue;
     this.patchValue(headers);
 
-    console.log(body);
-
     body.forEach(section => {
       switch (section.type) {
         case IssueSectionEnum.TEXTAREA:
@@ -294,25 +294,24 @@ export class IssueForm extends FormGroup {
   }
 
   resetForm(): void {
-    const formArray = this.get('body') as FormArray;
-    while (formArray.length !== 0) {
-      formArray.removeAt(0);
+    while (this.bodyControl.length !== 0) {
+      this.bodyControl.removeAt(0);
     }
     this.reset();
   }
 
   validateIdUniqueness(): ValidatorFn {
     return (formArray: AbstractControl) => {
-      const formSections = formArray.value as Array<any>;
+      const formSections = formArray.value as Array<IssueSection>;
       let ids: Set<string> = new Set<string>();
 
       formSections.forEach(section => {
-        if (section.id) {
-          ids.add(section.id);
+        if ('id' in section && section.id) {
+          ids.add(section.id.trim());
         }
       });
 
-      if (ids.size < formSections.filter(section => section.id).length) {
+      if (ids.size < formSections.filter(section => 'id' in section && section.id).length) {
         return {
           duplicateIds: {
             message: 'Ids must be unique',
@@ -331,7 +330,7 @@ export class IssueForm extends FormGroup {
 
       options.forEach(option => {
         if (option.label) {
-          labels.add(option.label);
+          labels.add(option.label.trim());
         }
       });
 
@@ -354,7 +353,7 @@ export class IssueForm extends FormGroup {
 
       options.forEach(option => {
         if (option) {
-          labels.add(option);
+          labels.add(option.trim());
         }
       });
 
@@ -394,7 +393,7 @@ export class IssueForm extends FormGroup {
 
       const uppercasedOptions = options
         .filter(option => option)
-        .map(option => option.toUpperCase());
+        .map(option => option.toUpperCase().trim());
 
       if (uppercasedOptions.includes('NONE')) {
         return {
