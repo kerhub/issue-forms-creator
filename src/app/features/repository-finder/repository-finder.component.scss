@@ -1,5 +1,12 @@
+@import 'src/styles/bases';
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
 .repository-form {
-  border: 2px solid #2e7d32;
+  border: 2px solid $color-primary;
   border-radius: 6px;
   margin-bottom: 1rem;
   padding: 1rem;
@@ -27,5 +34,38 @@
 }
 
 .repository-loaded {
-  color: #2e7d32;
+  color: $color-primary;
+}
+
+form {
+  align-items: center;
+  display: flex;
+}
+
+label {
+  font-weight: bold;
+  margin-right: 1rem;
+  flex-basis: 8rem;
+}
+
+input {
+  margin-right: 0.5rem;
+  width: 20rem;
+}
+
+input.ng-touched.ng-invalid + mat-icon {
+  color: $color-warn;
+}
+
+.errors {
+  display: flex;
+}
+
+.foo {
+  flex-basis: 9rem;
+}
+
+.error-item {
+  font-weight: bold;
+  color: $color-warn;
 }

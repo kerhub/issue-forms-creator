@@ -1,4 +1,4 @@
-import { Component, NgModule, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, NgModule, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -14,7 +14,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-repository-finder',
   templateUrl: './repository-finder.component.html',
   styleUrls: ['./repository-finder.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class RepositoryFinderComponent implements OnDestroy {
   form: FormGroup = new FormGroup(

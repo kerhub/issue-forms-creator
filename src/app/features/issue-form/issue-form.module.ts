@@ -7,6 +7,7 @@ import { IssueCreatorModule } from '../issue-creator/issue-creator.component';
 import { IssuePreviewModule } from '../issue-preview/issue-preview.component';
 import { TemplateSelectionModule } from '../template-selection/template-selection.component';
 import { IssueFormHeaderModule } from './issue-form-header/issue-form-header.component';
+import { RepositoryFinderModule } from '../repository-finder/repository-finder.component';
 
 @NgModule({
   declarations: [IssueFormComponent],
@@ -18,6 +19,7 @@ import { IssueFormHeaderModule } from './issue-form-header/issue-form-header.com
     IssuePreviewModule,
     TemplateSelectionModule,
     IssueFormHeaderModule,
+    RepositoryFinderModule,
   ],
 })
 export class IssueFormModule {}

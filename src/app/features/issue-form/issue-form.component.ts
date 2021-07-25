@@ -19,6 +19,7 @@ export class IssueFormComponent {
   clipboardError: boolean = false;
   scrollableItem!: { position: number };
   isSelectionMode: boolean = false;
+  copyActivated: boolean = false;
 
   constructor(
     private readonly meta: Meta,
@@ -52,6 +53,7 @@ export class IssueFormComponent {
   }
 
   async copyToClipboard(): Promise<void> {
+    this.copyActivated = true;
     if (this.form.invalid) {
       this.clipboardError = true;
       setTimeout(() => (this.clipboardError = false), 2000);

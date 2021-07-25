@@ -25,7 +25,6 @@ import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { TopLevelCreatorModule } from './top-level-creator/top-level-creator.component';
-import { RepositoryFinderModule } from '../repository-finder/repository-finder.component';
 import { ErrorMessageModule } from '../../shared/components/error-message/error-message.component';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -166,7 +165,6 @@ export class IssueCreatorComponent implements AfterViewInit {
     MatInputModule,
     MatButtonModule,
     TopLevelCreatorModule,
-    RepositoryFinderModule,
     ErrorMessageModule,
     DragDropModule,
   ],

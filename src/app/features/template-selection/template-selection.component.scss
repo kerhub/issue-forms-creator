@@ -1,3 +1,5 @@
+@import 'src/styles/bases';
+
 .template-selection-container {
   align-items: center;
   display: flex;
@@ -16,7 +18,7 @@
 
 .options-container {
   align-items: center;
-  border: 2px solid #2e7d32;
+  border: 2px solid $color-primary;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -29,7 +31,7 @@
 }
 
 .option-title {
-  color: #2e7d32;
+  color: $color-primary;
   font-size: 1.2rem;
   font-weight: 600;
 }

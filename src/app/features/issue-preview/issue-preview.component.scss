@@ -1,6 +1,6 @@
 :host {
   display: block;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 160px);
   overflow-x: auto;
   overflow-y: scroll;
 }
@@ -19,29 +19,6 @@ app-top-level-preview {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
-}
-
-.clipboard-container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 56px;
-  margin-left: 1rem;
-}
-
-.clipboard-success,
-.clipboard-error {
-  font-size: 12px;
-  font-weight: 600;
-  opacity: 0.75;
-}
-
-.clipboard-success {
-  color: #2e7d32;
-}
-
-.clipboard-error {
-  color: #f00;
 }
 
 .actions-container {

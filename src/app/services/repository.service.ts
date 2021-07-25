@@ -52,6 +52,7 @@ export class RepositoryService {
 
   repositoryValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      control.markAllAsTouched();
       return this.loadRepositoryInfo(control.value).pipe(
         map(() => null),
         catchError((error: HttpErrorResponse) => {

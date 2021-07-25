@@ -1,3 +1,5 @@
+@import 'src/styles/bases';
+
 :host {
   align-items: center;
   display: flex;
@@ -5,7 +7,7 @@
 
 .error-message {
   align-items: flex-start;
-  color: red;
+  color: $color-primary;
   display: flex;
   font-weight: 600;
   padding: 0.3rem;

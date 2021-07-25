@@ -1,24 +1,17 @@
-<form class="repository-form" [formGroup]="form">
-  <p class="title">
-    Load the related repository for an enhanced experience
-    <mat-icon class="title-tooltip" [matTooltip]="tooltipMessage" matTooltipClass="tooltip"
-      >info</mat-icon
-    >
-  </p>
-  <mat-form-field class="section-creator-field" floatLabel="always">
-    <mat-label>Repository</mat-label>
-    <input matInput formControlName="name" type="text" placeholder="expected format org/repo" />
-    <button mat-icon-button matSuffix type="button" (click)="reset()" aria-label="reset repository">
-      <mat-icon>clear</mat-icon>
-    </button>
-    <mat-hint *ngIf="form.valid" class="repository-loaded">
-      <mat-icon>done</mat-icon>
-      repository loaded!
-    </mat-hint>
-    <mat-error>
-      <mat-icon>priority_high</mat-icon>
-      {{ form.get('name')?.getError('httpError') }}
-      <span *ngIf="form.get('name')?.hasError('required')">this field can't be empty</span>
-    </mat-error>
-  </mat-form-field>
+<form [formGroup]="form">
+  <label for="repository-url">Github repository url</label>
+  <input
+    id="repository-url"
+    class="input"
+    type="url"
+    placeholder="enter the url for an enhanced experience"
+    formControlName="name"
+  />
 </form>
+<article class="errors">
+  <div class="foo"></div>
+  <div *ngIf="form.valid" class="error-item">repository loaded!</div>
+  <div *ngIf="form.get('name')?.hasError('httpError')" class="error-item">
+    {{ form.get('name')?.getError('httpError').split('(')[0] }}
+  </div>
+</article>

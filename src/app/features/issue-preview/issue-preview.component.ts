@@ -21,8 +21,6 @@ import { ErrorMessageModule } from '../../shared/components/error-message/error-
   styleUrls: ['./issue-preview.component.scss'],
 })
 export class IssuePreviewComponent {
-  copyActivated = false;
-
   @Input()
   form!: FormGroup;
 
@@ -31,6 +29,9 @@ export class IssuePreviewComponent {
 
   @Input()
   clipboardError: boolean = false;
+
+  @Input()
+  copyActivated: boolean = false;
 
   @Output()
   copyToClipboard: EventEmitter<void> = new EventEmitter<void>();

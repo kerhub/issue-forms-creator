@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@use '~@angular/material' as mat;
+@use 'node_modules/@angular/material/index' as mat;
 
 $my-primary: mat.define-palette(mat.$green-palette, 800);
 $my-accent: mat.define-palette(mat.$blue-palette, 500);
@@ -20,6 +20,8 @@ $my-theme: mat.define-light-theme(
 @include mat.core-theme($my-theme);
 @include mat.button-theme($my-theme);
 @include mat.all-component-themes($my-theme);
+
+@import 'bases';
 
 html,
 body {
@@ -87,7 +89,7 @@ blockquote {
 
 .chip {
   align-items: center;
-  background-color: #2e7d32;
+  background-color: $color-primary;
   border-radius: 16px;
   color: white;
   display: inline-flex;
@@ -100,4 +102,13 @@ blockquote {
 
 .drag-handle {
   cursor: grabbing;
+}
+
+mat-expansion-panel {
+  box-shadow: none !important;
+  border: 1px solid $color-border-default;
+}
+
+mat-expansion-panel-header {
+  padding-left: 4px !important;
 }

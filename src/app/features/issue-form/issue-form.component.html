@@ -1,4 +1,23 @@
 <app-issue-form-header (switchSelectionMode)="switchSelectionMode()"></app-issue-form-header>
+<section class="options">
+  <app-repository-finder></app-repository-finder>
+  <section class="clipboard-container">
+    <button
+      mat-stroked-button
+      class="clipboard-btn"
+      color="primary"
+      type="button"
+      (click)="copyToClipboard()"
+    >
+      <mat-icon>content_copy</mat-icon>
+      copy yaml
+    </button>
+    <span *ngIf="clipboardSuccess" class="clipboard-success">Copied!</span>
+    <span *ngIf="clipboardError && form.invalid" class="clipboard-error"
+      >Failed! Review errors</span
+    >
+  </section>
+</section>
 <main class="main">
   <app-issue-creator
     class="issue-creator-container"
@@ -11,6 +30,7 @@
     [form]="form"
     [clipboardSuccess]="clipboardSuccess"
     [clipboardError]="clipboardError"
+    [copyActivated]="copyActivated"
     (copyToClipboard)="copyToClipboard()"
     (scrollToError)="scrollToError($event)"
   ></app-issue-preview>

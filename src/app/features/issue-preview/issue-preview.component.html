@@ -8,29 +8,6 @@
       ></app-error-message>
     </ng-container>
   </section>
-  <section class="actions-container">
-    <mat-button-toggle-group name="preview options" aria-label="preview options">
-      <mat-button-toggle value="bold" checked>Live preview</mat-button-toggle>
-      <mat-button-toggle value="italic" disabled matTooltip="work in progress"
-        >Yaml preview</mat-button-toggle
-      >
-    </mat-button-toggle-group>
-    <section class="clipboard-container">
-      <button
-        mat-raised-button
-        class="clipboard-btn"
-        color="primary"
-        type="button"
-        (click)="copyToClipboard.emit(); copyActivated = true"
-      >
-        copy yaml to clipboard
-      </button>
-      <span *ngIf="clipboardSuccess" class="clipboard-success">Copied!</span>
-      <span *ngIf="clipboardError && form.invalid" class="clipboard-error"
-        >Failed! Errors detected</span
-      >
-    </section>
-  </section>
 </section>
 <section class="preview-container">
   <app-top-level-preview

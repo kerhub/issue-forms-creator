@@ -1,15 +1,20 @@
+@import 'src/styles/bases';
+
 .issue-creator-container {
   padding-left: 1rem;
   padding-right: 2rem;
-  padding-top: 1rem;
   width: 40%;
+}
+
+.issue-preview-container {
+  border-left: 1px solid $color-border-default;
+  margin-bottom: 1rem;
 }
 
 .template-selection-container,
 .issue-preview-container {
   padding-left: 2rem;
   padding-right: 1rem;
-  padding-top: 1rem;
   width: 60%;
 }
 
@@ -22,11 +27,40 @@
   display: none;
 }
 
-@media screen and (max-width: 830px) {
-  .main {
-    display: none;
-  }
+.options {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  padding: 8px 16px;
+}
 
+.clipboard-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 56px;
+  margin-left: 1rem;
+}
+
+.clipboard-success,
+.clipboard-error {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+.clipboard-success {
+  color: $color-primary;
+}
+
+.clipboard-error {
+  color: $color-warn;
+}
+
+@media screen and (max-width: 830px) {
+  .main,
+  .options,
   .creation-container {
     display: none;
   }

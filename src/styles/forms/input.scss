@@ -1,0 +1,18 @@
+@import '../variables/colors';
+
+.input {
+  background-color: #fafbfc;
+  border: 1px solid $color-border-default;
+  border-radius: 6px;
+  height: 26px;
+  outline: none;
+  padding: 5px 12px;
+
+  &:focus {
+    border-color: $color-primary;
+  }
+
+  &.ng-touched.ng-invalid {
+    border-color: $color-warn;
+  }
+}
