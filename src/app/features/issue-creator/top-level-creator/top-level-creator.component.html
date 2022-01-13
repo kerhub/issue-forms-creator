@@ -50,7 +50,7 @@
           matInput
           type="text"
           [formControl]="labelsControl"
-          placeholder="New label"
+          placeholder="press enter to add a label"
           [matChipInputFor]="labelList"
           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
           (matChipInputTokenEnd)="addLabelFromInput($event)"
@@ -74,12 +74,12 @@
   <ng-container *ngIf="form.get('assignees')">
     <ng-container *ngIf="contributors$ | async as contributorList; else assigneeChipList">
       <mat-form-field class="section-creator-field">
-        <mat-label>Assignees (foo)</mat-label>
+        <mat-label>Assignees</mat-label>
         <input
           matInput
           type="text"
           [formControl]="contributorsGithubControl"
-          placeholder="New assignee"
+          placeholder="press enter to add an assignee"
           [matAutocomplete]="auto"
           (keyup.enter)="addGithubContributor()"
         />
@@ -115,7 +115,7 @@
           matInput
           type="text"
           [formControl]="assigneesControl"
-          placeholder="New assignee"
+          placeholder="press enter to add an assignee"
           [matChipInputFor]="assigneeList"
           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
           (matChipInputTokenEnd)="addAssigneeFromInput($event)"
