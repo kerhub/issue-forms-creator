@@ -32,7 +32,7 @@
     "@briebug/jest-schematic": "^3.1.0",
     "install": "^0.13.0",
     "js-yaml": "^4.1.0",
-    "marked": "^2.1.2",
+    "marked": "^4.0.10",
     "npm": "^7.19.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
