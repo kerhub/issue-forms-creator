@@ -62,15 +62,11 @@ describe('IssueForm', () => {
         options: [
           {
             label: 'foo',
-            validations: {
-              required: true,
-            },
+            required: true,
           },
           {
             label: 'foo',
-            validations: {
-              required: true,
-            },
+            required: true,
           },
         ],
       },
@@ -98,15 +94,11 @@ describe('IssueForm', () => {
         options: [
           {
             label: 'foo',
-            validations: {
-              required: true,
-            },
+            required: true,
           },
           {
             label: 'bar',
-            validations: {
-              required: true,
-            },
+            required: true,
           },
         ],
       },
@@ -134,15 +126,11 @@ describe('IssueForm', () => {
         options: [
           {
             label: 'foo',
-            validations: {
-              required: true,
-            },
+            required: true,
           },
           {
             label: ' foo',
-            validations: {
-              required: true,
-            },
+            required: true,
           },
         ],
       },
@@ -345,9 +333,7 @@ describe('IssueForm', () => {
         options: [
           {
             label: '',
-            validations: {
-              required: true,
-            },
+            required: true,
           },
         ],
       },
@@ -374,9 +360,7 @@ describe('IssueForm', () => {
         options: [
           {
             label: 'foo',
-            validations: {
-              required: true,
-            },
+            required: true,
           },
         ],
       },
@@ -772,9 +756,7 @@ describe('IssueForm', () => {
         options: [
           {
             label: 'do it',
-            validations: {
-              required: false,
-            },
+            required: false,
           },
         ],
       },
@@ -799,9 +781,7 @@ describe('IssueForm', () => {
         options: [
           {
             label: 'do it',
-            validations: {
-              required: false,
-            },
+            required: false,
           },
         ],
       },
@@ -846,15 +826,11 @@ describe('IssueForm', () => {
         options: [
           {
             label: 'do it',
-            validations: {
-              required: false,
-            },
+            required: false,
           },
           {
             label: 'do it',
-            validations: {
-              required: false,
-            },
+            required: false,
           },
         ],
       },

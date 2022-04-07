@@ -15,11 +15,11 @@
   [errorMessage]="formGroup.get('attributes')?.get('options')?.getError('duplicateLabels').message"
 ></app-error-message>
 <section *ngFor="let option of section.attributes.options; let i = index">
-  <input [id]="i" type="checkbox" [required]="option.validations?.required" disabled />
+  <input [id]="i" type="checkbox" [required]="option.required" disabled />
   <label [for]="i">
     <span *ngIf="option.label; else missingCheckboxLabel">
       {{ option.label }}
-      <span class="required-marker" *ngIf="option.validations?.required">*</span>
+      <span class="required-marker" *ngIf="option.required">*</span>
     </span>
     <ng-template #missingCheckboxLabel>
       <app-error-message

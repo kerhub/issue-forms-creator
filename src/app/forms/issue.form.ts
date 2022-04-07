@@ -163,9 +163,7 @@ export class IssueForm extends FormGroup {
   private createCheckbox(data?: Partial<CheckboxSection>): FormGroup {
     return new FormGroup({
       label: new FormControl(data?.label || null, Validators.required),
-      validations: new FormGroup({
-        required: new FormControl(data?.validations?.required || false),
-      }),
+      required: new FormControl(data?.required || false),
     });
   }
 

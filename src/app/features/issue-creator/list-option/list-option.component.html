@@ -20,6 +20,10 @@
     <label for="required-field">required</label>
     <input id="required-field" type="checkbox" formControlName="required" />
   </article>
+  <article class="field" *ngIf="form.get('required')">
+    <label for="option-required-field">required</label>
+    <input id="option-required-field" type="checkbox" formControlName="required" />
+  </article>
 </section>
 <button
   [disabled]="!removable"
