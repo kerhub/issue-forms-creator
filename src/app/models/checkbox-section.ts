@@ -1,6 +1,4 @@
 export interface CheckboxSection {
   label: string;
-  validations: {
-    required: boolean;
-  };
+  required: boolean;
 }
