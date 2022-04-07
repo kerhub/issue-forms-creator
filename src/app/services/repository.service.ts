@@ -53,7 +53,8 @@ export class RepositoryService {
   repositoryValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       control.markAllAsTouched();
-      return this.loadRepositoryInfo(control.value).pipe(
+      const repositoryName = this.extractRepositoryName(control.value);
+      return this.loadRepositoryInfo(repositoryName).pipe(
         map(() => null),
         catchError((error: HttpErrorResponse) => {
           this.repositorySubject.next(null);
@@ -61,6 +62,11 @@ export class RepositoryService {
         }),
       );
     };
+  }
+
+  private extractRepositoryName(url: string): string {
+    const githubDomain = 'https://github.com/';
+    return url.replace(githubDomain, '');
   }
 
   updateRepository(repository: string): void {
