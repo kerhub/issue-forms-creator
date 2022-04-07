@@ -115,6 +115,7 @@ export class TopLevelCreatorComponent implements OnInit, OnDestroy {
 
   removeAssignee(assignee: string): void {
     this.assignees.delete(assignee);
+    this.form.get('assignees')?.setValue(Array.from(this.labels));
   }
 
   addGithubContributor(): void {
