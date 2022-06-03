@@ -12,6 +12,7 @@ describe('TemplateSelectionComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TemplateSelectionModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

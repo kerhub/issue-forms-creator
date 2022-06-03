@@ -10,6 +10,7 @@ describe('TextareaPreviewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TextareaPreviewModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

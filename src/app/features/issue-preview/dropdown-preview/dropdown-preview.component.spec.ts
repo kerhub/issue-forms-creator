@@ -10,6 +10,7 @@ describe('DropdownPreviewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DropdownPreviewModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

@@ -10,6 +10,7 @@ describe('InputPreviewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [InputPreviewModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

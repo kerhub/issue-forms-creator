@@ -10,6 +10,7 @@ describe('RepositoryService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
+      teardown: { destroyAfterEach: false },
     });
     service = TestBed.inject(RepositoryService);
   });

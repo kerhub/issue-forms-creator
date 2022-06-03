@@ -10,6 +10,7 @@ describe('TopLevelCreatorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TopLevelCreatorModule, HttpClientTestingModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

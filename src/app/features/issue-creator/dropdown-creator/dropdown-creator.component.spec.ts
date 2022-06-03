@@ -11,6 +11,7 @@ describe('DropdownCreatorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DropdownCreatorModule, BrowserAnimationsModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

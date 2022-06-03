@@ -7,6 +7,7 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
       imports: [RouterTestingModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

@@ -14,6 +14,6 @@
   class="input input-field"
   [id]="section.id"
   type="text"
-  [placeholder]="section.attributes.placeholder ?? ''"
+  [placeholder]="section.attributes.placeholder || ''"
   [value]="section.attributes.value"
 />

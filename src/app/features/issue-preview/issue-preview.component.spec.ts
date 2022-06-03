@@ -11,6 +11,7 @@ describe('IssuePreviewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [IssuePreviewModule, HttpClientTestingModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

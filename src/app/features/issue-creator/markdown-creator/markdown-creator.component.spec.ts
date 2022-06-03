@@ -11,6 +11,7 @@ describe('MarkdownCreatorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MarkdownCreatorModule, BrowserAnimationsModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

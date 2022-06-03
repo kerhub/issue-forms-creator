@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IssueFormComponent } from './issue-form.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { IssueFormModule } from './issue-form.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { IconModule } from '../../shared/icon.module';
 
 describe('IssueFormComponent', () => {
@@ -11,7 +11,8 @@ describe('IssueFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IssueFormModule, HttpClientTestingModule, BrowserAnimationsModule, IconModule],
+      imports: [IssueFormModule, HttpClientTestingModule, NoopAnimationsModule, IconModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

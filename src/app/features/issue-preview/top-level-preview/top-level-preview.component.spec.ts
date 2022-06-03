@@ -9,6 +9,7 @@ describe('TopLevelPreviewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TopLevelPreviewModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

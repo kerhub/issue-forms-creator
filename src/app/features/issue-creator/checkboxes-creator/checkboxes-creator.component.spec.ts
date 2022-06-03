@@ -14,6 +14,7 @@ describe('CheckboxesCreatorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CheckboxesCreatorModule, BrowserAnimationsModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

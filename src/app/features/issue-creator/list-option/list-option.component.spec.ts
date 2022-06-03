@@ -10,6 +10,7 @@ describe('ListOptionComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ListOptionModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

@@ -11,6 +11,7 @@ describe('TextareaCreatorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TextareaCreatorModule, BrowserAnimationsModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

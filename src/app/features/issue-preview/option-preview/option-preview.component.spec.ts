@@ -10,6 +10,7 @@ describe('OptionPreviewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [OptionPreviewModule, HttpClientTestingModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

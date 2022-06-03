@@ -10,6 +10,7 @@ describe('IssueFormHeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [IssueFormHeaderModule, HttpClientTestingModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

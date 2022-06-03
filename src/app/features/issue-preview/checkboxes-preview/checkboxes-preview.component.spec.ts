@@ -13,6 +13,7 @@ describe('CheckboxesPreviewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CheckboxesPreviewModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

@@ -11,6 +11,7 @@ describe('InputCreatorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [InputCreatorModule, BrowserAnimationsModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

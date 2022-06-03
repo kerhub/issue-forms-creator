@@ -10,6 +10,7 @@ describe('MarkdownPreviewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MarkdownPreviewModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

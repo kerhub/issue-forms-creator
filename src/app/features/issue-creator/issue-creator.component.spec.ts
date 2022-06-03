@@ -11,6 +11,7 @@ describe('IssueCreatorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [IssueCreatorModule, HttpClientTestingModule, BrowserAnimationsModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

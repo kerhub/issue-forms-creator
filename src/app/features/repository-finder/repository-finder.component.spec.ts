@@ -10,6 +10,7 @@ describe('RepositoryFinderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RepositoryFinderModule, HttpClientTestingModule, BrowserAnimationsModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 
