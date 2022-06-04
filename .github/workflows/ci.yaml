@@ -41,5 +41,5 @@ jobs:
         run: npm run lint
       - name: Check unit tests
         run: npm run test --ci --lastCommit --maxWorkers=50%
-        env:
-          CI: true
+      - name: Check e2e tests
+        run: npm run e2e-ci

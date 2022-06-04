@@ -39,3 +39,15 @@ Read through our [contributing guidelines](https://github.com/geromegrignon/issu
 ## Ui Component Library
 
 The UI Component Library is built with Storybook and deployed [here](https://issue-forms-creator-storybook.netlify.app/).
+
+## Commands
+
+#### E2E Testing
+
+```
+// with Cypress App
+npm run e2e
+
+// headless
+npm run e2e-ci
+```
