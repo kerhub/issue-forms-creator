@@ -4,13 +4,13 @@
       <mat-expansion-panel #headerPanel="matExpansionPanel">
         <mat-expansion-panel-header>
           <mat-panel-title class="panel-type-container">
-            <article class="chip">issue header</article>
+            <article class="chip">Issue header</article>
           </mat-panel-title>
           <mat-panel-description>
             <ng-container *ngIf="!headerPanel.expanded && isTopInvalid">
               <app-error-message
                 [hasLink]="false"
-                errorMessage="fill the required fields"
+                errorMessage="Fill the required fields"
               ></app-error-message>
             </ng-container>
           </mat-panel-description>
@@ -40,7 +40,7 @@
             <ng-container *ngIf="!panel.expanded && control.invalid; else label">
               <app-error-message
                 [hasLink]="false"
-                errorMessage="fill the required fields"
+                errorMessage="Fill the required fields"
               ></app-error-message>
             </ng-container>
             <ng-template #label>
@@ -71,7 +71,7 @@
         </ng-container>
         <section class="delete-btn-container">
           <button mat-stroked-button color="warn" type="button" (click)="deleteControl(i)">
-            delete
+            Delete
           </button>
         </section>
       </mat-expansion-panel>
@@ -86,7 +86,7 @@
   </article>
   <section class="bottom-toolbar-actions">
     <button mat-stroked-button type="button" color="primary" (click)="closeAllPanels()">
-      close all
+      Close all
     </button>
     <button
       mat-raised-button
@@ -95,7 +95,7 @@
       [matMenuTriggerFor]="menu"
       aria-label="Example icon-button with a menu"
     >
-      add section
+      Add section
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item type="button" (click)="addInput()">input</button>

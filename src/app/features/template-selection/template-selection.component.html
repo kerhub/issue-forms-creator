@@ -6,13 +6,13 @@
     color="primary"
     (click)="createNew.emit()"
   >
-    <span>create from scratch</span>
+    <span>Create from scratch</span>
   </button>
 
   <hr class="separator" />
   <p class="separator-title">OR</p>
 
-  <h2>choose an option</h2>
+  <h2>Choose an option</h2>
   <section class="options-container">
     <h3 class="option-title">Presets</h3>
     <section class="action-btn-container">
@@ -22,7 +22,7 @@
         mat-raised-button
         (click)="createWithPreset.emit(PresetEnum.BUG_REPORT)"
       >
-        <span>load bug report</span>
+        <span>Load bug report</span>
       </button>
       <button
         class="action-btn"
@@ -38,10 +38,10 @@
     <h4 class="option-title">Yaml</h4>
     <section>
       <button class="action-btn" type="button" mat-raised-button (click)="loadYamlContent()">
-        <span>paste yaml content</span>
+        <span>Paste yaml content</span>
       </button>
       <button class="action-btn" type="button" mat-raised-button (click)="upload.click()">
-        <span>upload yaml file</span>
+        <span>Upload yaml file</span>
       </button>
     </section>
   </section>
@@ -56,6 +56,6 @@
     aria-label="close the selection"
     (click)="closeSelection.emit()"
   >
-    <mat-icon>clear</mat-icon>
+    <mat-icon>Clear</mat-icon>
   </button>
 </mat-card>

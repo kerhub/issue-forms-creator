@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ErrorMessageComponent {
   @Input()
-  errorMessage = 'missing label';
+  errorMessage = 'Missing label';
 
   @Input()
   hasLink: boolean = true;
