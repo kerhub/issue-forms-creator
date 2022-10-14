@@ -23,7 +23,7 @@ export class IssueForm extends FormGroup {
   constructor() {
     super({
       name: new FormControl('Bug report', Validators.required),
-      description: new FormControl('template for bug reports', Validators.required),
+      description: new FormControl('Template for bug reports', Validators.required),
       title: new FormControl('[Bug]: '),
       body: new FormArray([]),
     });
@@ -181,7 +181,7 @@ export class IssueForm extends FormGroup {
   private createBugReportPreset(): void {
     this.patchValue({
       name: 'Bug report',
-      description: 'template for bug reports',
+      description: 'Template for bug reports',
       title: '[Bug]: ',
     });
 
@@ -312,7 +312,7 @@ export class IssueForm extends FormGroup {
       if (ids.size < formSections.filter(section => 'id' in section && section.id).length) {
         return {
           duplicateIds: {
-            message: 'Ids must be unique',
+            message: 'IDs must be unique',
           },
         };
       }
@@ -335,7 +335,7 @@ export class IssueForm extends FormGroup {
       if (labels.size < options.filter(option => option.label).length) {
         return {
           duplicateLabels: {
-            message: 'options must be unique',
+            message: 'Options must be unique',
           },
         };
       }
@@ -358,7 +358,7 @@ export class IssueForm extends FormGroup {
       if (labels.size < options.filter(option => option).length) {
         return {
           duplicateOptions: {
-            message: 'options must be unique',
+            message: 'Options must be unique',
           },
         };
       }
@@ -379,7 +379,7 @@ export class IssueForm extends FormGroup {
 
       return {
         onlyMarkdownSections: {
-          message: 'must contain at least one non-markdown field',
+          message: 'Must contain at least one non-markdown field',
         },
       };
     };
@@ -396,7 +396,7 @@ export class IssueForm extends FormGroup {
       if (uppercasedOptions.includes('NONE')) {
         return {
           noneExists: {
-            message: "must not include the reserved word, 'None'",
+            message: "Must not include the reserved word, 'None'",
           },
         };
       }

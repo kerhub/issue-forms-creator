@@ -1,16 +1,16 @@
 <form [formGroup]="form">
-  <label for="repository-url">Github repository url</label>
+  <label for="repository-URL">Github repository URL</label>
   <input
-    id="repository-url"
+    id="repository-URL"
     class="input"
-    type="url"
-    placeholder="enter the url for an enhanced experience"
+    type="URL"
+    placeholder="Enter the URL for an enhanced experience"
     formControlName="name"
   />
 </form>
 <article class="errors">
   <div class="foo"></div>
-  <div *ngIf="form.valid" class="error-item">repository loaded!</div>
+  <div *ngIf="form.valid" class="error-item">Repository loaded!</div>
   <div *ngIf="form.get('name')?.hasError('httpError')" class="error-item">
     {{ form.get('name')?.getError('httpError').split('(')[0] }}
   </div>
