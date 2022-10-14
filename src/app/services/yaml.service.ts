@@ -47,7 +47,7 @@ export class YamlService {
         type: 'markdown',
         attributes: {
           value:
-            'This template was generated with [Issue Forms Creator](https://www.issue-forms-creator.app/)',
+            'This template was generated with [Issue Forms Creator](https://issue-forms-creator.netlify.app)',
         },
       },
     ];
