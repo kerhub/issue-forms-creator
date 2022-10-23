@@ -24,7 +24,10 @@ import { IssueFormModule } from './features/issue-form/issue-form.module';
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'outline' },
+      useValue: {
+        appearance: 'outline',
+        floatLabel: 'always',
+      },
     },
   ],
   bootstrap: [AppComponent],
