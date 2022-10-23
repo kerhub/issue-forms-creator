@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InputPreviewComponent, InputPreviewModule } from './input-preview.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 describe('InputPreviewComponent', () => {
   let component: InputPreviewComponent;
@@ -20,17 +20,17 @@ describe('InputPreviewComponent', () => {
   });
 
   it('should create', () => {
-    component.formGroup = new FormGroup({
-      type: new FormControl('input'),
-      id: new FormControl(null),
-      attributes: new FormGroup({
-        label: new FormControl(null, Validators.required),
-        description: new FormControl(null),
-        placeholder: new FormControl(null),
-        value: new FormControl(null),
+    component.formGroup = new UntypedFormGroup({
+      type: new UntypedFormControl('input'),
+      id: new UntypedFormControl(null),
+      attributes: new UntypedFormGroup({
+        label: new UntypedFormControl(null, Validators.required),
+        description: new UntypedFormControl(null),
+        placeholder: new UntypedFormControl(null),
+        value: new UntypedFormControl(null),
       }),
-      validations: new FormGroup({
-        required: new FormControl(false),
+      validations: new UntypedFormGroup({
+        required: new UntypedFormControl(false),
       }),
     });
     expect(component).toBeTruthy();

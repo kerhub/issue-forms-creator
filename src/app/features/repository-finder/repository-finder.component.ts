@@ -1,5 +1,10 @@
 import { Component, NgModule, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  UntypedFormControl,
+  UntypedFormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,9 +21,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./repository-finder.component.scss'],
 })
 export class RepositoryFinderComponent implements OnDestroy {
-  form: FormGroup = new FormGroup(
+  form: UntypedFormGroup = new UntypedFormGroup(
     {
-      name: new FormControl(
+      name: new UntypedFormControl(
         null,
         Validators.required,
         this.repositoryService.repositoryValidator(),

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { TopLevelPreviewModule } from './top-level-preview/top-level-preview.component';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
-import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { CheckboxesPreviewModule } from './checkboxes-preview/checkboxes-preview.component';
@@ -22,7 +22,7 @@ import { ErrorMessageModule } from '../../shared/components/error-message/error-
 })
 export class IssuePreviewComponent {
   @Input()
-  form!: FormGroup;
+  form!: UntypedFormGroup;
 
   @Input()
   clipboardSuccess: boolean = false;
@@ -39,19 +39,19 @@ export class IssuePreviewComponent {
   @Output()
   scrollToError: EventEmitter<number> = new EventEmitter<number>();
 
-  get controls(): FormGroup[] {
-    return (this.form.get('body') as FormArray).controls as FormGroup[];
+  get controls(): UntypedFormGroup[] {
+    return (this.form.get('body') as UntypedFormArray).controls as UntypedFormGroup[];
   }
 
   drop(event: CdkDragDrop<string[]>): void {
     this.moveItemInFormArray(
-      this.form.get('body') as FormArray,
+      this.form.get('body') as UntypedFormArray,
       event.previousIndex,
       event.currentIndex,
     );
   }
 
-  moveItemInFormArray(formArray: FormArray, fromIndex: number, toIndex: number): void {
+  moveItemInFormArray(formArray: UntypedFormArray, fromIndex: number, toIndex: number): void {
     const dir = toIndex > fromIndex ? 1 : -1;
 
     const item = formArray.at(fromIndex);

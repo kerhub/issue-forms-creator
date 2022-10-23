@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MarkdownPreviewComponent, MarkdownPreviewModule } from './markdown-preview.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 describe('MarkdownPreviewComponent', () => {
   let component: MarkdownPreviewComponent;
@@ -20,10 +20,10 @@ describe('MarkdownPreviewComponent', () => {
   });
 
   it('should create', () => {
-    component.formGroup = new FormGroup({
-      type: new FormControl('markdown'),
-      attributes: new FormGroup({
-        value: new FormControl(null, Validators.required),
+    component.formGroup = new UntypedFormGroup({
+      type: new UntypedFormControl('markdown'),
+      attributes: new UntypedFormGroup({
+        value: new UntypedFormControl(null, Validators.required),
       }),
     });
     expect(component).toBeTruthy();

@@ -8,7 +8,7 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
-import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -25,7 +25,7 @@ import { ListOptionComponent, ListOptionModule } from '../list-option/list-optio
 })
 export class CheckboxesCreatorComponent {
   @Input()
-  formGroup!: FormGroup;
+  formGroup!: UntypedFormGroup;
 
   @Output()
   addCheckbox: EventEmitter<void> = new EventEmitter<void>();
@@ -36,19 +36,20 @@ export class CheckboxesCreatorComponent {
   @ViewChildren(ListOptionComponent)
   optionsComp!: QueryList<ListOptionComponent>;
 
-  get optionsControls(): FormGroup[] {
-    return (this.formGroup.get('attributes')?.get('options') as FormArray).controls as FormGroup[];
+  get optionsControls(): UntypedFormGroup[] {
+    return (this.formGroup.get('attributes')?.get('options') as UntypedFormArray)
+      .controls as UntypedFormGroup[];
   }
 
-  drop(event: CdkDragDrop<FormGroup[]>): void {
+  drop(event: CdkDragDrop<UntypedFormGroup[]>): void {
     this.moveItemInFormArray(
-      this.formGroup.get('attributes')?.get('options') as FormArray,
+      this.formGroup.get('attributes')?.get('options') as UntypedFormArray,
       event.previousIndex,
       event.currentIndex,
     );
   }
 
-  moveItemInFormArray(formArray: FormArray, fromIndex: number, toIndex: number): void {
+  moveItemInFormArray(formArray: UntypedFormArray, fromIndex: number, toIndex: number): void {
     const dir = toIndex > fromIndex ? 1 : -1;
 
     const item = formArray.at(fromIndex);

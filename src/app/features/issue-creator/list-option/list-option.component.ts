@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 
@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ListOptionComponent {
   @Input()
-  form!: FormGroup;
+  form!: UntypedFormGroup;
 
   @Input()
   removable: boolean = false;

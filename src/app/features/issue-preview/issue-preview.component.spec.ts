@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IssuePreviewComponent, IssuePreviewModule } from './issue-preview.component';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('IssuePreviewComponent', () => {
@@ -21,11 +21,11 @@ describe('IssuePreviewComponent', () => {
   });
 
   it('should create', () => {
-    component.form = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
-      title: new FormControl(null, Validators.required),
-      body: new FormArray([]),
+    component.form = new UntypedFormGroup({
+      name: new UntypedFormControl(null, Validators.required),
+      description: new UntypedFormControl(null, Validators.required),
+      title: new UntypedFormControl(null, Validators.required),
+      body: new UntypedFormArray([]),
     });
     expect(component).toBeTruthy();
   });

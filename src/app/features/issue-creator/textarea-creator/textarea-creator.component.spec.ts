@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TextareaCreatorComponent, TextareaCreatorModule } from './textarea-creator.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('TextareaCreatorComponent', () => {
@@ -21,18 +21,18 @@ describe('TextareaCreatorComponent', () => {
   });
 
   it('should create', () => {
-    component.formGroup = new FormGroup({
-      type: new FormControl('textarea'),
-      id: new FormControl(null),
-      attributes: new FormGroup({
-        label: new FormControl(null, Validators.required),
-        description: new FormControl(''),
-        placeholder: new FormControl(''),
-        value: new FormControl(null),
-        render: new FormControl(null),
+    component.formGroup = new UntypedFormGroup({
+      type: new UntypedFormControl('textarea'),
+      id: new UntypedFormControl(null),
+      attributes: new UntypedFormGroup({
+        label: new UntypedFormControl(null, Validators.required),
+        description: new UntypedFormControl(''),
+        placeholder: new UntypedFormControl(''),
+        value: new UntypedFormControl(null),
+        render: new UntypedFormControl(null),
       }),
-      validations: new FormGroup({
-        required: new FormControl(false),
+      validations: new UntypedFormGroup({
+        required: new UntypedFormControl(false),
       }),
     });
     expect(component).toBeTruthy();

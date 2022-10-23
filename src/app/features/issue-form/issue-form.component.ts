@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { IssueForm } from '../../forms/issue.form';
-import { FormArray, FormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
 import { Meta } from '@angular/platform-browser';
 import { YamlService } from '../../services/yaml.service';
 import { Issue } from '../../models/issue';
@@ -29,19 +29,19 @@ export class IssueFormComponent {
     meta.addTag({ name: 'description', content: 'unofficial Github Issue Forms generator' });
   }
 
-  get controls(): FormGroup[] {
-    return (this.form.get('body') as FormArray).controls as FormGroup[];
+  get controls(): UntypedFormGroup[] {
+    return (this.form.get('body') as UntypedFormArray).controls as UntypedFormGroup[];
   }
 
   drop(event: CdkDragDrop<string[]>): void {
     this.moveItemInFormArray(
-      this.form.get('body') as FormArray,
+      this.form.get('body') as UntypedFormArray,
       event.previousIndex,
       event.currentIndex,
     );
   }
 
-  moveItemInFormArray(formArray: FormArray, fromIndex: number, toIndex: number): void {
+  moveItemInFormArray(formArray: UntypedFormArray, fromIndex: number, toIndex: number): void {
     const dir = toIndex > fromIndex ? 1 : -1;
 
     const item = formArray.at(fromIndex);

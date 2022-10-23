@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DropdownSection } from '../../../models/dropdown-section';
 import { MarkedModule } from '../../../pipes/marked.pipe';
@@ -11,7 +11,7 @@ import { ErrorMessageModule } from '../../../shared/components/error-message/err
 })
 export class DropdownPreviewComponent {
   @Input()
-  formGroup!: FormGroup;
+  formGroup!: UntypedFormGroup;
 
   @Output()
   scrollToError: EventEmitter<void> = new EventEmitter<void>();

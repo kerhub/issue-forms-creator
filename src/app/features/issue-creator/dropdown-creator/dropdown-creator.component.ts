@@ -8,7 +8,13 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
-import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  UntypedFormArray,
+  UntypedFormControl,
+  UntypedFormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -34,14 +40,14 @@ export class DropdownCreatorComponent implements OnInit, OnDestroy {
   options: Set<string> = new Set<string>();
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  optionsForm: FormGroup = new FormGroup({
-    optionsFormArray: new FormArray([this.createOption()], Validators.required),
+  optionsForm: UntypedFormGroup = new UntypedFormGroup({
+    optionsFormArray: new UntypedFormArray([this.createOption()], Validators.required),
   });
 
   destroy$: Subject<void> = new Subject<void>();
 
   @Input()
-  formGroup!: FormGroup;
+  formGroup!: UntypedFormGroup;
 
   @ViewChildren(ListOptionComponent)
   optionsComp!: QueryList<ListOptionComponent>;
@@ -63,23 +69,24 @@ export class DropdownCreatorComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  get optionsControls(): FormGroup[] {
-    return (this.optionsForm.get('optionsFormArray') as FormArray).controls as FormGroup[];
+  get optionsControls(): UntypedFormGroup[] {
+    return (this.optionsForm.get('optionsFormArray') as UntypedFormArray)
+      .controls as UntypedFormGroup[];
   }
 
   updateOptionsControl(): void {
     this.formGroup.get('attributes')?.get('options')?.setValue(this.options);
   }
 
-  drop(event: CdkDragDrop<FormGroup[]>): void {
+  drop(event: CdkDragDrop<UntypedFormGroup[]>): void {
     this.moveItemInFormArray(
-      this.optionsForm.get('optionsFormArray') as FormArray,
+      this.optionsForm.get('optionsFormArray') as UntypedFormArray,
       event.previousIndex,
       event.currentIndex,
     );
   }
 
-  moveItemInFormArray(formArray: FormArray, fromIndex: number, toIndex: number): void {
+  moveItemInFormArray(formArray: UntypedFormArray, fromIndex: number, toIndex: number): void {
     const dir = toIndex > fromIndex ? 1 : -1;
 
     const item = formArray.at(fromIndex);
@@ -91,17 +98,17 @@ export class DropdownCreatorComponent implements OnInit, OnDestroy {
   }
 
   addOption(): void {
-    (this.optionsForm.get('optionsFormArray') as FormArray).push(this.createOption());
+    (this.optionsForm.get('optionsFormArray') as UntypedFormArray).push(this.createOption());
     setTimeout(() => this.optionsComp.last.focus());
   }
 
   removeOption(index: number): void {
-    (this.optionsForm.get('optionsFormArray') as FormArray).removeAt(index);
+    (this.optionsForm.get('optionsFormArray') as UntypedFormArray).removeAt(index);
   }
 
-  createOption(): FormGroup {
-    return new FormGroup({
-      label: new FormControl(),
+  createOption(): UntypedFormGroup {
+    return new UntypedFormGroup({
+      label: new UntypedFormControl(),
     });
   }
 }

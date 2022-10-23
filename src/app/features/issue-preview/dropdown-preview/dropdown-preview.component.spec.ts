@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DropdownPreviewComponent, DropdownPreviewModule } from './dropdown-preview.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 describe('DropdownPreviewComponent', () => {
   let component: DropdownPreviewComponent;
@@ -20,17 +20,17 @@ describe('DropdownPreviewComponent', () => {
   });
 
   it('should create', () => {
-    component.formGroup = new FormGroup({
-      type: new FormControl('dropdown'),
-      id: new FormControl(null),
-      attributes: new FormGroup({
-        label: new FormControl(null, Validators.required),
-        description: new FormControl(''),
-        multiple: new FormControl(false),
-        options: new FormControl(null, Validators.required),
+    component.formGroup = new UntypedFormGroup({
+      type: new UntypedFormControl('dropdown'),
+      id: new UntypedFormControl(null),
+      attributes: new UntypedFormGroup({
+        label: new UntypedFormControl(null, Validators.required),
+        description: new UntypedFormControl(''),
+        multiple: new UntypedFormControl(false),
+        options: new UntypedFormControl(null, Validators.required),
       }),
-      validations: new FormGroup({
-        required: new FormControl(false),
+      validations: new UntypedFormGroup({
+        required: new UntypedFormControl(false),
       }),
     });
     expect(component).toBeTruthy();

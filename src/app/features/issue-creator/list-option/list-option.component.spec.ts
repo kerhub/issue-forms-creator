@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListOptionComponent, ListOptionModule } from './list-option.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 describe('ListOptionComponent', () => {
   let component: ListOptionComponent;
@@ -20,10 +20,10 @@ describe('ListOptionComponent', () => {
   });
 
   it('should create', () => {
-    component.form = new FormGroup({
-      label: new FormControl(null, Validators.required),
-      validations: new FormGroup({
-        required: new FormControl(),
+    component.form = new UntypedFormGroup({
+      label: new UntypedFormControl(null, Validators.required),
+      validations: new UntypedFormGroup({
+        required: new UntypedFormControl(),
       }),
     });
     expect(component).toBeTruthy();

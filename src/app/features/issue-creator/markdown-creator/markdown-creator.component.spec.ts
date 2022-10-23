@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MarkdownCreatorComponent, MarkdownCreatorModule } from './markdown-creator.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('MarkdownCreatorComponent', () => {
@@ -21,10 +21,10 @@ describe('MarkdownCreatorComponent', () => {
   });
 
   it('should create', () => {
-    component.formGroup = new FormGroup({
-      type: new FormControl('markdown'),
-      attributes: new FormGroup({
-        value: new FormControl(null, Validators.required),
+    component.formGroup = new UntypedFormGroup({
+      type: new UntypedFormControl('markdown'),
+      attributes: new UntypedFormGroup({
+        value: new UntypedFormControl(null, Validators.required),
       }),
     });
     expect(component).toBeTruthy();

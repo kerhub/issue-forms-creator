@@ -5,7 +5,7 @@ import {
   CheckboxesCreatorModule,
 } from './checkboxes-creator.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 describe('CheckboxesCreatorComponent', () => {
   let component: CheckboxesCreatorComponent;
@@ -24,13 +24,13 @@ describe('CheckboxesCreatorComponent', () => {
   });
 
   it('should create', () => {
-    component.formGroup = new FormGroup({
-      type: new FormControl('checkboxes'),
-      id: new FormControl(),
-      attributes: new FormGroup({
-        label: new FormControl(null),
-        description: new FormControl(),
-        options: new FormArray([], Validators.required),
+    component.formGroup = new UntypedFormGroup({
+      type: new UntypedFormControl('checkboxes'),
+      id: new UntypedFormControl(),
+      attributes: new UntypedFormGroup({
+        label: new UntypedFormControl(null),
+        description: new UntypedFormControl(),
+        options: new UntypedFormArray([], Validators.required),
       }),
     });
     expect(component).toBeTruthy();

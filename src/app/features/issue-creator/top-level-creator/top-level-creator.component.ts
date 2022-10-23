@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { IssueForm } from '../../../forms/issue.form';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -26,13 +26,13 @@ import { FormService } from '../../../services/form.service';
 })
 export class TopLevelCreatorComponent implements OnInit, OnDestroy {
   @Input()
-  form!: FormGroup;
+  form!: UntypedFormGroup;
 
-  labelsControl: FormControl = new FormControl(null);
-  assigneesControl: FormControl = new FormControl(null);
+  labelsControl: UntypedFormControl = new UntypedFormControl(null);
+  assigneesControl: UntypedFormControl = new UntypedFormControl(null);
 
-  labelsGithubControl: FormControl = new FormControl(null);
-  contributorsGithubControl: FormControl = new FormControl(null);
+  labelsGithubControl: UntypedFormControl = new UntypedFormControl(null);
+  contributorsGithubControl: UntypedFormControl = new UntypedFormControl(null);
 
   labels = new Set<string>();
   assignees = new Set<string>();

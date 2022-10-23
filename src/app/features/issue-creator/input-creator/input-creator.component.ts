@@ -2,7 +2,7 @@ import { Component, Input, NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class InputCreatorComponent {
   @Input()
-  formGroup!: FormGroup;
+  formGroup!: UntypedFormGroup;
 }
 
 @NgModule({

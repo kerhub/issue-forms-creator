@@ -21,7 +21,7 @@ import { InputCreatorModule } from './input-creator/input-creator.component';
 import { DropdownCreatorModule } from './dropdown-creator/dropdown-creator.component';
 import { CheckboxesCreatorModule } from './checkboxes-creator/checkboxes-creator.component';
 import { IssueForm } from '../../forms/issue.form';
-import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { TopLevelCreatorModule } from './top-level-creator/top-level-creator.component';
@@ -58,8 +58,8 @@ export class IssueCreatorComponent implements AfterViewInit {
     setTimeout(() => this.headerPanel.open());
   }
 
-  get controls(): FormGroup[] {
-    return (this.form.get('body') as FormArray).controls as FormGroup[];
+  get controls(): UntypedFormGroup[] {
+    return (this.form.get('body') as UntypedFormArray).controls as UntypedFormGroup[];
   }
 
   get isTopInvalid(): boolean {
@@ -128,13 +128,13 @@ export class IssueCreatorComponent implements AfterViewInit {
 
   drop(event: CdkDragDrop<string[]>): void {
     this.moveItemInFormArray(
-      this.form.get('body') as FormArray,
+      this.form.get('body') as UntypedFormArray,
       event.previousIndex,
       event.currentIndex,
     );
   }
 
-  moveItemInFormArray(formArray: FormArray, fromIndex: number, toIndex: number): void {
+  moveItemInFormArray(formArray: UntypedFormArray, fromIndex: number, toIndex: number): void {
     const dir = toIndex > fromIndex ? 1 : -1;
 
     const item = formArray.at(fromIndex);

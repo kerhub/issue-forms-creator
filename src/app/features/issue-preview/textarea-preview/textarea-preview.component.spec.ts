@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TextareaPreviewComponent, TextareaPreviewModule } from './textarea-preview.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 describe('TextareaPreviewComponent', () => {
   let component: TextareaPreviewComponent;
@@ -20,18 +20,18 @@ describe('TextareaPreviewComponent', () => {
   });
 
   it('should create', () => {
-    component.formGroup = new FormGroup({
-      type: new FormControl('textarea'),
-      id: new FormControl(null),
-      attributes: new FormGroup({
-        label: new FormControl(null, Validators.required),
-        description: new FormControl(''),
-        placeholder: new FormControl(''),
-        value: new FormControl(null),
-        render: new FormControl(null),
+    component.formGroup = new UntypedFormGroup({
+      type: new UntypedFormControl('textarea'),
+      id: new UntypedFormControl(null),
+      attributes: new UntypedFormGroup({
+        label: new UntypedFormControl(null, Validators.required),
+        description: new UntypedFormControl(''),
+        placeholder: new UntypedFormControl(''),
+        value: new UntypedFormControl(null),
+        render: new UntypedFormControl(null),
       }),
-      validations: new FormGroup({
-        required: new FormControl(false),
+      validations: new UntypedFormGroup({
+        required: new UntypedFormControl(false),
       }),
     });
     expect(component).toBeTruthy();

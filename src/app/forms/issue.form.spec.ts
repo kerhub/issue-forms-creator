@@ -1,5 +1,5 @@
 import { IssueForm } from './issue.form';
-import { FormArray, FormControl } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl } from '@angular/forms';
 
 describe('IssueForm', () => {
   let issueForm: IssueForm;
@@ -76,7 +76,7 @@ describe('IssueForm', () => {
     const optionsControl = issueForm.bodyControl
       .at(0)
       ?.get('attributes')
-      ?.get('options') as FormArray;
+      ?.get('options') as UntypedFormArray;
     expect(issueForm.validateCheckboxUniqueness()(optionsControl)?.duplicateLabels).toBeDefined();
   });
 
@@ -108,7 +108,7 @@ describe('IssueForm', () => {
     const optionsControl = issueForm.bodyControl
       .at(0)
       ?.get('attributes')
-      ?.get('options') as FormArray;
+      ?.get('options') as UntypedFormArray;
     expect(issueForm.validateCheckboxUniqueness()(optionsControl)).toEqual(null);
   });
 
@@ -140,7 +140,7 @@ describe('IssueForm', () => {
     const optionsControl = issueForm.bodyControl
       .at(0)
       ?.get('attributes')
-      ?.get('options') as FormArray;
+      ?.get('options') as UntypedFormArray;
     expect(issueForm.validateCheckboxUniqueness()(optionsControl)?.duplicateLabels).toBeDefined();
   });
 
@@ -164,7 +164,7 @@ describe('IssueForm', () => {
     const optionsControl = issueForm.bodyControl
       .at(0)
       ?.get('attributes')
-      ?.get('options') as FormControl;
+      ?.get('options') as UntypedFormControl;
     expect(
       issueForm.validateDropdownOptionsUniqueness()(optionsControl)?.duplicateOptions,
     ).toBeDefined();
@@ -190,7 +190,7 @@ describe('IssueForm', () => {
     const optionsControl = issueForm.bodyControl
       .at(0)
       ?.get('attributes')
-      ?.get('options') as FormControl;
+      ?.get('options') as UntypedFormControl;
     expect(issueForm.validateDropdownOptionsUniqueness()(optionsControl)).toEqual(null);
   });
 
@@ -214,7 +214,7 @@ describe('IssueForm', () => {
     const optionsControl = issueForm.bodyControl
       .at(0)
       ?.get('attributes')
-      ?.get('options') as FormControl;
+      ?.get('options') as UntypedFormControl;
     expect(
       issueForm.validateDropdownOptionsUniqueness()(optionsControl)?.duplicateOptions,
     ).toBeDefined();
@@ -291,7 +291,7 @@ describe('IssueForm', () => {
     const optionsControl = issueForm.bodyControl
       .at(0)
       ?.get('attributes')
-      ?.get('options') as FormControl;
+      ?.get('options') as UntypedFormControl;
     expect(issueForm.validateDropdownNone()(optionsControl)?.noneExists).toBeDefined();
   });
 
@@ -315,7 +315,7 @@ describe('IssueForm', () => {
     const optionsControl = issueForm.bodyControl
       .at(0)
       ?.get('attributes')
-      ?.get('options') as FormControl;
+      ?.get('options') as UntypedFormControl;
     expect(issueForm.validateDropdownNone()(optionsControl)).toEqual(null);
   });
 
@@ -341,7 +341,7 @@ describe('IssueForm', () => {
 
     // Then
     const checkboxControl = (
-      issueForm.bodyControl.at(0)?.get('attributes')?.get('options') as FormArray
+      issueForm.bodyControl.at(0)?.get('attributes')?.get('options') as UntypedFormArray
     ).at(0);
     expect(checkboxControl.valid).toEqual(false);
   });
@@ -368,7 +368,7 @@ describe('IssueForm', () => {
 
     // Then
     const checkboxControl = (
-      issueForm.bodyControl.at(0)?.get('attributes')?.get('options') as FormArray
+      issueForm.bodyControl.at(0)?.get('attributes')?.get('options') as UntypedFormArray
     ).at(0);
     expect(checkboxControl.valid).toEqual(true);
   });
@@ -684,7 +684,7 @@ describe('IssueForm', () => {
     const optionsControl = issueForm.bodyControl
       .at(0)
       .get('attributes')
-      ?.get('options') as FormControl;
+      ?.get('options') as UntypedFormControl;
     expect(issueForm.bodyControl.at(0).valid).toEqual(false);
     expect(optionsControl.hasError('required')).toEqual(true);
   });
@@ -710,7 +710,7 @@ describe('IssueForm', () => {
     const optionsControl = issueForm.bodyControl
       .at(0)
       .get('attributes')
-      ?.get('options') as FormControl;
+      ?.get('options') as UntypedFormControl;
     expect(issueForm.bodyControl.at(0).valid).toEqual(false);
     expect(optionsControl.hasError('duplicateOptions')).toEqual(true);
   });
@@ -736,7 +736,7 @@ describe('IssueForm', () => {
     const optionsControl = issueForm.bodyControl
       .at(0)
       .get('attributes')
-      ?.get('options') as FormControl;
+      ?.get('options') as UntypedFormControl;
     expect(issueForm.bodyControl.at(0).valid).toEqual(false);
     expect(optionsControl.hasError('noneExists')).toEqual(true);
   });
@@ -840,7 +840,7 @@ describe('IssueForm', () => {
     const optionsControl = issueForm.bodyControl
       .at(0)
       .get('attributes')
-      ?.get('options') as FormControl;
+      ?.get('options') as UntypedFormControl;
     expect(issueForm.bodyControl.at(0).valid).toEqual(false);
     expect(optionsControl.hasError('duplicateLabels')).toEqual(true);
   });

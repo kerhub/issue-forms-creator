@@ -1,8 +1,8 @@
 import {
   AbstractControl,
-  FormArray,
-  FormControl,
-  FormGroup,
+  UntypedFormArray,
+  UntypedFormControl,
+  UntypedFormGroup,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
@@ -17,15 +17,15 @@ import { InputSection } from '../models/input-section';
 import { PresetEnum } from '../enums/preset.enum';
 import { IssueSection } from '../models/issue-section';
 
-export class IssueForm extends FormGroup {
+export class IssueForm extends UntypedFormGroup {
   idRegex = /^[\w\d_-]+$/;
 
   constructor() {
     super({
-      name: new FormControl('Bug report', Validators.required),
-      description: new FormControl('Template for bug reports', Validators.required),
-      title: new FormControl('[Bug]: '),
-      body: new FormArray([]),
+      name: new UntypedFormControl('Bug report', Validators.required),
+      description: new UntypedFormControl('Template for bug reports', Validators.required),
+      title: new UntypedFormControl('[Bug]: '),
+      body: new UntypedFormArray([]),
     });
     this.bodyControl.setValidators([
       this.validateIdUniqueness(),
@@ -33,16 +33,16 @@ export class IssueForm extends FormGroup {
     ]);
   }
 
-  get bodyControl(): FormArray {
-    return this.get('body') as FormArray;
+  get bodyControl(): UntypedFormArray {
+    return this.get('body') as UntypedFormArray;
   }
 
   addLabels(data?: string[]): void {
-    this.addControl('labels', new FormControl(data));
+    this.addControl('labels', new UntypedFormControl(data));
   }
 
   addAssignees(data?: string[]): void {
-    this.addControl('assignees', new FormControl(data));
+    this.addControl('assignees', new UntypedFormControl(data));
   }
 
   addMarkdown(data?: Partial<MarkdownSection>): void {
@@ -66,91 +66,91 @@ export class IssueForm extends FormGroup {
   }
 
   addCheckboxOption(index: number): void {
-    (this.bodyControl.at(index).get('attributes')?.get('options') as FormArray).push(
+    (this.bodyControl.at(index).get('attributes')?.get('options') as UntypedFormArray).push(
       this.createCheckbox(),
     );
   }
 
   removeCheckboxOption(indexCheckBox: number, indexSection: number): void {
-    (this.bodyControl.at(indexSection).get('attributes')?.get('options') as FormArray).removeAt(
-      indexCheckBox,
-    );
+    (
+      this.bodyControl.at(indexSection).get('attributes')?.get('options') as UntypedFormArray
+    ).removeAt(indexCheckBox);
   }
 
   deleteControl(index: number): void {
     this.bodyControl.removeAt(index);
   }
 
-  private createMarkdown(data?: Partial<MarkdownSection>): FormGroup {
-    return new FormGroup({
-      type: new FormControl('markdown'),
-      attributes: new FormGroup({
-        value: new FormControl(data?.attributes?.value || null, Validators.required),
+  private createMarkdown(data?: Partial<MarkdownSection>): UntypedFormGroup {
+    return new UntypedFormGroup({
+      type: new UntypedFormControl('markdown'),
+      attributes: new UntypedFormGroup({
+        value: new UntypedFormControl(data?.attributes?.value || null, Validators.required),
       }),
     });
   }
 
-  private createTextarea(data?: Partial<TextareaSection>): FormGroup {
-    return new FormGroup({
-      type: new FormControl('textarea'),
-      id: new FormControl(data?.id || null, Validators.pattern(this.idRegex)),
-      attributes: new FormGroup({
-        label: new FormControl(data?.attributes?.label || null, Validators.required),
-        description: new FormControl(data?.attributes?.description || ''),
-        placeholder: new FormControl(data?.attributes?.placeholder || ''),
-        value: new FormControl(data?.attributes?.value || null),
-        render: new FormControl(data?.attributes?.render || null),
+  private createTextarea(data?: Partial<TextareaSection>): UntypedFormGroup {
+    return new UntypedFormGroup({
+      type: new UntypedFormControl('textarea'),
+      id: new UntypedFormControl(data?.id || null, Validators.pattern(this.idRegex)),
+      attributes: new UntypedFormGroup({
+        label: new UntypedFormControl(data?.attributes?.label || null, Validators.required),
+        description: new UntypedFormControl(data?.attributes?.description || ''),
+        placeholder: new UntypedFormControl(data?.attributes?.placeholder || ''),
+        value: new UntypedFormControl(data?.attributes?.value || null),
+        render: new UntypedFormControl(data?.attributes?.render || null),
       }),
-      validations: new FormGroup({
-        required: new FormControl(data?.validations?.required || false),
-      }),
-    });
-  }
-
-  private createInput(data?: Partial<InputSection>): FormGroup {
-    return new FormGroup({
-      type: new FormControl('input'),
-      id: new FormControl(data?.id || null, Validators.pattern(this.idRegex)),
-      attributes: new FormGroup({
-        label: new FormControl(data?.attributes?.label || null, Validators.required),
-        description: new FormControl(data?.attributes?.description || null),
-        placeholder: new FormControl(data?.attributes?.placeholder || null),
-        value: new FormControl(data?.attributes?.value || null),
-      }),
-      validations: new FormGroup({
-        required: new FormControl(data?.validations?.required || false),
+      validations: new UntypedFormGroup({
+        required: new UntypedFormControl(data?.validations?.required || false),
       }),
     });
   }
 
-  private createDropdown(data?: Partial<DropdownSection>): FormGroup {
-    return new FormGroup({
-      type: new FormControl('dropdown'),
-      id: new FormControl(data?.id || null, Validators.pattern(this.idRegex)),
-      attributes: new FormGroup({
-        label: new FormControl(data?.attributes?.label || null, Validators.required),
-        description: new FormControl(data?.attributes?.description || ''),
-        multiple: new FormControl(data?.attributes?.multiple || false),
-        options: new FormControl(data?.attributes?.options || [], [
+  private createInput(data?: Partial<InputSection>): UntypedFormGroup {
+    return new UntypedFormGroup({
+      type: new UntypedFormControl('input'),
+      id: new UntypedFormControl(data?.id || null, Validators.pattern(this.idRegex)),
+      attributes: new UntypedFormGroup({
+        label: new UntypedFormControl(data?.attributes?.label || null, Validators.required),
+        description: new UntypedFormControl(data?.attributes?.description || null),
+        placeholder: new UntypedFormControl(data?.attributes?.placeholder || null),
+        value: new UntypedFormControl(data?.attributes?.value || null),
+      }),
+      validations: new UntypedFormGroup({
+        required: new UntypedFormControl(data?.validations?.required || false),
+      }),
+    });
+  }
+
+  private createDropdown(data?: Partial<DropdownSection>): UntypedFormGroup {
+    return new UntypedFormGroup({
+      type: new UntypedFormControl('dropdown'),
+      id: new UntypedFormControl(data?.id || null, Validators.pattern(this.idRegex)),
+      attributes: new UntypedFormGroup({
+        label: new UntypedFormControl(data?.attributes?.label || null, Validators.required),
+        description: new UntypedFormControl(data?.attributes?.description || ''),
+        multiple: new UntypedFormControl(data?.attributes?.multiple || false),
+        options: new UntypedFormControl(data?.attributes?.options || [], [
           Validators.required,
           this.validateDropdownOptionsUniqueness(),
           this.validateDropdownNone(),
         ]),
       }),
-      validations: new FormGroup({
-        required: new FormControl(data?.validations?.required || false),
+      validations: new UntypedFormGroup({
+        required: new UntypedFormControl(data?.validations?.required || false),
       }),
     });
   }
 
-  private createCheckboxes(data?: Partial<CheckboxesSection>): FormGroup {
-    return new FormGroup({
-      type: new FormControl('checkboxes'),
-      id: new FormControl(data?.id || null, Validators.pattern(this.idRegex)),
-      attributes: new FormGroup({
-        label: new FormControl(data?.attributes?.label || null),
-        description: new FormControl(data?.attributes?.description || null),
-        options: new FormArray(
+  private createCheckboxes(data?: Partial<CheckboxesSection>): UntypedFormGroup {
+    return new UntypedFormGroup({
+      type: new UntypedFormControl('checkboxes'),
+      id: new UntypedFormControl(data?.id || null, Validators.pattern(this.idRegex)),
+      attributes: new UntypedFormGroup({
+        label: new UntypedFormControl(data?.attributes?.label || null),
+        description: new UntypedFormControl(data?.attributes?.description || null),
+        options: new UntypedFormArray(
           (data?.attributes?.options.map(option =>
             this.createCheckbox(option),
           ) as AbstractControl[]) || [],
@@ -160,10 +160,10 @@ export class IssueForm extends FormGroup {
     });
   }
 
-  private createCheckbox(data?: Partial<CheckboxSection>): FormGroup {
-    return new FormGroup({
-      label: new FormControl(data?.label || null, Validators.required),
-      required: new FormControl(data?.required || false),
+  private createCheckbox(data?: Partial<CheckboxSection>): UntypedFormGroup {
+    return new UntypedFormGroup({
+      label: new UntypedFormControl(data?.label || null, Validators.required),
+      required: new UntypedFormControl(data?.required || false),
     });
   }
 

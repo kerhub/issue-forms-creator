@@ -1,6 +1,6 @@
 import { Component, Input, NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 
@@ -10,10 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class MarkdownCreatorComponent {
   @Input()
-  formGroup!: FormGroup;
+  formGroup!: UntypedFormGroup;
 
-  get control(): FormControl {
-    return this.formGroup.get('attributes')?.get('value') as FormControl;
+  get control(): UntypedFormControl {
+    return this.formGroup.get('attributes')?.get('value') as UntypedFormControl;
   }
 }
 

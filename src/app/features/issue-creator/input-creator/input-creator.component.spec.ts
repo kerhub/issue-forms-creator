@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InputCreatorComponent, InputCreatorModule } from './input-creator.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 describe('InputCreatorComponent', () => {
   let component: InputCreatorComponent;
@@ -21,17 +21,17 @@ describe('InputCreatorComponent', () => {
   });
 
   it('should create', () => {
-    component.formGroup = new FormGroup({
-      type: new FormControl('input'),
-      id: new FormControl(null),
-      attributes: new FormGroup({
-        label: new FormControl(null, Validators.required),
-        description: new FormControl(null),
-        placeholder: new FormControl(null),
-        value: new FormControl(null),
+    component.formGroup = new UntypedFormGroup({
+      type: new UntypedFormControl('input'),
+      id: new UntypedFormControl(null),
+      attributes: new UntypedFormGroup({
+        label: new UntypedFormControl(null, Validators.required),
+        description: new UntypedFormControl(null),
+        placeholder: new UntypedFormControl(null),
+        value: new UntypedFormControl(null),
       }),
-      validations: new FormGroup({
-        required: new FormControl(false),
+      validations: new UntypedFormGroup({
+        required: new UntypedFormControl(false),
       }),
     });
 

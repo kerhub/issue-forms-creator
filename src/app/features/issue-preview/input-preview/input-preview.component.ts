@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { InputSection } from '../../../models/input-section';
 import { CommonModule } from '@angular/common';
 import { MarkedModule } from '../../../pipes/marked.pipe';
@@ -12,7 +12,7 @@ import { ErrorMessageModule } from '../../../shared/components/error-message/err
 })
 export class InputPreviewComponent {
   @Input()
-  formGroup!: FormGroup;
+  formGroup!: UntypedFormGroup;
 
   @Output()
   scrollToError: EventEmitter<void> = new EventEmitter<void>();

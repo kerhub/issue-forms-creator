@@ -2,7 +2,9 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
     "analytics": "7858a23a-335a-4a2d-8fc4-0878826eecb1",
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -119,6 +121,5 @@
         }
       }
     }
-  },
-  "defaultProject": "issue-forms-creator"
+  }
 }
