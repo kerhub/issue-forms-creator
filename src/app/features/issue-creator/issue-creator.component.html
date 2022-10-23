@@ -4,7 +4,7 @@
       <mat-expansion-panel #headerPanel="matExpansionPanel">
         <mat-expansion-panel-header>
           <mat-panel-title class="panel-type-container">
-            <article class="chip">Issue header</article>
+            <article class="chip generic-chip">header</article>
           </mat-panel-title>
           <mat-panel-description>
             <ng-container *ngIf="!headerPanel.expanded && isTopInvalid">
@@ -81,7 +81,7 @@
   </form>
 </section>
 <section class="bottom-toolbar">
-  <article class="chip chip-recap">
+  <article class="chip generic-chip">
     {{ form.value.body.length }} section{{ form.value.body.length > 1 ? 's' : '' }}
   </article>
   <section class="bottom-toolbar-actions">
