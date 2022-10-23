@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { combineLatest, Observable, of, ReplaySubject } from 'rxjs';
-import { GithubLabel } from '../models/github/github-label';
+import { GitHubLabel } from '../models/github/github-label';
 import { catchError, map, tap } from 'rxjs/operators';
-import { GithubContributor } from '../models/github/github-contributor';
+import { GitHubContributor } from '../models/github/github-contributor';
 import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/forms';
 
 @Injectable({
@@ -15,18 +15,18 @@ export class RepositoryService {
   repositorySubject: ReplaySubject<string | null> = new ReplaySubject<string | null>();
   repository$: Observable<string | null> = this.repositorySubject.asObservable();
 
-  labelsSubject: ReplaySubject<GithubLabel[] | null> = new ReplaySubject<GithubLabel[] | null>();
-  labels$: Observable<GithubLabel[] | null> = this.labelsSubject.asObservable();
+  labelsSubject: ReplaySubject<GitHubLabel[] | null> = new ReplaySubject<GitHubLabel[] | null>();
+  labels$: Observable<GitHubLabel[] | null> = this.labelsSubject.asObservable();
 
-  contributorsSubject: ReplaySubject<GithubContributor[] | null> = new ReplaySubject<
-    GithubContributor[] | null
+  contributorsSubject: ReplaySubject<GitHubContributor[] | null> = new ReplaySubject<
+    GitHubContributor[] | null
   >();
-  contributors$: Observable<GithubContributor[] | null> = this.contributorsSubject.asObservable();
+  contributors$: Observable<GitHubContributor[] | null> = this.contributorsSubject.asObservable();
 
   constructor(private readonly http: HttpClient) {}
 
-  loadLabels(repository: string): Observable<GithubLabel[]> {
-    return this.http.get<GithubLabel[]>(`${this.githubApiUrl}/${repository}/labels`).pipe(
+  loadLabels(repository: string): Observable<GitHubLabel[]> {
+    return this.http.get<GitHubLabel[]>(`${this.githubApiUrl}/${repository}/labels`).pipe(
       map(labels =>
         labels.map(label => ({
           ...label,
@@ -37,14 +37,14 @@ export class RepositoryService {
     );
   }
 
-  loadContributors(repository: string): Observable<GithubContributor[]> {
+  loadContributors(repository: string): Observable<GitHubContributor[]> {
     return this.http
-      .get<GithubContributor[]>(`${this.githubApiUrl}/${repository}/contributors`)
+      .get<GitHubContributor[]>(`${this.githubApiUrl}/${repository}/contributors`)
       .pipe(tap(contributors => this.contributorsSubject.next(contributors)));
   }
 
-  loadRepositoryInfo(repository: string): Observable<[GithubLabel[], GithubContributor[]]> {
-    return combineLatest<[GithubLabel[], GithubContributor[]]>([
+  loadRepositoryInfo(repository: string): Observable<[GitHubLabel[], GitHubContributor[]]> {
+    return combineLatest<[GitHubLabel[], GitHubContributor[]]>([
       this.loadLabels(repository),
       this.loadContributors(repository),
     ]).pipe(tap(() => this.updateRepository(repository)));

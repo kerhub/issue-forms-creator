@@ -1,4 +1,4 @@
-export interface GithubLabel {
+export interface GitHubLabel {
   color: string;
   description: string;
   name: string;

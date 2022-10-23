@@ -12,11 +12,11 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RepositoryService } from '../../../services/repository.service';
 import { MatSelectModule } from '@angular/material/select';
-import { GithubLabel } from '../../../models/github/github-label';
+import { GitHubLabel } from '../../../models/github/github-label';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { map, switchMap, takeUntil } from 'rxjs/operators';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { GithubContributor } from '../../../models/github/github-contributor';
+import { GitHubContributor } from '../../../models/github/github-contributor';
 import { FormService } from '../../../services/form.service';
 
 @Component({
@@ -39,7 +39,7 @@ export class TopLevelCreatorComponent implements OnInit, OnDestroy {
 
   labels$ = this.repositoryService.labels$;
   contributors$ = this.repositoryService.contributors$;
-  filteredContributors$: Observable<GithubContributor[] | undefined> = combineLatest([
+  filteredContributors$: Observable<GitHubContributor[] | undefined> = combineLatest([
     this.contributorsGithubControl.valueChanges,
     this.contributors$,
   ]).pipe(
@@ -66,7 +66,7 @@ export class TopLevelCreatorComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.labelsGithubControl.valueChanges
       .pipe(takeUntil(this.destroy$))
-      .subscribe((labels: GithubLabel[]) => {
+      .subscribe((labels: GitHubLabel[]) => {
         this.form.get('labels')?.setValue(labels.map(label => label.name));
       });
 
@@ -125,8 +125,8 @@ export class TopLevelCreatorComponent implements OnInit, OnDestroy {
   }
 
   populate(
-    githubLabels: GithubLabel[] | null,
-    githubContributors: GithubContributor[] | null,
+    githubLabels: GitHubLabel[] | null,
+    githubContributors: GitHubContributor[] | null,
   ): void {
     if (this.form.get('labels') && this.form.get('labels')?.value?.length) {
       const formattedLabels = (this.form.get('labels')?.value as string[]).map(label =>
