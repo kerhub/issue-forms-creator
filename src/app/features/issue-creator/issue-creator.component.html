@@ -88,13 +88,7 @@
     <button mat-stroked-button type="button" color="primary" (click)="closeAllPanels()">
       Collapse all
     </button>
-    <button
-      mat-raised-button
-      color="primary"
-      type="button"
-      [matMenuTriggerFor]="menu"
-      aria-label="Example icon-button with a menu"
-    >
+    <button mat-raised-button color="primary" type="button" [matMenuTriggerFor]="menu">
       Add section
     </button>
     <mat-menu #menu="matMenu">
