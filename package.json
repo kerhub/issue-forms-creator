@@ -58,7 +58,7 @@
     "@storybook/angular": "^6.5.6",
     "@storybook/builder-webpack5": "^6.5.12",
     "@storybook/manager-webpack5": "^6.5.6",
-    "@types/jasmine": "~4.0.3",
+    "@types/jasmine": "~4.3.0",
     "@types/jest": "29.2.0",
     "@types/marked": "^4.0.3",
     "@types/node": "^17.0.38",
