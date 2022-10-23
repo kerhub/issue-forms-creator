@@ -1,19 +1,16 @@
 import { Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import {
-  CheckboxesCreatorComponent,
-  CheckboxesCreatorModule,
-} from './checkboxes-creator.component';
+import { CheckboxesCreatorComponent } from './checkboxes-creator.component';
+import { checkboxesForm } from '../../../test/test.util';
 
 export default {
   title: 'Components/Issue Creator/Checkboxes',
   component: CheckboxesCreatorComponent,
   decorators: [
     moduleMetadata({
-      imports: [CheckboxesCreatorModule, BrowserAnimationsModule],
+      imports: [BrowserAnimationsModule],
       providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }],
     }),
   ],
@@ -21,27 +18,11 @@ export default {
 
 export const pristine = () => ({
   props: {
-    formGroup: new FormGroup({
-      type: new FormControl('checkboxes'),
-      id: new FormControl(),
-      attributes: new FormGroup({
-        label: new FormControl(null),
-        description: new FormControl(),
-        options: new FormArray([], Validators.required),
-      }),
-    }),
+    formGroup: checkboxesForm(),
   },
 });
 
-const touchedForm: FormGroup = new FormGroup({
-  type: new FormControl('checkboxes'),
-  id: new FormControl(),
-  attributes: new FormGroup({
-    label: new FormControl(null),
-    description: new FormControl(),
-    options: new FormArray([], Validators.required),
-  }),
-});
+const touchedForm = checkboxesForm();
 touchedForm.markAllAsTouched();
 
 export const touched = () => ({
@@ -50,14 +31,13 @@ export const touched = () => ({
   },
 });
 
-const filledForm: FormGroup = new FormGroup({
-  type: new FormControl('checkboxes'),
-  id: new FormControl('checklist'),
-  attributes: new FormGroup({
-    label: new FormControl('checklist'),
-    description: new FormControl('tasks to complete'),
-    options: new FormArray([], Validators.required),
-  }),
+const filledForm = checkboxesForm({
+  id: 'checklist',
+  attributes: {
+    label: 'checklist',
+    description: 'tasks to complete',
+    options: [],
+  },
 });
 
 export const filled = () => ({

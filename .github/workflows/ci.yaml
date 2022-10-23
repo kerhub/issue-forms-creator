@@ -41,5 +41,7 @@ jobs:
         run: npm run lint
       - name: Check unit tests
         run: npm run test --ci --lastCommit --maxWorkers=50%
+      - name: Check component testing
+        run: npm run ct:run
         env:
           CI: true

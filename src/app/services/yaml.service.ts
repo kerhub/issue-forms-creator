@@ -3,21 +3,19 @@ import { Observable } from 'rxjs';
 import { Issue } from '../models/issue';
 import { IssueSection } from '../models/issue-section';
 
-const yaml = require('js-yaml');
+import * as yaml from 'js-yaml';
 
 @Injectable({
   providedIn: 'root',
 })
 export class YamlService {
-  constructor() {}
-
   parseYamlFile(file: File): Observable<Issue> {
     return new Observable(observer => {
       const reader = new FileReader();
       reader.readAsText(file, 'UTF-8');
 
       reader.onload = event => {
-        const parsedContent = yaml.load(event.target?.result, { schema: yaml.JSON_SCHEMA });
+        const parsedContent = this.parseYamlContent(event.target?.result as string);
         observer.next(parsedContent);
         observer.complete();
       };
@@ -28,8 +26,8 @@ export class YamlService {
     });
   }
 
-  parseYamlContent(content: any) {
-    return yaml.load(content, { schema: yaml.JSON_SCHEMA });
+  parseYamlContent(content: any): Issue {
+    return yaml.load(content, { schema: yaml.JSON_SCHEMA }) as Issue;
   }
 
   async copyToClipboard(issueForm: Issue): Promise<void> {

@@ -19,7 +19,7 @@ import { MarkdownCreatorModule } from './markdown-creator/markdown-creator.compo
 import { TextareaCreatorModule } from './textarea-creator/textarea-creator.component';
 import { InputCreatorModule } from './input-creator/input-creator.component';
 import { DropdownCreatorModule } from './dropdown-creator/dropdown-creator.component';
-import { CheckboxesCreatorModule } from './checkboxes-creator/checkboxes-creator.component';
+import { CheckboxesCreatorComponent } from './checkboxes-creator/checkboxes-creator.component';
 import { IssueForm } from '../../forms/issue.form';
 import { UntypedFormArray, UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -160,7 +160,7 @@ export class IssueCreatorComponent implements AfterViewInit {
     TextareaCreatorModule,
     InputCreatorModule,
     DropdownCreatorModule,
-    CheckboxesCreatorModule,
+    CheckboxesCreatorComponent,
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,

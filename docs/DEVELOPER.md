@@ -75,11 +75,22 @@ ng build
 
 ## Running Tests Locally
 
-To build Issue Forms Creator run:
+To run unit testing with Jest:
 
 ```shell
 ng test
 ```
+
+To run component testing with Cypress:
+
+```shell
+# headless version
+npm run ct:riun
+
+# GUI version
+npm run ct:open
+```
+
 
 ## Formatting your source code
 

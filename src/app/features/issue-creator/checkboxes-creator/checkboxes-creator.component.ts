@@ -22,6 +22,19 @@ import { ListOptionComponent, ListOptionModule } from '../list-option/list-optio
   selector: 'app-checkboxes-creator',
   templateUrl: './checkboxes-creator.component.html',
   styleUrls: ['./checkboxes-creator.component.scss'],
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    MatChipsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    DragDropModule,
+    MatIconModule,
+    MatCheckboxModule,
+    CommonModule,
+    ListOptionModule,
+  ],
 })
 export class CheckboxesCreatorComponent {
   @Input()
@@ -65,21 +78,3 @@ export class CheckboxesCreatorComponent {
     setTimeout(() => this.optionsComp.last.focus());
   }
 }
-
-@NgModule({
-  declarations: [CheckboxesCreatorComponent],
-  imports: [
-    MatButtonModule,
-    MatChipsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    DragDropModule,
-    MatIconModule,
-    MatCheckboxModule,
-    CommonModule,
-    ListOptionModule,
-  ],
-  exports: [CheckboxesCreatorComponent],
-})
-export class CheckboxesCreatorModule {}

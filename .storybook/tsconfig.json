@@ -3,7 +3,7 @@
   "compilerOptions": {
     "types": ["node"]
   },
-  "exclude": ["../src/test.ts", "../src/**/*.spec.ts", "../projects/**/*.spec.ts"],
+  "exclude": ["../src/test.ts", "../src/**/*.spec.ts", "../projects/**/*.spec.ts", "../src/**/*.cy.ts"],
   "include": ["../src/**/*", "../projects/**/*"],
   "files": ["./typings.d.ts"]
 }
