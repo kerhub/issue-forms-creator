@@ -5,7 +5,7 @@
       <ng-container *ngFor="let option of optionList">
         <article
           *ngIf="githubLabel.name === option"
-          class="chip"
+          class="chip inline-chip"
           [ngStyle]="{ 'background-color': githubLabel.color }"
         >
           {{ githubLabel.name }}
@@ -15,7 +15,7 @@
   </ng-container>
   <ng-template #customList>
     <ng-container *ngIf="isLabelsList; else assignees">
-      <article class="chip" *ngFor="let option of optionList">{{ option }}</article>
+      <article class="chip inline-chip" *ngFor="let option of optionList">{{ option }}</article>
     </ng-container>
     <ng-template #assignees>
       <article class="assignee-item" *ngFor="let option of optionList">{{ option }}</article>

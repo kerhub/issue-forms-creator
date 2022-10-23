@@ -47,6 +47,11 @@
   flex-basis: 100px;
 }
 
+.header-chip {
+  margin-inline-start: 1.75rem;
+}
+
+.header-chip,
 .generic-chip {
   background-color: #000;
 }

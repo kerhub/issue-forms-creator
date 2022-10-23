@@ -92,12 +92,18 @@ blockquote {
   background-color: $color-primary;
   border-radius: 16px;
   color: white;
-  display: inline-flex;
   font-size: 14px;
   font-weight: 500;
   line-height: 15px;
   margin: 4px;
   padding: 7px 12px;
+  width: 80px;
+  text-align: center;
+}
+
+.inline-chip {
+  display: inline-flex;
+  width: unset;
 }
 
 .drag-handle {
