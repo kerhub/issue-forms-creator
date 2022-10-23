@@ -30,6 +30,7 @@
         #panel="matExpansionPanel"
         cdkDrag
         cdkDragLockAxis="y"
+        [ngClass]="{ 'expansion-error': control.invalid }"
       >
         <mat-expansion-panel-header>
           <mat-panel-title class="panel-type-container">

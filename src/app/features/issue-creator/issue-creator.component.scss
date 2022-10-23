@@ -1,3 +1,5 @@
+@import 'src/styles/bases';
+
 .delete-btn-container,
 .creator-menu-container {
   display: flex;
@@ -54,4 +56,8 @@
 .header-chip,
 .generic-chip {
   background-color: #000;
+}
+
+.expansion-error {
+  border-color: $color-warn;
 }
