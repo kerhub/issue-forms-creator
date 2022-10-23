@@ -55,7 +55,7 @@
     "@storybook/addon-actions": "^6.5.6",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-links": "^6.5.6",
-    "@storybook/angular": "^6.1.21",
+    "@storybook/angular": "^6.5.6",
     "@storybook/builder-webpack5": "^6.5.6",
     "@storybook/manager-webpack5": "^6.5.6",
     "@types/jasmine": "~4.0.3",
