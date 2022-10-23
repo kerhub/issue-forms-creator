@@ -5,6 +5,7 @@
         *ngFor="let error of errorsList"
         [hasLink]="false"
         [errorMessage]="error.message"
+        [isPreview]="true"
       ></app-error-message>
     </ng-container>
   </section>

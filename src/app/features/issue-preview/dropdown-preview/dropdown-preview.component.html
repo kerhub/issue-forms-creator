@@ -7,24 +7,27 @@
   <span class="required-marker" *ngIf="section.validations?.required">*</span>
 </label>
 <ng-template #labelManquant>
-  <app-error-message (scrollToError)="scrollToError.emit()"></app-error-message>
+  <app-error-message [isPreview]="true" (scrollToError)="scrollToError.emit()"></app-error-message>
 </ng-template>
 <p class="preview-description" [innerHTML]="section.attributes.description | marked"></p>
 <app-error-message
   *ngIf="formGroup.get('attributes')?.get('options')?.getError('duplicateOptions')"
   (scrollToError)="scrollToError.emit()"
   [errorMessage]="formGroup.get('attributes')?.get('options')?.getError('duplicateOptions').message"
+  [isPreview]="true"
 ></app-error-message>
 <app-error-message
   *ngIf="formGroup.get('attributes')?.get('options')?.getError('noneExists')"
   (scrollToError)="scrollToError.emit()"
   [errorMessage]="formGroup.get('attributes')?.get('options')?.getError('noneExists').message"
+  [isPreview]="true"
 ></app-error-message>
 
 <app-error-message
   *ngIf="!formGroup.get('attributes')?.get('options')?.value.length"
   (scrollToError)="scrollToError.emit()"
   errorMessage="must contain at least one option"
+  [isPreview]="true"
 ></app-error-message>
 <select
   *ngIf="section.attributes.options; else emptyList"
@@ -37,6 +40,7 @@
 <ng-template #emptyList>
   <app-error-message
     errorMessage="missing dropdown options"
+    [isPreview]="true"
     (scrollToError)="scrollToError.emit()"
   ></app-error-message>
 </ng-template>

@@ -3,10 +3,12 @@
 :host {
   align-items: center;
   display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
 }
 
 .error-message {
-  align-items: flex-start;
+  align-items: center;
   color: $color-warn;
   display: flex;
   font-weight: 600;
@@ -14,28 +16,20 @@
   width: fit-content;
 }
 
+.error-message-icon {
+  margin-inline-end: 0.5rem;
+}
+
 .panel-link {
   align-items: center;
   background-color: #fff;
-  border: 1px solid black;
-  border-radius: 4px;
+  color: $color-warn;
+  border: none;
   cursor: pointer;
   display: flex;
   margin-left: 0.7rem;
   padding: 2px 4px;
-}
-
-.panel-link-label {
-  font-size: 12px;
   text-decoration: underline;
-}
-
-.error-message-icon {
-  font-size: 16px;
-  height: 16px;
-  width: 16px;
-  margin-right: 0.5rem;
-  margin-top: 2px;
 }
 
 .panel-link-icon {

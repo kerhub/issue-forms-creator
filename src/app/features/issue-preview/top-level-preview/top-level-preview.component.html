@@ -1,6 +1,10 @@
 <h2 class="name" *ngIf="name; else missingName">{{ name }}</h2>
 <ng-template #missingName>
-  <app-error-message class="error-name" (scrollToError)="scrollToError.emit()"></app-error-message>
+  <app-error-message
+    class="error-name"
+    [isPreview]="true"
+    (scrollToError)="scrollToError.emit()"
+  ></app-error-message>
 </ng-template>
 <hr class="separator" />
 <p class="description" *ngIf="description; else missingDescription">{{ description }}</p>
@@ -8,6 +12,7 @@
   <app-error-message
     class="error-description"
     errorMessage="Missing description"
+    [isPreview]="true"
     (scrollToError)="scrollToError.emit()"
   ></app-error-message>
 </ng-template>

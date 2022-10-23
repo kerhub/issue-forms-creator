@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, NgModule, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -16,6 +16,8 @@ export class ErrorMessageComponent {
 
   @Output()
   scrollToError: EventEmitter<void> = new EventEmitter<void>();
+
+  @Input() @HostBinding('class.error-message-border') isPreview: boolean = false;
 }
 
 @NgModule({

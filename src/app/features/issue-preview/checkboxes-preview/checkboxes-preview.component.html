@@ -12,6 +12,7 @@
 <app-error-message
   *ngIf="formGroup.get('attributes')?.get('options')?.getError('duplicateLabels')"
   (scrollToError)="scrollToError.emit()"
+  [isPreview]="true"
   [errorMessage]="formGroup.get('attributes')?.get('options')?.getError('duplicateLabels').message"
 ></app-error-message>
 <section *ngFor="let option of section.attributes.options; let i = index">
@@ -25,6 +26,7 @@
       <app-error-message
         class="error-message-inline"
         errorMessage="missing checkbox label"
+        [isPreview]="true"
         (scrollToError)="scrollToError.emit()"
       ></app-error-message>
     </ng-template>
