@@ -54,7 +54,7 @@
     "@angular/elements": "^14.2.7",
     "@babel/core": "^7.14.6",
     "@compodoc/compodoc": "^1.1.14",
-    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-links": "^6.5.12",
     "@storybook/angular": "^6.5.12",
