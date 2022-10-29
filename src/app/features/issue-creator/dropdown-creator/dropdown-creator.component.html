@@ -3,7 +3,7 @@
     <mat-label>ID</mat-label>
     <input matInput type="text" formControlName="id" />
     <mat-hint>Must be unique in the form definition</mat-hint>
-    <mat-error>can contain only numbers, letters, -, _</mat-error>
+    <mat-error>Can contain only numbers, letters, -, _</mat-error>
   </mat-form-field>
 
   <section class="section-creator-container" formGroupName="attributes">
@@ -11,7 +11,7 @@
       <mat-label>label</mat-label>
       <input matInput type="text" formControlName="label" required />
       <mat-hint>A brief description of the expected user input</mat-hint>
-      <mat-error>the label is required</mat-error>
+      <mat-error>The label is required</mat-error>
     </mat-form-field>
 
     <mat-form-field class="section-creator-field">
@@ -37,7 +37,7 @@
           mat-icon-button
           type="button"
           color="primary"
-          aria-label="add a new option"
+          title="Add a new option"
           (click)="addOption()"
         >
           <mat-icon>add</mat-icon>
