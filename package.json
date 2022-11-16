@@ -52,7 +52,7 @@
     "@angular/cli": "^14.2.6",
     "@angular/compiler-cli": "^14.2.7",
     "@angular/elements": "^14.2.7",
-    "@babel/core": "^7.14.6",
+    "@babel/core": "^7.20.2",
     "@compodoc/compodoc": "^1.1.14",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.13",
