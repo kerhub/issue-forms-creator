@@ -102,10 +102,17 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "polyfills": ["src/polyfills.ts"],
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": ["scss"],
-            "assets": ["src/favicon.ico", "src/assets"],
+            "inlineStyleLanguage": [
+              "scss"
+            ],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles/styles.scss"
@@ -116,7 +123,28 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "issue-forms-creator:build",
+            "compodoc": false,
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "issue-forms-creator:build",
+            "compodoc": false,
+            "outputDir": "storybook-static"
           }
         }
       }
