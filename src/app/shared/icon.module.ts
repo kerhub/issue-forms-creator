@@ -4,7 +4,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 @NgModule({})
 export class IconModule {
-  constructor(private iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(
+    private iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer,
+  ) {
     iconRegistry
       .addSvgIcon(
         'header-logo',
