@@ -129,15 +129,15 @@ export class TopLevelCreatorComponent implements OnInit, OnDestroy {
     githubContributors: GitHubContributor[] | null,
   ): void {
     if (this.form.get('labels') && this.form.get('labels')?.value?.length) {
-      const formattedLabels = (this.form.get('labels')?.value as string[]).map(label =>
-        githubLabels?.find(githubLabel => githubLabel.name === label),
+      const formattedLabels = (this.form.get('labels')?.value as string[]).map(
+        label => githubLabels?.find(githubLabel => githubLabel.name === label),
       );
       this.labelsGithubControl.setValue(formattedLabels, { onlySelf: true });
     }
 
     if (this.form.get('assignees') && this.form.get('assignees')?.value?.length) {
-      const formattedAssignees = (this.form.get('assignees')?.value as string[]).map(assignee =>
-        githubContributors?.find(githubLabel => githubLabel.login === assignee),
+      const formattedAssignees = (this.form.get('assignees')?.value as string[]).map(
+        assignee => githubContributors?.find(githubLabel => githubLabel.login === assignee),
       );
       this.contributorsGithubControl.setValue(formattedAssignees, { onlySelf: true });
     }
