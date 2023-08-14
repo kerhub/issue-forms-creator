@@ -60,7 +60,6 @@
       <mat-chip-grid #labelList aria-label="label">
         <mat-chip-row
           *ngFor="let label of labels"
-          [selectable]="true"
           [removable]="true"
           (removed)="removeLabel(label)"
         >
@@ -125,7 +124,6 @@
       <mat-chip-grid #assigneeList aria-label="assignees">
         <mat-chip-row
           *ngFor="let assignee of assignees"
-          [selectable]="true"
           [removable]="true"
           (removed)="removeAssignee(assignee)"
         >
