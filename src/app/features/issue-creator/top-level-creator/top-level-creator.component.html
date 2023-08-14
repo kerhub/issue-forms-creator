@@ -57,8 +57,8 @@
         />
         <mat-hint>Automatically be added to issues created with this template.</mat-hint>
       </mat-form-field>
-      <mat-chip-list #labelList aria-label="label">
-        <mat-chip
+      <mat-chip-grid #labelList aria-label="label">
+        <mat-chip-row
           *ngFor="let label of labels"
           [selectable]="true"
           [removable]="true"
@@ -66,8 +66,8 @@
         >
           {{ label }}
           <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip>
-      </mat-chip-list>
+        </mat-chip-row>
+      </mat-chip-grid>
     </ng-template>
   </ng-container>
 
@@ -96,8 +96,8 @@
           <a [href]="repository">{{ repository }}</a>
         </mat-hint>
       </mat-form-field>
-      <mat-chip-list aria-label="assignees">
-        <mat-chip
+      <mat-chip-listbox aria-label="assignees">
+        <mat-chip-option
           *ngFor="let assignee of assignees"
           [selectable]="true"
           [removable]="true"
@@ -105,8 +105,8 @@
         >
           {{ assignee }}
           <mat-icon matChipRemove>Cancel</mat-icon>
-        </mat-chip>
-      </mat-chip-list>
+        </mat-chip-option>
+      </mat-chip-listbox>
     </ng-container>
     <ng-template #assigneeChipList>
       <mat-form-field class="section-creator-field assignees-field">
@@ -122,8 +122,8 @@
         />
         <mat-hint>Automatically be added to issues created with this template.</mat-hint>
       </mat-form-field>
-      <mat-chip-list #assigneeList aria-label="assignees">
-        <mat-chip
+      <mat-chip-grid #assigneeList aria-label="assignees">
+        <mat-chip-row
           *ngFor="let assignee of assignees"
           [selectable]="true"
           [removable]="true"
@@ -131,8 +131,8 @@
         >
           {{ assignee }}
           <mat-icon matChipRemove>Cancel</mat-icon>
-        </mat-chip>
-      </mat-chip-list>
+        </mat-chip-row>
+      </mat-chip-grid>
     </ng-template>
   </ng-container>
 
