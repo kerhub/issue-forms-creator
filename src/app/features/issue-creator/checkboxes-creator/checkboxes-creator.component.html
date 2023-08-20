@@ -3,7 +3,7 @@
     <mat-label>ID</mat-label>
     <input matInput type="text" formControlName="id" />
     <mat-hint>Must be unique in the form definition</mat-hint>
-    <mat-error>can contain only numbers, letters, -, _</mat-error>
+    <mat-error>Can contain only numbers, letters, -, _</mat-error>
   </mat-form-field>
 
   <section class="section-creator-container" formGroupName="attributes">
@@ -20,7 +20,7 @@
     </mat-form-field>
 
     <fieldset formArrayName="options" class="checkboxes-fieldset">
-      <legend>checkbox list</legend>
+      <legend>Checkbox list</legend>
       <section cdkDropList (cdkDropListDropped)="drop($event)">
         <article
           cdkDrag
@@ -41,7 +41,7 @@
           mat-icon-button
           type="button"
           color="primary"
-          aria-label="add a new checkbox option"
+          title="Add a new checkbox option"
           (click)="addCheckbox.emit()"
         >
           <mat-icon>add</mat-icon>
